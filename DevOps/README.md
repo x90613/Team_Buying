@@ -1,12 +1,10 @@
-Here is the whole `README.md` file:
-
 **Run Jenkins using Docker**
 ==========================
 
 This repository contains a Docker image for Jenkins, which can be run using the following command:
 
 ```bash
-docker run -d -p 8080:8080 -p 50000:50000 -v /mnt/c/Users/ian80/OneDrive/Desktop/Jenkins:/var/jenkins_home ian80327/my-jenkins-updated:latest
+docker run -d -p 8080:8080 -p 50000:50000 -v /mnt/c/Users/~~/Jenkins:/var/jenkins_home ian80327/my-jenkins-updated:latest
 ```
 
 **Prerequisites**
