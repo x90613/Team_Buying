@@ -1,0 +1,21 @@
+Started on Oct 10, 2024, 6:49:42 PM
+Started by event from 140.82.115.47 ⇒ https://7e94-223-136-72-124.ngrok-free.app:8080/github-webhook/ on Thu Oct 10 18:49:42 UTC 2024
+Polling SCM changes on built-in
+Using strategy: Default
+[poll] Last Built Revision: Revision f48fa2262bb85d89e7aa1261e39a9547f382952e (origin/main)
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Team_Buying/.git # timeout=10
+Fetching changes from the remote Git repositories
+ > git config remote.origin.url https://github.com/R13725056/Team_Buying.git # timeout=10
+Fetching upstream changes from https://github.com/R13725056/Team_Buying.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/R13725056/Team_Buying.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Polling for changes in
+Seen branch in repository origin/main
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+ > git log --full-history --no-abbrev --format=raw -M -m f48fa2262bb85d89e7aa1261e39a9547f382952e..7e6c7196d85c056a19bcdf82b711ab2702a7c39a # timeout=10
+Done. Took 2.2 sec
+Changes found
