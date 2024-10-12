@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+**Run Jenkins using Docker**
+==========================
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains a Docker image for Jenkins, which can be run using the following command:
 
-## Available Scripts
+```bash
+docker run -d -p 8080:8080 -p 50000:50000 -v /mnt/c/Users/~~/Jenkins:/var/jenkins_home ian80327/my-jenkins-updated:latest
+```
 
-In the project directory, you can run:
+**Prerequisites**
+---------------
 
-### `npm start`
+* Docker installed on your machine
+* A directory on your host machine to persist Jenkins data (in this case, `/mnt/c/Users/ian80/OneDrive/Desktop/Jenkins`)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Explanation of the command**
+-----------------------------
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* `docker run`: Runs a new container from the specified image.
+* `-d`: Detaches the container from the terminal, running it in the background.
+* `-p 8080:8080`: Maps port 8080 on the host machine to port 8080 in the container, allowing access to the Jenkins web interface.
+* `-p 50000:50000`: Maps port 50000 on the host machine to port 50000 in the container, used for Jenkins slaves.
+* `-v /mnt/c/Users/ian80/OneDrive/Desktop/Jenkins:/var/jenkins_home`: Mounts a volume from the host machine to the container, persisting Jenkins data even after the container is restarted or deleted.
+* `ian80327/my-jenkins-updated:latest`: Specifies the Docker image to use.
 
-### `npm test`
+**Accessing Jenkins**
+--------------------
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After running the command, you can access Jenkins by visiting `http://localhost:8080` in your web browser.
 
-### `npm run build`
+**Setting up Jenkins**
+---------------------
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Step 1: Input Administrator Password
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Go to the directory where you mounted the Jenkins data volume (e.g., `/mnt/c/Users/ian80/OneDrive/Desktop/Jenkins`)
+* Look for a file called `secrets/initialAdminPassword` inside that directory
+* Open the file and copy the password
+* Go back to the Jenkins web interface and paste the password into the "Administrator password" field
+* Click "Continue" to proceed with the setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Next Steps
 
-### `npm run eject`
+* You will be prompted to create a new admin user or continue with the default admin user
+* Follow the on-screen instructions to complete the setup process
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Troubleshooting**
+------------------
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you encounter any issues, check the Docker logs for errors:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+docker logs -f <container_id>
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Replace `<container_id>` with the ID of the container running Jenkins.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I hope this helps! If you have any questions or need further assistance, feel free to ask.
