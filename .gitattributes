@@ -1,0 +1,2 @@
+DevOps/Jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS/bin/corepack filter=lfs diff=lfs merge=lfs -text
+**/*.bin filter=lfs diff=lfs merge=lfs -text
