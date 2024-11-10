@@ -1,7 +1,6 @@
 .root {
   height: 100vh;
   font-family: sans-serif;
-  background-color: 'linear-gradient(180deg, #f8fcff, #e5ecee)';
   display: flex;
   align-items: flex-start;
   justify-content: center;
