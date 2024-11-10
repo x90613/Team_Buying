@@ -1,5 +1,5 @@
 .root {
-  height: 100vh;
+  width: 100vw;
   font-family: sans-serif;
   display: flex;
   align-items: flex-start;
@@ -11,4 +11,55 @@
 .logo {
   width: 330px;
   height: 220px;
+  margin-bottom: 20px;
+}
+
+.searchContainer {
+  width: 80%; /* 設置 SearchBar 占據的寬度百分比 */
+  max-width: 1400px; /* 設置最大寬度，確保在較大螢幕上不會過寬 */
+}
+
+.AddButton {
+  position: fixed;
+  bottom: 24px; /* 距離底部 20px */
+  right: 24px;  /* 距離右邊 20px */
+  width: 60px;
+  height: 60px;
+  background-color: white; /* 按鈕背景色 */
+  color: #1D4666;            /* 按鈕文字顏色 */
+  border: none;
+  border-radius: 50%;        /* 圓形按鈕 */
+  font-size: 50px;           /* + 號大小 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 加一點陰影 */
+  transition: background-color 0.3s ease; /* 滑鼠懸停效果 */
+}
+
+.UserButton {
+  position: fixed;
+  bottom: 108px; /* 距離底部 20px */
+  right: 24px;  /* 距離右邊 20px */
+  width: 60px;
+  height: 60px;
+  background-color: white; /* 按鈕背景色 */
+  color: #1D4666;            /* 按鈕文字顏色 */
+  border: none;
+  border-radius: 50%;        /* 圓形按鈕 */
+  font-size: 50px;           /* + 號大小 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 加一點陰影 */
+  transition: background-color 0.3s ease; /* 滑鼠懸停效果 */
+}
+
+.userImage {
+  width: 30px;
+  height: 28px;
 }
