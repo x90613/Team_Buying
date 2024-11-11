@@ -8,6 +8,9 @@ import SearchBar from './components/SearchBar/SearchBar';
 import QuickLogin from './components/QuickLogin/QuickLogin';
 import HostForm from './components/HostForm/HostForm';
 import Review from './components/Review/Review';
+import Activity from './components/Activity/Activity';
+
+import { activities } from './micmicData';
 
 interface Props {
   className?: string;
@@ -27,17 +30,38 @@ export const App: FC<Props> = memo(function App(props = {}) {
   };
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isAddOpen, setIsAddOpen] = useState(false);
+
+
+
+
   return (
     <>
-    <div 
-      className={`${classes.root}`}>
+    <div className={classes.root}>
       <img
           className={classes.logo}
-          src={logo}/>    
-    </div>
+          src={logo}/>  
+
     <div className={classes.searchContainer}>
       <SearchBar onSearch={handleSearch} />
     </div>
+    <div className={classes.activityContainer}>
+    <div className={classes.activityGrid}>
+        {activities.map((activity, index) => (
+          <Activity
+            key={index}
+            hoster_name={activity.hoster_name}
+            contactInformation={activity.contactInformation}
+            transferInformation={activity.transferInformation}
+            image={activity.image}
+            storeName={activity.storeName}
+            description={activity.description}
+            feedbackPoint={activity.feedbackPoint}
+            deadline={activity.deadline}
+            participants_num={activity.participants_num}
+          />
+        ))}
+      </div>
+      </div>
       <div>
         <button className={classes.AddButton} onClick={handleAddClick} >
           +
@@ -48,10 +72,11 @@ export const App: FC<Props> = memo(function App(props = {}) {
         <button className={classes.UserButton} onClick={handleUserClick} >
         <img
           className={classes.userImage} src={UserImage}/>  
-          {/* <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin> */}
-          <Review isOpen={isUserOpen} onClose={handleUserClick}></Review>
+          <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin>
+          {/* <Review isOpen={isUserOpen} onClose={handleUserClick}></Review> */}
         </button>
       </div>
+      </div>  
     </>
   );
 });
