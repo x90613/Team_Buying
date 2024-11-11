@@ -1,0 +1,111 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: default;
+  }
+  
+  .modal {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 20px;
+    width: 77%; 
+    max-width: 1480px; 
+    height: 85%; /* 設定高度為視窗的 60% */
+    max-height: 810px; /* 設定最大高度 */
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    cursor: default;
+    display: flex;
+    justify-content: center; /* 將整體置中 */
+  }
+  .wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 10%;
+  }
+  .closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: left;
+    color: #3D3D3D;
+    margin-bottom: 8px;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    text-align: left;
+    color: #3D3D3D;
+    margin-bottom: 20px;
+  }
+  
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 50px;
+    color: #FFD700; /* 金黃色 */
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .filledStar {
+    color: #FFD700; /* 填滿的星星 */
+  }
+  
+  .emptyStar {
+    color: #ccc; /* 空的星星 */
+  }
+  
+  .textarea {
+    width: 100%;
+    height: 340px;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .confirmButton {
+    width: 77%; 
+    max-width: 230px; 
+    height: 85%; /* 設定高度為視窗的 60% */
+    max-height: 40px; /* 設定最大高度 */
+    padding: 12px;
+    font-size: 1rem;
+    font-family: 'ABeeZee', sans-serif;
+    background-color: #0D99FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirmButton:hover {
+    background-color: #0e80d1;
+    ;
+  }

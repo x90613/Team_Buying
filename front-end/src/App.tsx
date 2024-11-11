@@ -1,10 +1,13 @@
 import { memo } from 'react';
 import type { FC } from 'react';
-
+import { useState } from 'react';
 import classes from './App.module.css';
 import logo from '/assets/logo.png';
 import UserImage from '/assets/User.png';
 import SearchBar from './components/SearchBar/SearchBar';
+import QuickLogin from './components/QuickLogin/QuickLogin';
+import HostForm from './components/HostForm/HostForm';
+import Review from './components/Review/Review';
 
 interface Props {
   className?: string;
@@ -16,12 +19,14 @@ export const App: FC<Props> = memo(function App(props = {}) {
   };
 
   const handleAddClick = () => {
-    alert('按下 + 按鈕！');
+    setIsAddOpen(!isAddOpen);
   };
 
   const handleUserClick = () => {
-    alert('按下 user 按鈕！');
+    setIsUserOpen(!isUserOpen);
   };
+  const [isUserOpen, setIsUserOpen] = useState(false);
+  const [isAddOpen, setIsAddOpen] = useState(false);
   return (
     <>
     <div 
@@ -36,12 +41,15 @@ export const App: FC<Props> = memo(function App(props = {}) {
       <div>
         <button className={classes.AddButton} onClick={handleAddClick} >
           +
+          <HostForm isOpen={isAddOpen} onClose={handleAddClick}></HostForm>
         </button>
       </div>
       <div>
         <button className={classes.UserButton} onClick={handleUserClick} >
         <img
           className={classes.userImage} src={UserImage}/>  
+          {/* <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin> */}
+          <Review isOpen={isUserOpen} onClose={handleUserClick}></Review>
         </button>
       </div>
     </>
