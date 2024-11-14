@@ -5,3 +5,24 @@ In this system, the host can quickly log in to the platform without registering 
 Furthermore, the system includes features to assist with payment collection. The host can display their bank transfer details or a QR code for participants to make payments. After payment, the host can track the payment status through a list showing which participants have completed their payments, manually marking them as paid.
 The scope of this project includes user authentication, order creation, link generation and sharing, payment tracking, and notification functionalities, ensuring a seamless and efficient group ordering experience for both the host and participants.
 
+
+```
+Mysql port = 3306
+Spring boot port = 9090
+```
+
+Start up your SQL Database
+```bash 
+# Start up the SQL database container in detached mode
+docker compose up -d
+
+# Stop and remove all containers
+docker-compose down
+
+# List all containers and their statuses
+docker ps -a
+
+# Restart a stopped container
+docker start <container_name_or_id>
+
+```
