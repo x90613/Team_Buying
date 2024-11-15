@@ -36,7 +36,7 @@ const Activity: FC<ActivityProps> = ({ hoster_name, contactInformation, transfer
       const handleInfoClick = () => {
         setIsInfoOpen(true);
       };
-    
+
       const closeInfo = () => {
         setIsInfoOpen(false);
       };
