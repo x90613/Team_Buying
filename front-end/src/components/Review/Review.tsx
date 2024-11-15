@@ -12,7 +12,7 @@ interface ReviewProps {
 const ReviewLogin: FC<ReviewProps> = ({ isOpen, onClose}) => {
     const [rating, setRating] = useState(0);
     if (!isOpen) return null;
-    
+
     const handleRating = (index: number) => {
         setRating(index + 1); // 設定選擇的評分，index + 1 表示從1開始的星星數量
     };

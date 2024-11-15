@@ -24,7 +24,7 @@ repos:
         entry: java -jar google-java-format.jar --replace
         language: system
         types: [java]
-        always_run: true
+        always_run: false
 
 
   # ESLint 用於檢查 JavaScript 和 React 程式碼

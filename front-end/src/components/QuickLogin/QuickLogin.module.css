@@ -11,13 +11,13 @@
     z-index: 1000;
     cursor: default;
   }
-  
+
   .modal {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     padding: 20px;
-    width: 77%; 
-    max-width: 1480px; 
+    width: 77%;
+    max-width: 1480px;
     height: 85%; /* 設定高度為視窗的 60% */
     max-height: 810px; /* 設定最大高度 */
     overflow-y: auto;
@@ -25,7 +25,7 @@
     position: relative;
     cursor: default;
   }
-  
+
   .closeButton {
     position: absolute;
     top: 20px;
@@ -40,8 +40,8 @@
   .logo {
     position: relative;
     margin-top: 5%;
-    width: 77%; 
-    max-width: 252px; 
+    width: 77%;
+    max-width: 252px;
     height: 85%;
     max-height: 164px;
     margin-bottom: 60px;
@@ -52,10 +52,10 @@
     flex-direction: column;
     align-items: center;
   }
-  
+
   .inputField {
-    width: 100%; 
-    max-width: 520px; 
+    width: 100%;
+    max-width: 520px;
     height: 85%; /* 設定高度為視窗的 60% */
     max-height: 48px; /* 設定最大高度 */
     padding: 12px;
@@ -68,7 +68,7 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 48px;
   }
-  
+
   .passwordContainer {
     width: 77%;
     max-width: 520px;
@@ -76,7 +76,7 @@
     display: flex;
     align-items: center;
   }
-  
+
   .eyeIcon {
     position: absolute;
     right: 12px;
@@ -87,8 +87,8 @@
   }
 
   .loginButton {
-    width: 77%; 
-    max-width: 230px; 
+    width: 77%;
+    max-width: 230px;
     height: 85%; /* 設定高度為視窗的 60% */
     max-height: 40px; /* 設定最大高度 */
     padding: 12px;
@@ -102,7 +102,7 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
   }
-  
+
   .loginButton:hover {
     background-color: #0e80d1;
     ;

@@ -39,7 +39,7 @@ export const App: FC<Props> = memo(function App(props = {}) {
     <div className={classes.root}>
       <img
           className={classes.logo}
-          src={logo}/>  
+          src={logo}/>
 
     <div className={classes.searchContainer}>
       <SearchBar onSearch={handleSearch} />
@@ -72,12 +72,12 @@ export const App: FC<Props> = memo(function App(props = {}) {
       <div>
         <button className={classes.UserButton} onClick={handleUserClick} >
         <img
-          className={classes.userImage} src={UserImage}/>  
+          className={classes.userImage} src={UserImage}/>
           <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin>
           {/* <Review isOpen={isUserOpen} onClose={handleUserClick}></Review> */}
         </button>
       </div>
-      </div>  
+      </div>
     </>
   );
 });
