@@ -39,10 +39,10 @@ Pre-commit is a tool used in this project to ensure consistent code quality by a
 
 ## **2. Running Pre-commit**
 
-1. **Automatically During Commit**
-   - Pre-commit will automatically run on all staged files when you execute:
+1. **Get the needed pre-commit file in the main branch**
      ```bash
-     git commit -m "Your commit message"
+     git checkout main -- .pre-commit-config.yaml
+     git checkout main -- google-java-format.jar
      ```
 
 2. **Manually for All Files**
