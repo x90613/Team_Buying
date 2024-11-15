@@ -93,14 +93,14 @@
                               <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
                                 <value class="string">def potentialPaths = [&apos;front-end/src&apos;, &apos;front-end&apos;, &apos;.&apos;]
                     def packageJsonPath = &apos;&apos;
-                    
+
                     for (path in potentialPaths) {
                         if (fileExists(&quot;${path}/package.json&quot;)) {
                             packageJsonPath = path
                             break
                         }
                     }
-                    
+
                     if (packageJsonPath) {
                         dir(packageJsonPath) {
                             sh &apos;npm install&apos;
@@ -302,7 +302,7 @@
     <result>FAILURE</result>
     <script>pipeline {
     agent any
-    
+
     tools {
         nodejs &quot;NodeJS&quot;  // Use the NodeJS name configured in Jenkins
     }
@@ -314,28 +314,28 @@
                 git branch: &apos;main&apos;, url: &apos;https://github.com/R13725056/Team_Buying.git&apos;
             }
         }
-        
+
         stage(&apos;Debug: List Workspace Contents&apos;) {
             steps {
                 // List contents of the workspace to see the directory structure
                 sh &apos;ls -R&apos;
             }
         }
-        
+
         stage(&apos;Install Dependencies&apos;) {
             steps {
                 // Try to find package.json in different potential locations
                 script {
                     def potentialPaths = [&apos;front-end/src&apos;, &apos;front-end&apos;, &apos;.&apos;]
                     def packageJsonPath = &apos;&apos;
-                    
+
                     for (path in potentialPaths) {
                         if (fileExists(&quot;${path}/package.json&quot;)) {
                             packageJsonPath = path
                             break
                         }
                     }
-                    
+
                     if (packageJsonPath) {
                         dir(packageJsonPath) {
                             sh &apos;npm install&apos;
@@ -346,7 +346,7 @@
                 }
             }
         }
-        
+
         stage(&apos;Run Tests&apos;) {
             steps {
                 // Use the same directory where package.json was found
@@ -357,7 +357,7 @@
                 }
             }
         }
-        
+
         stage(&apos;Build&apos;) {
             steps {
                 // Use the same directory where package.json was found

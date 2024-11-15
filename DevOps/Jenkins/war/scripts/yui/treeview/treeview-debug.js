@@ -4027,7 +4027,7 @@ YAHOO.widget.TVFadeIn.prototype = {
         s.filter = "alpha(opacity=10)";
         s.display = "";
 
-        var dur = 0.4; 
+        var dur = 0.4;
         var a = new YAHOO.util.Anim(this.el, {opacity: {from: 0.1, to: 1, unit:""}}, dur);
         a.onComplete.subscribe( function() { tvanim.onComplete(); } );
         a.animate();
