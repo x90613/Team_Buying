@@ -43,6 +43,7 @@ export const App: FC<Props> = memo(function App(props = {}) {
 
     <div className={classes.searchContainer}>
       <SearchBar onSearch={handleSearch} />
+
     </div>
     <div className={classes.activityContainer}>
     <div className={classes.activityGrid}>

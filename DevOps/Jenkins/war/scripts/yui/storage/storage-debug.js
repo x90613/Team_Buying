@@ -48,7 +48,7 @@ if (! Util.Storage) {
 		// public variables
 		that.createEvent(Storage.CE_READY, {scope: that, fireOnce: true});
 		that.createEvent(Storage.CE_CHANGE, {scope: that});
-		
+
 		that.subscribe(Storage.CE_READY, function() {
 			that.isReady = true;
 		});
@@ -186,7 +186,7 @@ if (! Util.Storage) {
 			Y.log("removing " + sKey);
             var that = this,
                 oOldValue;
-			
+
 			if (that.hasKey(sKey)) {
                 oOldValue = that._getItem(sKey);
                 if (! oOldValue) {oOldValue = null;}
@@ -208,7 +208,7 @@ if (! Util.Storage) {
 		 */
 		setItem: function(sKey, oData) {
 			Y.log("SETTING " + oData + " to " + sKey);
-			
+
 			if (Lang.isString(sKey)) {
 				var that = this,
                     oOldValue = that._getItem(sKey);
@@ -346,7 +346,7 @@ var Util = YAHOO.util,
 	_locationEngineMap = {}, // cached engines
 	_registeredEngineSet = [], // set of available engines
 	_registeredEngineMap = {}, // map of available engines
-	
+
 	/**
 	 * Fetches a storage constructor if it is available, otherwise returns NULL.
 	 * @method _getClass
@@ -583,7 +583,7 @@ StorageEvent.prototype = {
 };
 
 YAHOO.util.StorageEvent = StorageEvent;
-	
+
 }());
 (function() {
 var Util = YAHOO.util;
@@ -679,7 +679,7 @@ var Util = YAHOO.util;
 					that._keyMap[k] -= 1;
 				}
 			}
-			
+
 			that._keys.length = j;
 			that._keys = that._keys.concat(rest);
 			that.length = that._keys.length;
@@ -725,7 +725,7 @@ var Util = YAHOO.util,
 	StorageEngineHTML5 = function(sLocation, oConf) {
 		var that = this,
             oDriver = window[sLocation];
-        
+
 		StorageEngineHTML5.superclass.constructor.call(that, sLocation, StorageEngineHTML5.ENGINE_NAME, oConf);// not set, are cookies available
 
 		// simplifieds the begin/commit functions, if not using IE; this provides a massive performance boost
@@ -808,7 +808,7 @@ var Util = YAHOO.util,
 	}, true);
 
 	StorageEngineHTML5.ENGINE_NAME = 'html5';
-    
+
 	StorageEngineHTML5.isAvailable = function() {
         try {
             return ('localStorage' in window) && window['localStorage'] !== null &&
@@ -865,7 +865,7 @@ var Util = YAHOO.util,
 		var that = this,
             keyMap = {},
             isSessionStorage, sessionKey, rs;
-        
+
 		StorageEngineGears.superclass.constructor.call(that, sLocation, StorageEngineGears.ENGINE_NAME, oConf);
 
 		if (! _driver) {
@@ -887,7 +887,7 @@ var Util = YAHOO.util,
 
 		rs = _driver.execute('SELECT key FROM ' + TABLE_NAME + ' WHERE location="' + eURI(that._location) + '"');
 		keyMap = {};
-	
+
 		try {
 			// iterate on the rows and map the keys
 			while (rs.isValidRow()) {
@@ -989,7 +989,7 @@ var Util = YAHOO.util,
 				_driver.execute('INSERT INTO ' + TABLE_NAME + ' VALUES ("' + sEscapedKey + '", "' + sEscapedLocation + '", "' + aValues[i] + '")');
 			}
 			_driver.execute('COMMIT');
-			
+
 			return true;
 		}
 	});
@@ -1037,15 +1037,15 @@ var Y = YAHOO,
 	Lang = Y.lang,
 	Dom = Util.Dom,
 	StorageManager = Util.StorageManager,
-	
+
 	/*
 	 * The minimum width required to be able to display the settings panel within the SWF.
-	 */	
+	 */
 	MINIMUM_WIDTH = 215,
 
 	/*
 	 * The minimum height required to be able to display the settings panel within the SWF.
-	 */	
+	 */
 	MINIMUM_HEIGHT = 138,
 
 	RX_STORAGE_PREFIX = new RegExp('^(' + StorageManager.LOCATION_SESSION + '|' + StorageManager.LOCATION_LOCAL + ')'),
@@ -1113,13 +1113,13 @@ var Y = YAHOO,
 	StorageEngineSWF = function(sLocation, oConf) {
 		var that = this;
 		StorageEngineSWF.superclass.constructor.call(that, sLocation, StorageEngineSWF.ENGINE_NAME, oConf);
-		
+
 		_initDriver(that._cfg);
-		
+
 		var _onContentReady = function() {
 			that._swf = _driver._swf;
 			_driver.initialized = true;
-			
+
 			var isSessionStorage = StorageManager.LOCATION_SESSION === that._location,
 				sessionKey = Util.Cookie.get('sessionKey' + StorageEngineSWF.ENGINE_NAME),
                 i, key, isKeySessionStorage;
@@ -1145,7 +1145,7 @@ var Y = YAHOO,
 
 			that.fireEvent(Util.Storage.CE_READY);
 		};
-		
+
 		// evaluate immediately, SWF is already loaded
 		if (_driver.initialized) {
             _onContentReady();

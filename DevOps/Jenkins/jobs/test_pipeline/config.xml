@@ -27,7 +27,7 @@
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@3908.vd6b_b_5a_a_54010">
     <script>pipeline {
     agent any
-    
+
     tools {
         nodejs &quot;NodeJS&quot;  // Use the NodeJS name configured in Jenkins
     }
@@ -39,14 +39,14 @@
                 git branch: &apos;main&apos;, url: &apos;https://github.com/R13725056/Team_Buying.git&apos;
             }
         }
-        
+
         stage(&apos;Debug: List Workspace Contents&apos;) {
             steps {
                 // List contents of the workspace to see the directory structure
                 sh &apos;ls -R&apos;
             }
         }
-        
+
         stage(&apos;Install Dependencies&apos;) {
             steps {
                 dir(&apos;front-end&apos;) {  // Changed from &apos;front-end&apos; to &apos;frond-end&apos;
@@ -54,7 +54,7 @@
                 }
             }
         }
-        
+
         stage(&apos;Run Tests&apos;) {
             steps {
                 dir(&apos;front-end&apos;) {  // Changed from &apos;front-end&apos; to &apos;frond-end&apos;
@@ -62,7 +62,7 @@
                 }
             }
         }
-        
+
         stage(&apos;Build&apos;) {
             steps {
                 dir(&apos;front-end&apos;) {  // Changed from &apos;front-end&apos; to &apos;frond-end&apos;

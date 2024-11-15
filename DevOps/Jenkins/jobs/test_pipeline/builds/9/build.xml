@@ -257,7 +257,7 @@
     <result>FAILURE</result>
     <script>pipeline {
     agent any
-    
+
     tools {
         nodejs &quot;NodeJS&quot;  // 使用你在 Jenkins 中配置的 NodeJS 名稱
     }
@@ -269,21 +269,21 @@
                 git branch: &apos;main&apos;, url: &apos;https://github.com/R13725056/Team_Buying.git&apos;
             }
         }
-        
+
         stage(&apos;Install Dependencies&apos;) {
             steps {
                 // 安裝 npm 依賴
                 sh &apos;npm install&apos;
             }
         }
-        
+
         stage(&apos;Run Tests&apos;) {
             steps {
                 // 執行測試
                 sh &apos;npm test&apos;
             }
         }
-        
+
         stage(&apos;Build&apos;) {
             steps {
                 // 建構應用程序

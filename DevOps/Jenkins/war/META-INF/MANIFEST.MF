@@ -3521,4 +3521,3 @@ SHA-256-Digest: TTHhiA5hMCCzVJIZiTPDBp3Gj6iGZoe3qSMKtex38Ro=
 
 Name: WEB-INF/classes/images/symbols/list.svg
 SHA-256-Digest: ZgGwEja0mQ5p65k+5XiytVIWbNgaNubdlr400lo1Vh4=
-
