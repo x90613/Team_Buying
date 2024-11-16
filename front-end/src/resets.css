@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,8 +10,9 @@ html, body, #root {
   width: 100%;
   background:linear-gradient(180deg, #f8fcff, #e5ecee);
   display: flex;
-  flex-direction: column; 
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+
   align-items: center;
 }
 

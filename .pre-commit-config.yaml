@@ -1,0 +1,38 @@
+repos:
+  # 檢查是否有多餘的空格
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+
+  # 格式化 JavaScript/TypeScript（React 專案）
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: npx prettier --write .
+        language: node
+        types: [javascript, json, yaml, markdown]
+
+
+  - repo: local
+    hooks:
+      - id: google-java-format
+        name: google-java-format
+        entry: java -jar google-java-format.jar --replace
+        language: system
+        types: [java]
+        always_run: false
+
+
+  # ESLint 用於檢查 JavaScript 和 React 程式碼
+  - repo: local
+    hooks:
+      - id: eslint
+        name: ESLint
+        entry: npm run lint
+        language: node
+        pass_filenames: false
+        types: [javascript, json]

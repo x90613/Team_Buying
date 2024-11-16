@@ -1,0 +1,31 @@
+name: Pre-commit Check
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Display Pre-commit Config
+        run: cat .pre-commit-config.yaml
+
+      - name: Install Pre-commit
+        run: pip install pre-commit
+
+      - name: Run Pre-commit
+        run: pre-commit run --all-files
