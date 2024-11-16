@@ -7,83 +7,84 @@ import java.time.LocalDateTime;
 @Table(name = "UserFeedBack")
 public class UserFeedBack {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id; // Primary Key, Feedback ID
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id; // Primary Key, Feedback ID
 
-    @Column(name = "userId", nullable = false)
-    private Integer userId; // Foreign Key, references User table
+  @Column(name = "userId", nullable = false)
+  private Integer userId; // Foreign Key, references User table
 
-    @Column(name = "hostId", nullable = false)
-    private Integer hostId; // Foreign Key, references User table (host)
+  @Column(name = "hostId", nullable = false)
+  private Integer hostId; // Foreign Key, references User table (host)
 
-    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
-    private String content; // Feedback content
+  @Column(name = "content", nullable = false, columnDefinition = "TEXT")
+  private String content; // Feedback content
 
-    @Column(name = "score", nullable = false)
-    private Integer score; // Rating score
+  @Column(name = "score", nullable = false)
+  private Integer score; // Rating score
 
-    @Column(name = "datetime", nullable = false)
-    private LocalDateTime datetime; // Feedback timestamp
+  @Column(name = "datetime", nullable = false)
+  private LocalDateTime datetime; // Feedback timestamp
 
-    // No-argument constructor for JPA
-    public UserFeedBack() {}
+  // No-argument constructor for JPA
+  public UserFeedBack() {}
 
-    // All-arguments constructor for convenience
-    public UserFeedBack(Integer userId, Integer hostId, String content, Integer score, LocalDateTime datetime) {
-        this.userId = userId;
-        this.hostId = hostId;
-        this.content = content;
-        this.score = score;
-        this.datetime = datetime;
-    }
+  // All-arguments constructor for convenience
+  public UserFeedBack(
+      Integer userId, Integer hostId, String content, Integer score, LocalDateTime datetime) {
+    this.userId = userId;
+    this.hostId = hostId;
+    this.content = content;
+    this.score = score;
+    this.datetime = datetime;
+  }
 
-    // Getters and Setters
-    public Integer getId() {
-        return id;
-    }
+  // Getters and Setters
+  public Integer getId() {
+    return id;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public Integer getUserId() {
-        return userId;
-    }
+  public Integer getUserId() {
+    return userId;
+  }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+  public void setUserId(Integer userId) {
+    this.userId = userId;
+  }
 
-    public Integer getHostId() {
-        return hostId;
-    }
+  public Integer getHostId() {
+    return hostId;
+  }
 
-    public void setHostId(Integer hostId) {
-        this.hostId = hostId;
-    }
+  public void setHostId(Integer hostId) {
+    this.hostId = hostId;
+  }
 
-    public String getContent() {
-        return content;
-    }
+  public String getContent() {
+    return content;
+  }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+  public void setContent(String content) {
+    this.content = content;
+  }
 
-    public Integer getScore() {
-        return score;
-    }
+  public Integer getScore() {
+    return score;
+  }
 
-    public void setScore(Integer score) {
-        this.score = score;
-    }
+  public void setScore(Integer score) {
+    this.score = score;
+  }
 
-    public LocalDateTime getDatetime() {
-        return datetime;
-    }
+  public LocalDateTime getDatetime() {
+    return datetime;
+  }
 
-    public void setDatetime(LocalDateTime datetime) {
-        this.datetime = datetime;
-    }
+  public void setDatetime(LocalDateTime datetime) {
+    this.datetime = datetime;
+  }
 }

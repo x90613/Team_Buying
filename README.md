@@ -80,7 +80,7 @@ Spring boot port = 9090
 ```
 
 Start up your SQL Database
-```bash 
+```bash
 # Start up the SQL database container in detached mode
 docker compose up -d
 
