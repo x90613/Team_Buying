@@ -69,3 +69,25 @@ Pre-commit is a tool used in this project to ensure consistent code quality by a
   ```bash
   git add .
   git commit -m "Apply pre-commit fixes"
+
+# Start Database
+
+### Ports
+- MySQL port: **3306**
+- Spring Boot port: **9090**
+
+### Start up your SQL Database
+
+```bash
+# Start up the SQL database container in detached mode
+docker compose up -d
+
+# Stop and remove all containers
+docker-compose down
+
+# List all containers and their statuses
+docker ps -a
+
+# Restart a stopped container
+docker start <container_name_or_id>
+```
