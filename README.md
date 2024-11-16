@@ -5,7 +5,6 @@ In this system, the host can quickly log in to the platform without registering 
 Furthermore, the system includes features to assist with payment collection. The host can display their bank transfer details or a QR code for participants to make payments. After payment, the host can track the payment status through a list showing which participants have completed their payments, manually marking them as paid.
 The scope of this project includes user authentication, order creation, link generation and sharing, payment tracking, and notification functionalities, ensuring a seamless and efficient group ordering experience for both the host and participants.
 
-=======
 # How to Use Pre-commit in This Project
 
 Pre-commit is a tool used in this project to ensure consistent code quality by automatically running checks and formatting code before you commit it. This guide explains how to set up and use pre-commit effectively.
@@ -84,10 +83,11 @@ Pre-commit is a tool used in this project to ensure consistent code quality by a
 docker compose up -d
 
 # Stop and remove all containers
-docker compose down
+docker-compose down
 
 # List all containers and their statuses
 docker ps -a
 
 # Restart a stopped container
 docker start <container_name_or_id>
+```
