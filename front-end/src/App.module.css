@@ -1,9 +1,10 @@
 .root {
-  height: 100vh;
+  width: 100vw;
   font-family: sans-serif;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column; /* 垂直排列 */
+  align-items: center; /* 水平置中 */
+  justify-content: flex-start; /* 讓內容從上往下排列 */
   padding-top: 25px;
   overflow-y: auto;
 }
@@ -11,4 +12,69 @@
 .logo {
   width: 330px;
   height: 220px;
+  margin-bottom: 20px;
+}
+
+.searchContainer {
+  width: 80%; /* 設置 SearchBar 占據的寬度百分比 */
+  max-width: 1400px; /* 設置最大寬度，確保在較大螢幕上不會過寬 */
+}
+
+.AddButton {
+  position: fixed;
+  bottom: 24px; /* 距離底部 20px */
+  right: 24px;  /* 距離右邊 20px */
+  width: 60px;
+  height: 60px;
+  background-color: white; /* 按鈕背景色 */
+  color: #1D4666;            /* 按鈕文字顏色 */
+  border: none;
+  border-radius: 50%;        /* 圓形按鈕 */
+  font-size: 50px;           /* + 號大小 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 加一點陰影 */
+  transition: background-color 0.3s ease; /* 滑鼠懸停效果 */
+}
+
+.UserButton {
+  position: fixed;
+  bottom: 108px; /* 距離底部 20px */
+  right: 24px;  /* 距離右邊 20px */
+  width: 60px;
+  height: 60px;
+  background-color: white; /* 按鈕背景色 */
+  color: #1D4666;            /* 按鈕文字顏色 */
+  border: none;
+  border-radius: 50%;        /* 圓形按鈕 */
+  font-size: 50px;           /* + 號大小 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 加一點陰影 */
+  transition: background-color 0.3s ease; /* 滑鼠懸停效果 */
+}
+
+.userImage {
+  width: 30px;
+  height: 28px;
+}
+
+.activityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px; /* 限制 grid 的最大寬度 */
+}
+
+.activityContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

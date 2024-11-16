@@ -3230,13 +3230,13 @@ module.exports = __webpack_require__(9856)["default"];
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Z: function() { return /* binding */ hotkeys; }
 /* harmony export */ });
-/**! 
- * hotkeys-js v3.10.4 
- * A simple micro-library for defining and dispatching keyboard shortcuts. It has no dependencies. 
- * 
- * Copyright (c) 2023 kenny wong <wowohoo@qq.com> 
- * http://jaywcjlove.github.io/hotkeys 
- * Licensed under the MIT license 
+/**!
+ * hotkeys-js v3.10.4
+ * A simple micro-library for defining and dispatching keyboard shortcuts. It has no dependencies.
+ *
+ * Copyright (c) 2023 kenny wong <wowohoo@qq.com>
+ * http://jaywcjlove.github.io/hotkeys
+ * Licensed under the MIT license
  */
 
 var isff = typeof navigator !== 'undefined' ? navigator.userAgent.toLowerCase().indexOf('firefox') > 0 : false; // 绑定事件
@@ -22665,7 +22665,7 @@ var windowSetTimeouts = [];
 function execCallback(callback, theWindow) {
     if (callback) {
         try {
-            callback.call(callback, theWindow);                
+            callback.call(callback, theWindow);
         } catch (e) {
             console.log("Error invoking window-handle callback.");
             console.log(e.stack);
@@ -22676,23 +22676,23 @@ function execCallback(callback, theWindow) {
 /**
  * Get the global "window" object.
  * @param callback An optional callback that can be used to receive the window asynchronously. Useful when
- * executing in test environment i.e. where the global window object might not exist immediately. 
+ * executing in test environment i.e. where the global window object might not exist immediately.
  * @param timeout The timeout if waiting on the global window to be initialised.
  * @returns {*}
  */
 exports.getWindow = function(callback, timeout) {
     callbacks.push(callback);
-    
+
 	if (theWindow) {
         execCallback(callback, theWindow);
         return theWindow;
-	} 
-	
+	}
+
 	try {
 		if (window) {
             execCallback(callback, window);
 			return window;
-		} 
+		}
 	} catch (e) {
 		// no window "yet". This should only ever be the case in a test env.
 		// Fall through and use callbacks, if supplied.
@@ -22716,7 +22716,7 @@ exports.getWindow = function(callback, timeout) {
  * Set the global window e.g. in a test environment.
  * <p>
  * Once called, all callbacks (registered by earlier 'getWindow' calls) will be invoked.
- * 
+ *
  * @param newWindow The window.
  */
 exports.setWindow = function(newWindow) {
@@ -22734,7 +22734,7 @@ exports.setWindow = function(newWindow) {
  * Set the default time to wait for the global window to be set.
  * <p>
  * Default is 10 seconds (10000 ms).
- * 
+ *
  * @param millis Milliseconds to wait for the global window to be set.
  */
 exports.setDefaultTimeout = function(millis) {
