@@ -1,0 +1,32 @@
+.root {
+  position: absolute;
+  width: 128px;
+  height: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.notYet {
+  color: #626262;
+  font-size: 28px;
+  line-height: 22px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.408px;
+  position: absolute;
+  left: 5px;  /* 從 20px 改為 10px */
+  top: 5px;
+  white-space: nowrap;
+}
+.panoramaFisheye {
+  position: absolute;
+  left: 109px;  /* 從 10px 改為 5px */
+  top: 45%;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+}
+.icon {
+  width: 100%;
+  height: 100%;
+}
