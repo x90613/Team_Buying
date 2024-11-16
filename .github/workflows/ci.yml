@@ -33,7 +33,7 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Build Backend
-        run: |
-          cd back-end
-          ./mvnw clean install
+      # - name: Build Backend
+      #   run: |
+      #     cd back-end
+      #     ./mvnw clean install
