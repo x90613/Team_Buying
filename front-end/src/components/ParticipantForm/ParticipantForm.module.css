@@ -1,0 +1,475 @@
+.component1.component1 {
+  right: 15.9998px;
+  left: initial;
+  top: 12px;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+}
+.component2.component2 {
+  left: 1105px;
+  top: 216.625px;
+}
+.component12.component12 {
+  transform-origin: top left;
+  left: calc(50% - 0.0001px);
+  top: calc(50% - 0px);
+  width: 40px;
+  height: 40px;
+  transform: matrix(0.7071, 0.7071, -0.7071, 0.7071, 0, 0) translate(-50%, -50%);
+}
+.icon2 {
+  width: 100%;
+  height: 100%;
+}
+.component5.component5 {
+  left: 50%;
+  top: 680px;
+  transform: translateX(-50%);
+}
+.create {
+  color: #fff;
+  font-size: 20px;
+  line-height: 22px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.408px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.component3.component3 {
+  left: calc(50% - 188px);
+  top: 307.125px;
+  width: 50%; /* Adjusted width */
+  margin: 0;
+}
+.component7.component7 {
+  left: 570px;  /* adjusted from 716px */
+  top: 510px;   /* reduced from 690px */
+  width: 48px;
+  height: 48px;
+  position: absolute; /* 確保定位正確 */
+  z-index: 1; /* 確保按鈕在上層 */
+}
+.component9.component9 {
+  left: 50%;
+  top: 510px;   /* reduced from 750px */
+  transform: translateX(-50%);
+  width: 200px; /* Increased width */
+  height: 48px;
+  position: absolute;
+  z-index: 1;
+}
+.icon3 {
+  width: 100%;
+  height: 100%;
+}
+.component8.component8 {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 12px;
+}
+.icon4 {
+  width: 100%;
+  height: 100%;
+}
+.root {
+  position: relative;
+  width: 900px;  /* reduced from 1480px */
+  height: 600px; /* reduced from 810px */
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 25px;
+  background-image: linear-gradient(180deg, #f8fcffff 0%, #e4ecedff 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  backdrop-filter: blur(7.5px);
+}
+.order {
+  color: #5f5f5f;
+  font-size: 20px;
+  line-height: 22px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.408px;
+  position: absolute;
+  left: 100px;  /* adjusted from 310px */
+  top: 220px;   /* reduced from 290px */
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.quantity {
+  color: #5f5f5f;
+  font-size: 20px;
+  line-height: 22px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.408px;
+  position: absolute;
+  left: 450px;  /* adjusted from 760px */
+  top: 220px;   /* reduced from 290px */
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.price {
+  color: #5f5f5f;
+  font-size: 20px;
+  line-height: 22px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.408px;
+  position: absolute;
+  left: 600px;  /* adjusted from 950px */
+  top: 220px;   /* reduced from 290px */
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.frame27 {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center items vertically */
+  align-items: flex-start;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  box-shadow: 5px 5px 7.3px 0px #00000040;
+  margin: 0;
+}
+.frame21 {
+  position: absolute;
+  left: 257px;
+  top: -9px;
+  width: 100px;
+  height: 100px;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.frame22 {
+  position: absolute;
+  left: -35px;
+  top: -8px;
+  width: 100px;
+  height: 100px;
+  flex-direction: column;
+  overflow: hidden;
+}
+.todd {
+  color: #8a8a8e;
+  font-size: 20px;
+  line-height: 22px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.408px;
+  position: absolute;
+  left: calc(50% - 362.4999px);
+  top: 50%;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+}
+.frame28 {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 867px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center items vertically */
+  align-items: flex-start;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  box-shadow: 5px 5px 7.3px 0px #00000040;
+}
+.frame212 {
+  position: absolute;
+  left: 257px;
+  top: -9px;
+  width: 100px;
+  height: 100px;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.frame222 {
+  position: absolute;
+  left: -35px;
+  top: -8px;
+  width: 100px;
+  height: 100px;
+  flex-direction: column;
+  overflow: hidden;
+}
+.yourName {
+  color: #5f5f5f;
+  font-size: 20px;
+  line-height: 22px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.408px;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 0;
+  width: 275.2976px;
+  height: min-content;
+  flex-direction: column;
+}
+.anonymous {
+  color: #5f5f5f;
+  font-size: 20px;
+  line-height: 22px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.408px;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 0;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.frame16 {
+  position: absolute;
+  left: 1400px;
+  top: 20px;
+  width: 60px;
+  height: 60px;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.frame223 {
+  position: relative;
+  /* width: 15%; */
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  box-shadow: 5px 5px 7.3px 0px #00000040;
+  width: 20%; /* Adjusted width */
+  margin: 0;
+}
+.frame24 {
+  position: relative;
+  width: 15%;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  box-shadow: 5px 5px 7.3px 0px #00000040;
+  margin: 0;
+}
+.userNameInput {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.component3Input,
+.frame223Input,
+.frame28Input {
+  /* width: 15%; */
+  padding: 8px;
+  font-size: 16px;
+  border: none; /* Remove border color */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.frame24Input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: none; /* Remove border color */
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+/* Remove .dynamicInputGroup class */
+
+.orderContainer {
+  position: absolute;
+  left: 50%;
+  top: 250px;   /* reduced from 320px */
+  transform: translateX(-50%);
+  width: 700px; /* reduced from 867px */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 250px; /* reduced from 370px */
+  overflow-y: auto; /* 啟用垂直滾動 */
+  padding-right: 16px; /* 為滾動條預留空間 */
+}
+
+/* 自定義滾動條樣式 (可選) */
+.orderContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.orderContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.orderContainer::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.orderContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.orderContainer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.orderContainer > div > div:first-child {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.frame28,
+.component3.component3,
+.frame223 {
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 0;
+  transform: none;
+  /* width: 10%; */
+}
+
+.frame27 {
+  position: relative;
+  left: 0;
+  width: 80%;
+  top: 0;
+  margin: 0;
+  transform: none;
+}
+
+.component3.component3,
+.frame223 {
+  position: relative;
+  left: 0;
+  margin-top: 10px;
+  transform: none;
+}
+
+.headerContainer {
+  position: absolute;
+  left: 50%;
+  top: 100px;   /* reduced from 170px */
+  transform: translateX(-50%);
+  width: 700px; /* reduced from 867px */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  gap: 16px;
+}
+
+/* Remove .headerLeft and .headerRight */
+
+.inputRow {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative; /* Add this */
+}
+
+/* Remove or comment out this rule since we're handling delete button in first row only
+.inputRow:nth-child(2) .component8 {
+  display: none;
+}
+*/
+
+/* Adjust existing frame styling to work with inputRow */
+.frame223 {
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 0;
+  width: 20%; /* Adjusted width */
+}
+
+.frame24 {
+  width: 15%;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 0;
+}
+
+/* 確保第二行的描述框對齊 */
+.inputRow:nth-child(2) .frame223 {
+  width: 100%;
+}
+
+.anonymousContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.anonymousCheck {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
