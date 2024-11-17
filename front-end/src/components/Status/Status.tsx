@@ -37,8 +37,8 @@ const orderDetails: OrderDetail[] = [
       { itemName: 'Black Tea', number: 'x 1', price: 30 },
       { itemName: 'Black Tea', number: 'x 1', price: 30 },
        { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      
-      
+
+
     ],
     total: 190,
   }
@@ -90,7 +90,7 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
       <div className={classes.taoHuaSTeamBuying}>TaoHua ‘s TeamBuying</div>
       <div className={classes._2024112220}>2024/11/2 22:00</div>
       <div className={classes.line1}></div>/
-      
+
       {orderDetails.map((order, index) => (
         <div key={index} className={classes.orderDetails}>
           <div className={classes.header}>
@@ -119,7 +119,7 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
           </div>
         </div>
       ))}
-      
+
       <div className={classes.line2}></div>
       <div className={classes.transferInformation}>Transfer information</div>
       <div className={classes.paymentStatus}>Payment Status</div>
@@ -131,9 +131,9 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
           vector: <VectorIcon className={classes.icon} />,
         }}
       />
-      
+
       {renderPaymentStatus()}
-      
+
       <Component5_Property1Create
         className={classes.component10}
         text={{

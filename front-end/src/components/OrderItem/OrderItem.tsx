@@ -43,7 +43,7 @@ const orderDetails: OrderDetail[] = [
     ],
     total: 190,
   },
-  
+
 ];
 
 import { memo } from 'react';
