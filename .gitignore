@@ -4,4 +4,5 @@ DevOps/Jenkins/plugins/
 DevOps/Jenkins/tools/
 DevOps/Jenkins/workspace/
 node_modules/
+front-end/node_modules/
 mysql-data/
