@@ -2,7 +2,7 @@ DevOps/Jenkins/logs/
 DevOps/Jenkins/nodes/
 DevOps/Jenkins/plugins/
 DevOps/Jenkins/tools/
-DevOps/Jenkins/workspace/
+DevOps/Jenkins/
 node_modules/
 front-end/node_modules/
 mysql-data/

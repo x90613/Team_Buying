@@ -1,0 +1,49 @@
+.component1.component1 {
+  right: 16px;
+  left: initial;
+  top: 12px;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+}
+.root {
+  position: relative;
+  width: 1020%;
+  height: 48px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  box-shadow: 5px 5px 7.3px 0px #00000040;
+  display: flex;
+  justify-content: center;
+}
+.frame21 {
+  position: absolute;
+  left: 257px;
+  top: -9px;
+  width: 100px;
+  height: 100px;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.frame22 {
+  position: absolute;
+  left: -35px;
+  top: -8px;
+  width: 100px;
+  height: 100px;
+  flex-direction: column;
+  overflow: hidden;
+}
+.component3Input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: none; /* Remove border color */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
