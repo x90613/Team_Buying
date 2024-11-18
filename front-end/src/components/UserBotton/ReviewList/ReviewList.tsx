@@ -1,14 +1,14 @@
 
 import { FC, useRef, useState } from 'react';
-import styles from './UserBotton.module.css';
+import styles from './ReviewList.module.css';
 import cross from '/assets/Cross_item.png'
 // import logo from '/assets/logo.png';
 // import eyeIcon from '/assets/Eye.png';
 
-interface NowHostingProps {
+interface ReviewListProps {
 }
 
-export const NowHosting: FC<NowHostingProps> = ({}) => {
+export const ReviewList: FC<ReviewListProps> = ({}) => {
   // for cross-component update between input and modify botton
   const userNameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -45,4 +45,4 @@ export const NowHosting: FC<NowHostingProps> = ({}) => {
   );
 };
 
-export default NowHosting;
+export default ReviewList;

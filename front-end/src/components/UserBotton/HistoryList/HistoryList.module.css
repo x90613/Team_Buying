@@ -1,0 +1,173 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: default;
+  }
+
+  .modal {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 20px;
+    width: 77%;
+    max-width: 1480px;
+    height: 85%; /* 設定高度為視窗的 60% */
+    max-height: 810px; /* 設定最大高度 */
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    cursor: default;
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+
+  .logo {
+    position: relative;
+    margin-top: 5%;
+    width: 77%;
+    max-width: 252px;
+    height: 85%;
+    max-height: 164px;
+    margin-bottom: 60px;
+  }
+
+  .inputContainer {
+    margin: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inputField {
+    width: 100%;
+    max-width: 520px;
+    height: 85%; /* 設定高度為視窗的 60% */
+    max-height: 48px; /* 設定最大高度 */
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    font-family: 'ABeeZee', sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .passwordContainer {
+    width: 77%;
+    max-width: 520px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .eyeIcon {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  .modifyButton {
+    width: 77%;
+    max-width: 230px;
+    height: 85%; /* 設定高度為視窗的 60% */
+    max-height: 40px; /* 設定最大高度 */
+    padding: 12px;
+    font-size: 1rem;
+    margin-top: 15px;
+    font-family: 'ABeeZee', sans-serif;
+    background-color: #0D99FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+
+  .modifyButton:hover {
+    background-color: #0e80d1;
+    ;
+  }
+
+  .label {
+    /* parent節點已經置中，所以會相對置中 */
+    width: 100%;
+    max-width: 520px;
+    height: 85%; /* 設定高度為視窗的 60% */
+    max-height: 48px; /* 設定最大高度 */
+    padding: 12px;
+    margin-top: 20px;
+    /* margin-bottom: 48px; */
+    font-size: 1.2rem;
+    font-family: 'ABeeZee', sans-serif;
+    font-weight: 500;
+    color: #5F5F5F;
+    width: 100%; /* 確保 label 的寬度與輸入欄一致 */
+    text-align: left;
+  }
+
+  .pageContainer {
+    display: flex; /* 啟用 Flexbox */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+    height: 100vh; /* 父容器高度占滿整個視窗 */
+    background-color: #f8f8f8; /* 可選：設置背景色 */
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* 使按鈕在容器中置中 */
+  }
+
+  .optionbutton {
+    margin: 10px 0; /* 上下間距 */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-size: 1.2rem;
+    font-family: 'ABeeZee', sans-serif;
+    font-weight: 500;
+    color: #5F5F5F;
+    border: 2px solid transparent; /* 預留空間但不顯示邊框 */
+    border-radius: 3px; /* 圓潤按鈕 */
+  }
+
+  .optionbutton:hover {
+    background-color: #6b6b6b; /* 較淺的深灰色背景 */
+    border: 2px solid #5f5f5f; /* 圓潤外框 */
+    border-radius: 3px; /* 圓潤按鈕 */
+    color: #ffffff; /* 文字變白色 */
+  }
+
+  .selectedOptionbutton {
+    margin: 10px 0; /* 上下間距 */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none; /* 移除邊框 */
+    font-size: 1.2rem;
+    font-family: 'A4eeZee', sans-serif;
+    font-weight: 1200;
+    color: #000000; /* 深黑文字 */
+    border: 2px solid transparent; /* 預留空間但不顯示邊框 */
+    border-radius: 3px; /* 圓潤按鈕 */
+  }

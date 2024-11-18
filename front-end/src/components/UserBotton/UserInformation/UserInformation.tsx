@@ -1,25 +1,27 @@
 
 import { FC, useRef, useState } from 'react';
-import styles from './UserBotton.module.css';
+import styles from './UserInformation.module.css';
 import cross from '/assets/Cross_item.png'
 // import logo from '/assets/logo.png';
 // import eyeIcon from '/assets/Eye.png';
 
-interface HistoryListProps {
+interface UserInformationProps {
 }
 
-export const HistoryList: FC<HistoryListProps> = ({}) => {
+export const UserInformation: FC<UserInformationProps> = ({}) => {
   // for cross-component update between input and modify botton
   const userNameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
+
+  // TODO: get user information from backend
 
   return (
     <>
         <label className={styles.label}>UserName</label>
         <input
         type="text"
-        placeholder="history"
+        placeholder=""
         ref={userNameRef}
         required
         className={styles.inputField}
@@ -45,4 +47,4 @@ export const HistoryList: FC<HistoryListProps> = ({}) => {
   );
 };
 
-export default HistoryList;
+export default UserInformation;
