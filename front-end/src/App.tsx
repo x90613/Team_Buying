@@ -6,6 +6,7 @@ import logo from '/assets/logo.png';
 import UserImage from '/assets/User.png';
 import SearchBar from './components/SearchBar/SearchBar';
 import QuickLogin from './components/QuickLogin/QuickLogin';
+import UserBotton from './components/UserBotton/UserBotton';
 import HostForm from './components/HostForm/HostForm';
 import Review from './components/Review/Review';
 import Activity from './components/Activity/Activity';
@@ -73,7 +74,8 @@ export const App: FC<Props> = memo(function App(props = {}) {
         <button className={classes.UserButton} onClick={handleUserClick} >
         <img
           className={classes.userImage} src={UserImage}/>
-          <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin>
+          {/* <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin> */}
+          <UserBotton isOpen={isUserOpen} onClose={handleUserClick}></UserBotton>
           {/* <Review isOpen={isUserOpen} onClose={handleUserClick}></Review> */}
         </button>
       </div>
