@@ -2,8 +2,6 @@
 import { FC, useRef, useState } from 'react';
 import styles from './HistoryList.module.css';
 import TeamBuying from '../TeamBuying';
-// import logo from '/assets/logo.png';
-// import eyeIcon from '/assets/Eye.png';
 
 interface HistoryListProps {
 }

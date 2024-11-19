@@ -1,6 +1,5 @@
 
 import { FC, useRef, useState } from 'react';
-import styles from './NowHosting.module.css';
 import TeamBuying from '../TeamBuying';
 
 interface NowHostingProps {

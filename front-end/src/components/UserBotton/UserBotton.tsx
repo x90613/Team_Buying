@@ -1,5 +1,5 @@
 
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import styles from './UserBotton.module.css';
 import cross from '/assets/Cross_item.png'
 import logo from '/assets/logo.png';
@@ -27,6 +27,7 @@ const UserBotton: FC<UserBottonProps> = ({ isOpen, onClose}) => {
     { id: 3, label: 'Now Buying', component: <NowBuying /> }, // 之後改成對應的 Component
     { id: 4, label: 'Review List', component: <ReviewList /> },
   ];
+
 
 
   return (
