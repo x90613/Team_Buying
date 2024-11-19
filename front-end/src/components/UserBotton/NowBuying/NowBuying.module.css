@@ -110,19 +110,21 @@
   }
 
   .label {
+    /* parent節點已經置中，所以會相對置中 */
+    width: 100%;
     max-width: 520px;
     height: 85%; /* 設定高度為視窗的 60% */
     max-height: 48px; /* 設定最大高度 */
     padding: 12px;
+    margin-top: 20px;
     /* margin-bottom: 48px; */
     font-size: 1.2rem;
     font-family: 'ABeeZee', sans-serif;
     font-weight: 500;
     color: #5F5F5F;
+    width: 100%; /* 確保 label 的寬度與輸入欄一致 */
     text-align: left;
-    margin-right: auto; /* 靠左對齊 */
   }
-
 
   .pageContainer {
     display: flex; /* 啟用 Flexbox */

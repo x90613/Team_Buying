@@ -7,6 +7,7 @@ import eyeIcon from '/assets/Eye.png';
 import UserInformation from './UserInformation/UserInformation';
 import HistoryList from './HistoryList/HistoryList';
 import NowHosting from './NowHosting/NowHosting';
+import NowBuying from './NowBuying/NowBuying';
 import ReviewList from './ReviewList/ReviewList';
 
 
@@ -23,7 +24,7 @@ const UserBotton: FC<UserBottonProps> = ({ isOpen, onClose}) => {
     { id: 0, label: 'User Information', component: <UserInformation /> },
     { id: 1, label: 'History List', component: <HistoryList /> },
     { id: 2, label: 'Now Hosting', component: <NowHosting /> },
-    { id: 3, label: 'Now Buying', component: <NowHosting /> }, // 之後改成對應的 Component
+    { id: 3, label: 'Now Buying', component: <NowBuying /> }, // 之後改成對應的 Component
     { id: 4, label: 'Review List', component: <ReviewList /> },
   ];
 
