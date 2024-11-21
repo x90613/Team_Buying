@@ -14,8 +14,11 @@ public class HostForm {
   @Column(name = "hostId", nullable = false)
   private Integer hostId; // Foreign Key, references User table
 
-  @Column(name = "menuId", nullable = false)
-  private Integer menuId; // Foreign Key, references Menu table
+  @Column(name = "menuId", nullable = true)
+  private Integer menuId; // Foreign Key, references Menu table (nullable)
+
+  @Column(name = "store_name", nullable = false, length = 100)
+  private String storeName; // Store name
 
   @Column(name = "title", nullable = false, length = 100)
   private String title; // Title of the buying activity
@@ -26,20 +29,29 @@ public class HostForm {
   @Column(name = "status", nullable = false)
   private Integer status = 0; // Status of the form, default is 0
 
-  @Column(name = "startTime", nullable = false)
+  @Column(
+      name = "startTime",
+      nullable = false,
+      columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
   private LocalDateTime startTime; // Activity start time
 
-  @Column(name = "deadTime", nullable = false)
-  private LocalDateTime deadTime; // Activity end time
+  @Column(name = "deadTime", nullable = true, columnDefinition = "DATETIME")
+  private LocalDateTime deadTime; // Activity end time (nullable)
 
-  @Column(name = "participantInformation", nullable = false)
-  private Boolean participantInformation; // Whether participant information is required
+  @Column(name = "transfer_information", columnDefinition = "TEXT", nullable = false)
+  private String transferInformation; // Host transfer information
 
-  @Column(name = "link", length = 255)
-  private String link; // Form sharing link (nullable)
+  @Column(
+      name = "contact_information",
+      columnDefinition = "TEXT DEFAULT CURRENT_TIMESTAMP",
+      nullable = false)
+  private String contactInformation; // Host contact information
+
+  @Column(name = "img", columnDefinition = "TEXT")
+  private String img; // Menu image (nullable)
 
   @Column(name = "open", nullable = false)
-  private Boolean open; // Whether the form is open
+  private Boolean open; // Whether the form is public
 
   // No-argument constructor for JPA
   public HostForm() {}
@@ -48,23 +60,27 @@ public class HostForm {
   public HostForm(
       Integer hostId,
       Integer menuId,
+      String storeName,
       String title,
       String description,
       Integer status,
       LocalDateTime startTime,
       LocalDateTime deadTime,
-      Boolean participantInformation,
-      String link,
+      String transferInformation,
+      String contactInformation,
+      String img,
       Boolean open) {
     this.hostId = hostId;
     this.menuId = menuId;
+    this.storeName = storeName;
     this.title = title;
     this.description = description;
     this.status = status;
     this.startTime = startTime;
     this.deadTime = deadTime;
-    this.participantInformation = participantInformation;
-    this.link = link;
+    this.transferInformation = transferInformation;
+    this.contactInformation = contactInformation;
+    this.img = img;
     this.open = open;
   }
 
@@ -91,6 +107,14 @@ public class HostForm {
 
   public void setMenuId(Integer menuId) {
     this.menuId = menuId;
+  }
+
+  public String getStoreName() {
+    return storeName;
+  }
+
+  public void setStoreName(String storeName) {
+    this.storeName = storeName;
   }
 
   public String getTitle() {
@@ -133,20 +157,28 @@ public class HostForm {
     this.deadTime = deadTime;
   }
 
-  public Boolean getParticipantInformation() {
-    return participantInformation;
+  public String getTransferInformation() {
+    return transferInformation;
   }
 
-  public void setParticipantInformation(Boolean participantInformation) {
-    this.participantInformation = participantInformation;
+  public void setTransferInformation(String transferInformation) {
+    this.transferInformation = transferInformation;
   }
 
-  public String getLink() {
-    return link;
+  public String getContactInformation() {
+    return contactInformation;
   }
 
-  public void setLink(String link) {
-    this.link = link;
+  public void setContactInformation(String contactInformation) {
+    this.contactInformation = contactInformation;
+  }
+
+  public String getImg() {
+    return img;
+  }
+
+  public void setImg(String img) {
+    this.img = img;
   }
 
   public Boolean getOpen() {

@@ -17,6 +17,9 @@ public class ParticipantForm {
   @Column(name = "participantId", nullable = false)
   private Integer participantId; // Foreign Key, references User table
 
+  @Column(name = "anonymous", nullable = false)
+  private Boolean anonymous; // Whether the participant is anonymous
+
   @Column(name = "username", nullable = false, length = 50)
   private String username; // Participant's username
 
@@ -39,11 +42,13 @@ public class ParticipantForm {
   public ParticipantForm(
       Integer hostFormId,
       Integer participantId,
+      Boolean anonymous,
       String username,
       Integer status,
       Integer paymentStatus) {
     this.hostFormId = hostFormId;
     this.participantId = participantId;
+    this.anonymous = anonymous;
     this.username = username;
     this.status = status;
     this.paymentStatus = paymentStatus;
@@ -73,6 +78,14 @@ public class ParticipantForm {
 
   public void setParticipantId(Integer participantId) {
     this.participantId = participantId;
+  }
+
+  public Boolean getAnonymous() {
+    return anonymous;
+  }
+
+  public void setAnonymous(Boolean anonymous) {
+    this.anonymous = anonymous;
   }
 
   public String getUsername() {
