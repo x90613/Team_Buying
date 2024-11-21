@@ -14,13 +14,7 @@ public class NotifyDao {
     }
 
     public Integer getHostId(Integer hostFormId) {
-        String sql =
-                """
-                SELECT
-                hf.host_id
-                FROM host_form hf
-                WHERE hf.id = ?
-                """;
+        String sql = "SELECT hf.host_id FROM host_form hf WHERE hf.id = ?";
         try {
             Integer hostId = jdbcTemplate.queryForObject(sql, Integer.class, hostFormId);
             System.out.println(hostId);
