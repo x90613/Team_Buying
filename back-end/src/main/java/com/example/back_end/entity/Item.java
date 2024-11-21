@@ -13,8 +13,8 @@ public class Item {
   @Column(name = "formId", nullable = false)
   private Integer formId; // Foreign Key, references HostForm table
 
-  @Column(name = "userName", nullable = false, length = 50)
-  private String userName; // Name of the user
+  @Column(name = "note", nullable = false, length = 50)
+  private String note; // Note
 
   @Column(name = "product", nullable = false, length = 100)
   private String product; // Product name
@@ -29,9 +29,9 @@ public class Item {
   public Item() {}
 
   // All-arguments constructor for convenience
-  public Item(Integer formId, String userName, String product, Integer price, Integer number) {
+  public Item(Integer formId, String note, String product, Integer price, Integer number) {
     this.formId = formId;
-    this.userName = userName;
+    this.note = note;
     this.product = product;
     this.price = price;
     this.number = number;
@@ -54,12 +54,12 @@ public class Item {
     this.formId = formId;
   }
 
-  public String getUserName() {
-    return userName;
+  public String getNote() {
+    return note;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setNote(String note) {
+    this.note = note;
   }
 
   public String getProduct() {

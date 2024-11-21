@@ -17,13 +17,16 @@ public class UserFeedBack {
   @Column(name = "hostId", nullable = false)
   private Integer hostId; // Foreign Key, references User table (host)
 
+  @Column(name = "host_form_id", nullable = false)
+  private Integer hostFormId; // Foreign Key, references HostForm table (host)
+
   @Column(name = "content", nullable = false, columnDefinition = "TEXT")
   private String content; // Feedback content
 
   @Column(name = "score", nullable = false)
   private Integer score; // Rating score
 
-  @Column(name = "datetime", nullable = false)
+  @Column(name = "datetime", nullable = false, columnDefinition = "TIMESTAMP")
   private LocalDateTime datetime; // Feedback timestamp
 
   // No-argument constructor for JPA
@@ -31,9 +34,15 @@ public class UserFeedBack {
 
   // All-arguments constructor for convenience
   public UserFeedBack(
-      Integer userId, Integer hostId, String content, Integer score, LocalDateTime datetime) {
+      Integer userId,
+      Integer hostId,
+      Integer hostFormId,
+      String content,
+      Integer score,
+      LocalDateTime datetime) {
     this.userId = userId;
     this.hostId = hostId;
+    this.hostFormId = hostFormId;
     this.content = content;
     this.score = score;
     this.datetime = datetime;
@@ -62,6 +71,14 @@ public class UserFeedBack {
 
   public void setHostId(Integer hostId) {
     this.hostId = hostId;
+  }
+
+  public Integer getHostFormId() {
+    return hostFormId;
+  }
+
+  public void setHostFormId(Integer hostFormId) {
+    this.hostFormId = hostFormId;
   }
 
   public String getContent() {
