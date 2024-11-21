@@ -2,9 +2,9 @@
 import { FC, useRef, useState } from 'react';
 import styles from './TeamBuying.module.css';
 import arrow from '/assets/Arrow.png'
-import fail from '/assets/status/Fail.png'
-import Done from '/assets/status/Done.png'
-import NotYet from '/assets/status/NotYet.png'
+import fail from '/assets/Status/Fail.png'
+import Done from '/assets/Status/Done.png'
+import NotYet from '/assets/Status/NotYet.png'
 
 interface TeamBuyingProps {
   name: string;
