@@ -16,6 +16,7 @@ public class ManageService {
         return manageDao.updateTransferStatus(orderId, paymentStatus);
     }
 
+    // Not be used in current setting
     public boolean updateOrderStatus(Integer orderId, Integer status) {
         return manageDao.updateOrderStatus(orderId, status);
     }

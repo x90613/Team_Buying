@@ -17,6 +17,7 @@ public class ManageDao {
         return update > 0;
     }
 
+    // Not be used in current setting
     public boolean updateOrderStatus(Integer orderId, int status) {
         String sql = "UPDATE participant_form SET status = ? WHERE id = ?";
         int update = jdbcTemplate.update(sql, status, orderId);
@@ -25,8 +26,12 @@ public class ManageDao {
 
     // 完成團購
     public boolean finishTeamBuying(Integer hostformID) {
-        String sql = "UPDATE host_form SET status = 1 WHERE id = ?";
-        int update = jdbcTemplate.update(sql, hostformID);
-        return update > 0;
+        String sql_host_form = "UPDATE host_form SET status = 1 WHERE id = ?";
+        int update_hostform = jdbcTemplate.update(sql_host_form, hostformID);
+
+        // 改participant的status
+        String sql_participant_status = "UPDATE participant_form SET payment_status = 2 WHERE host_form_id = ? AND payment_status = 0";
+        int update_participant_status = jdbcTemplate.update(sql_participant_status, hostformID);
+        return update_hostform > 0;
     }
 }

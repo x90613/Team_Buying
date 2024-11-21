@@ -34,6 +34,7 @@ public class ManageController {
         }
     }
 
+    // Not be used in current setting
     @PutMapping("/order/{orderId}")
     public ResponseEntity<String> updateOrderStatus(@PathVariable Integer orderId, @RequestBody Map<String, Integer> requestBody) {
         int status = requestBody.get("status");
