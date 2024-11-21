@@ -23,10 +23,7 @@ public class User {
   @Column(name = "phoneNumber", nullable = true, length = 255)
   private Integer phoneNumber; // User’s contact number
 
-  @Column(
-      name = "createdAt",
-      nullable = false,
-      columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+  @Column(name = "createdAt", nullable = false)
   private LocalDateTime createdAt; // Account creation time, default current timestamp
 
   // No-argument constructor for JPA

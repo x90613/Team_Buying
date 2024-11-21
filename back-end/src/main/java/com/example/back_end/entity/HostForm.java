@@ -41,10 +41,7 @@ public class HostForm {
   @Column(name = "transfer_information", columnDefinition = "TEXT", nullable = false)
   private String transferInformation; // Host transfer information
 
-  @Column(
-      name = "contact_information",
-      columnDefinition = "TEXT DEFAULT CURRENT_TIMESTAMP",
-      nullable = false)
+  @Column(name = "contact_information", nullable = false)
   private String contactInformation; // Host contact information
 
   @Column(name = "img", columnDefinition = "TEXT")
