@@ -43,7 +43,6 @@ public class HostForm {
 
   @Column(
       name = "contact_information",
-      columnDefinition = "TEXT DEFAULT CURRENT_TIMESTAMP",
       nullable = false)
   private String contactInformation; // Host contact information
 
