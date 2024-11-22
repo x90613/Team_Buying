@@ -3,10 +3,10 @@ name: CI Pipeline
 on:
   pull_request:
     branches:
-      - main
+      - '*' # Trigger for pull requests on all branches
   push:
     branches:
-      - main
+      - '*' # Trigger for pushes on all branches
 
 jobs:
   build:
@@ -24,8 +24,8 @@ jobs:
       - name: Build Frontend
         run: |
           cd front-end
-          npm install
-          npm run build
+          yarn install
+          yarn build
 
       - name: Set up JDK
         uses: actions/setup-java@v3
@@ -33,7 +33,21 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      # - name: Build Backend
-      #   run: |
-      #     cd back-end
-      #     ./mvnw clean install
+      - name: Start MySQL with Docker Compose
+        run: |
+          docker-compose up -d
+        env:
+          DOCKER_CLI_EXPERIMENTAL: enabled
+
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..10}; do
+            docker exec $(docker ps -q -f name=your_mysql_service_name) mysqladmin ping -h localhost -u root --password=yourpassword && break
+            echo "Waiting for MySQL to be ready..."
+            sleep 5
+          done
+
+      - name: Build Backend
+        run: |
+          cd back-end
+          ./mvnw clean install
