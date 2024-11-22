@@ -1,3 +1,21 @@
+import { memo, useState } from 'react';
+import type { FC } from 'react';
+
+import resets from '../_resets.module.css';
+import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account.js';
+import classes from './OrderItem.module.css';
+import { VectorIcon } from './VectorIcon.js';
+
+interface Props {
+  className?: string;
+}
+
+interface OrderDetail {
+  name: string;
+  items: { itemName: string; number: string; price: number }[];
+  total: number;
+}
+
 const orderDetails: OrderDetail[] = [
   {
     name: 'Tom',
@@ -29,6 +47,9 @@ const orderDetails: OrderDetail[] = [
       { itemName: 'Black Tea', number: 'x 1', price: 30 },
       { itemName: 'Black Tea', number: 'x 1', price: 30 },
       { itemName: 'Black Tea', number: 'x 1', price: 30 },
+      { itemName: 'Black Tea', number: 'x 1', price: 30 },
+      { itemName: 'Black Tea', number: 'x 1', price: 30 },
+      { itemName: 'Black Tea', number: 'x 1', price: 30 },
     ],
     total: 190,
   },
@@ -46,25 +67,16 @@ const orderDetails: OrderDetail[] = [
 
 ];
 
-import { memo } from 'react';
-import type { FC } from 'react';
-
-import resets from '../_resets.module.css';
-import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account.js';
-import classes from './OrderItem.module.css';
-import { VectorIcon } from './VectorIcon.js';
-
-interface Props {
-  className?: string;
-}
-
-interface OrderDetail {
-  name: string;
-  items: { itemName: string; number: string; price: number }[];
-  total: number;
-}
-
 export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
+  const [clickedStates, setClickedStates] = useState<{ [key: number]: boolean }>({});
+
+  const handleTransferClick = (index: number) => {
+    setClickedStates(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
   return (
     <div className={`${resets.clapyResets} ${classes.container}`}>
       <div className={classes.unsplashQJ0zGkrE1Zg}></div>
@@ -98,6 +110,13 @@ export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
               <div className={classes.number}></div>
               <div className={classes.price}>{order.total}</div>
             </div>
+            <button
+              className={classes.transferButton}
+              onClick={() => handleTransferClick(index)}
+              style={{
+                backgroundImage: `url('/assets/transfer_${clickedStates[index] ? 'white' : 'green'}.png')`
+              }}
+            />
           </div>
         </div>
       ))}

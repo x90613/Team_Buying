@@ -22,9 +22,6 @@ body {
   margin: 100px auto;
   position: relative; /* Add this */
   padding-top: 200px; /* 250px * 0.8 */
-  border-radius: 8px; /* Add border-radius for rounded corners */
-  background-color: transparent; /* Change background color to transparent */
-  height: 200vh; /* Increase height */
 }
 
 .unsplashQJ0zGkrE1Zg {
@@ -33,7 +30,7 @@ body {
   top: 0; /* Adjust top position */
   width: 100%; /* Change from 100vw */
   height: 200px; /* 250px * 0.8 */
-  background-image: url('/public/assests/unsplashQJ0zGkrE1Zg.jpeg'); /* 確保這裡指向你的 assets 資料夾 */
+  background-image: url('/assets/unsplashQJ0zGkrE1Zg.jpeg'); /* 確保這裡指向你的 assets 資料夾 */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -74,7 +71,7 @@ body {
   top: calc(50% - 16.5033px);
   width: 86.7466px;
   height: 47.5324px;
-  background-image: url('/public/assests/logo21.png'); /* 確保這裡指向你的 assets 資料夾 */
+  background-image: url('/assets/logo21.png'); /* 確保這裡指向你的 assets 資料夾 */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -87,7 +84,7 @@ body {
   top: calc(50% - -28.3402px);
   width: 107.6287px;
   height: 21.8585px;
-  background-image: url('/public/assests/logo31.png'); /* 確保這裡指向你的 assets 資料夾 */
+  background-image: url('/assets/logo31.png'); /* 確保這裡指向你的 assets 資料夾 */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -144,9 +141,11 @@ body {
 .item {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
   margin-bottom: 10px;
+  gap: 8px; /* Add this line to reduce space between items */
 }
+
 .itemName, .number, .price {
   color: #5f5f5f;
   font-size: 12px; /* 15px * 0.8 */
@@ -175,4 +174,22 @@ body {
   height: min-content;
   flex-direction: column;
   transform: translate(-50%, -50%);
+}
+
+.transferButton {
+  width: 100px;
+  height: 100px;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 10px;
+  transition: transform 0.2s ease;
+}
+
+.transferButton:hover {
+  transform: scale(1.1);
 }

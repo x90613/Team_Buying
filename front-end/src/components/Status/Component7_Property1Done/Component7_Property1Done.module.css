@@ -1,22 +1,22 @@
 .root {
   position: absolute;
-  left: 20px;
-  top: 20px;
-  width: 128px;
-  height: 32px;
+  left: 13px;  /* 67% of 20px */
+  top: 13px;  /* 67% of 20px */
+  width: 86px;  /* 67% of 128px */
+  height: 21px;  /* 67% of 32px */
   flex-direction: column;
   align-items: flex-start;
   overflow: hidden;
 }
 .done {
   color: #009a33;
-  font-size: 28px;
-  line-height: 22px;
+  font-size: 19px;  /* 67% of 28px */
+  line-height: 15px;  /* 67% of 22px */
   font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   letter-spacing: -0.408px;
   position: absolute;
-  left: calc(50% - 30.5px);
+  left: calc(50% - 20px);  /* Adjusted from 30.5px */
   top: 50%;
   width: min-content;
   height: min-content;

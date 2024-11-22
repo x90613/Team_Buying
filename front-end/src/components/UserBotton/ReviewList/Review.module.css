@@ -1,0 +1,60 @@
+.ReviewItem {
+  background-color: white;
+  border: 1px solid #ccc; /* 增加細微的邊框以區分項目 */
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px; /* 增加內邊距，讓內容不緊貼邊框 */
+  display: flex;
+  flex-direction: column; /* 垂直排列子元素 */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* 加入些微陰影效果 */
+  transition: all 0.3s ease;
+}
+
+.ReviewItemTop {
+  display: flex;
+  justify-content: space-between; /* 確保左右兩端對齊 */
+  align-items: center; /* 垂直居中 */
+  width: 100%; /* 滿寬度 */
+  margin-bottom: 10px; /* 與 `content` 之間增加空隙 */
+  font-size: 1rem;
+}
+
+.ReviewButton:hover {
+  border-color: #888; /* 滑鼠懸停時變化邊框顏色 */
+  background-color: #f9f9f9; /* 滑鼠懸停時底色稍微改變 */
+}
+
+.name {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold; /* 加粗以突出名稱 */
+}
+
+.star {
+  font-size: 1rem;
+  color: #f39c12; /* 星星的顏色 */
+  text-align: center;
+}
+
+.nameAndStar {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  gap: 8px; /* 名稱和星星之間的間距 */
+}
+
+.datetime {
+  font-size: 1.5rem;
+  color: #666;
+  text-align: right;
+}
+
+.content {
+  text-align: left;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5; /* 增加行間距，提升閱讀體驗 */
+  word-wrap: break-word; /* 確保文字自動換行 */
+  white-space: pre-wrap; /* 支援換行符號 */
+  overflow: hidden; /* 防止溢出 */
+}

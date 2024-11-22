@@ -76,68 +76,72 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
         <div className={classes.logo21}></div>
         <div className={classes.logo31}></div>
       </div>
-      <div className={classes.foodAndDrink}>Food and Drink</div>
-      <div className={classes.seeMore}>See More</div>
-      <div className={classes.arrowRightDropCircle}>
-        <ArrowRightDropCircleIcon className={classes.icon3} />
-      </div>
-      <div className={classes.foodAndDrink2}>Food and Drink</div>
-      <div className={classes.seeMore2}>See More</div>
-      <div className={classes.arrowRightDropCircle2}>
-        <ArrowRightDropCircleIcon2 className={classes.icon4} />
-      </div>
-      <div className={classes._666156156015666}>(666) 0156156-0015666</div>
-      <div className={classes.taoHuaSTeamBuying}>TaoHua ‘s TeamBuying</div>
-      <div className={classes._2024112220}>2024/11/2 22:00</div>
-      <div className={classes.line1}></div>/
 
-      {orderDetails.map((order, index) => (
-        <div key={index} className={classes.orderDetails}>
-          <div className={classes.header}>
-            <Component1_Property1Account
-              className={classes.component6}
-              swap={{
-                vector: <VectorIcon2 className={classes.icon2} />,
-              }}
-            />
-            <div className={classes.name}>{order.name}</div>
-          </div>
-          <div className={classes.itemList}>
-            {order.items.map((item, idx) => (
-              <div key={idx} className={classes.item}>
-                <div className={classes.itemName}>{item.itemName}</div>
-                <div className={classes.number}>{item.number}</div>
-                <div className={classes.price}>${item.price}</div>
+      <div className={classes.contentContainer}>
+        {/* <div className={classes.foodAndDrink}>Food and Drink</div> */}
+        {/* <div className={classes.seeMore}>See More</div> */}
+        {/* <div className={classes.arrowRightDropCircle}>
+          <ArrowRightDropCircleIcon className={classes.icon3} />
+        </div>
+        <div className={classes.foodAndDrink2}>Food and Drink</div>
+        <div className={classes.seeMore2}>See More</div>
+        <div className={classes.arrowRightDropCircle2}>
+          <ArrowRightDropCircleIcon2 className={classes.icon4} />
+        </div> */}
+        <div className={classes._666156156015666}>(666) 0156156-0015666</div>
+        <div className={classes.taoHuaSTeamBuying}>TaoHua ‘s TeamBuying</div>
+        <div className={classes._2024112220}>2024/11/2 22:00</div>
+        <div className={classes.line1}></div>
+
+        {orderDetails.map((order, index) => (
+          <div key={index} className={classes.orderDetails}>
+            <div className={classes.header}>
+              <Component1_Property1Account
+                className={classes.component6}
+                swap={{
+                  vector: <VectorIcon2 className={classes.icon2} />,
+                }}
+              />
+              <div className={classes.name}>{order.name}</div>
+            </div>
+            <div className={classes.itemList}>
+              {order.items.map((item, idx) => (
+                <div key={idx} className={classes.item}>
+                  <div className={classes.itemName}>{item.itemName}</div>
+                  <div className={classes.number}>{item.number}</div>
+                  <div className={classes.price}>${item.price}</div>
+                </div>
+              ))}
+              <div className={classes.line3}></div>
+              <div className={classes.item}>
+                <div className={classes.itemName}>Total</div>
+                <div className={classes.number}></div>
+                <div className={classes.price}>${order.total}</div>
               </div>
-            ))}
-            <div className={classes.line3}></div>
-            <div className={classes.item}>
-              <div className={classes.itemName}>Total</div>
-              <div className={classes.number}></div>
-              <div className={classes.price}>${order.total}</div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
 
-      <div className={classes.line2}></div>
-      <div className={classes.transferInformation}>Transfer information</div>
-      <div className={classes.paymentStatus}>Payment Status</div>
-      <div className={classes.hosterContactInformation}>Hoster Contact Information</div>
-      <div className={classes.link}>link</div>
+        <div className={classes.line2}></div>
+        <div className={classes.transferInformation}>Transfer information</div>
+        <div className={classes.paymentStatus}>Payment Status</div>
+        <div className={classes.hosterContactInformation}>Hoster Contact Information</div>
+        <div className={classes.link}>link</div>
+
+        {renderPaymentStatus()}
+
+        <Component5_Property1Create
+          className={classes.component10}
+          text={{
+            create: <div className={classes.create}>Review</div>,
+          }}
+        />
+      </div>
+
       <Component1_Property1LinkVarian
-        className={classes.component2}
+        className={classes.menuList}
         swap={{
           vector: <VectorIcon className={classes.icon} />,
-        }}
-      />
-
-      {renderPaymentStatus()}
-
-      <Component5_Property1Create
-        className={classes.component10}
-        text={{
-          create: <div className={classes.create}>Review</div>,
         }}
       />
     </div>

@@ -1,0 +1,48 @@
+.HostSectionButton {
+  background-color: white; /* 底色為白色 */
+  border: 0px solid #ccc; /* 邊框顏色，可以自行調整 */
+  border-radius: 10px; /* 圓弧邊框，數值可以調整 */
+  width: 100%; /* 寬度為父元素的 85% */
+  height: 50px; /* 高度為父元素的 10% */
+  display: flex; /* 可讓內容居中對齊 */
+  margin-bottom: 20px;
+  align-items: center; /* 垂直居中 */
+  font-size: 1rem; /* 字體大小，可根據需求調整 */
+  cursor: pointer; /* 滑鼠移上去顯示為手型 */
+  transition: all 0.3s ease; /* 增加一些過渡效果 */
+  justify-content: space-between; /* 左右對齊 */
+}
+
+.HostSectionButton:hover {
+  border-color: #888; /* 滑鼠懸停時變化邊框顏色 */
+  background-color: #f9f9f9; /* 滑鼠懸停時底色稍微改變 */
+}
+
+.HostSectionButton .name {
+  flex: 1; /* 左側佔據一半空間 */
+  font-size: 1.2rem;
+  color: black;
+  text-align: left; /* 確保左對齊 */
+  padding-left: 8px; /* 左側間距 */
+}
+
+
+.HostSectionButton .rightSection {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: flex-start; /* 向左對齊 */
+  gap: 10px; /* 三個元素之間的間距 */
+}
+
+.HostSectionButton .datetime,
+.HostSectionButton .status {
+  font-size: 1.2rem;
+  color: black;
+}
+
+
+.HostSectionButton .arrow {
+  height: 20px; /* 圖片高度 */
+  width: auto; /* 保持圖片寬高比例 */
+  margin-right: 10px; /* 確保貼近右邊 */
+}
