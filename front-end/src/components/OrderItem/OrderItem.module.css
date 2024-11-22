@@ -30,7 +30,7 @@ body {
   top: 0; /* Adjust top position */
   width: 100%; /* Change from 100vw */
   height: 200px; /* 250px * 0.8 */
-  background-image: url('/public/assets/unsplashQJ0zGkrE1Zg.jpeg'); /* 確保這裡指向你的 assets 資料夾 */
+  background-image: url('/assets/unsplashQJ0zGkrE1Zg.jpeg'); /* 確保這裡指向你的 assets 資料夾 */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -71,7 +71,7 @@ body {
   top: calc(50% - 16.5033px);
   width: 86.7466px;
   height: 47.5324px;
-  background-image: url('/public/assets/logo21.png'); /* 確保這裡指向你的 assets 資料夾 */
+  background-image: url('/assets/logo21.png'); /* 確保這裡指向你的 assets 資料夾 */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -84,7 +84,7 @@ body {
   top: calc(50% - -28.3402px);
   width: 107.6287px;
   height: 21.8585px;
-  background-image: url('/public/assets/logo31.png'); /* 確保這裡指向你的 assets 資料夾 */
+  background-image: url('/assets/logo31.png'); /* 確保這裡指向你的 assets 資料夾 */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

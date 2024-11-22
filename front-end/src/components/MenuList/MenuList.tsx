@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import type { FC } from 'react';
 import * as ReactDOM from 'react-dom/client';  // Add this import
-import { Menu1 } from '../Menu1/Menu1';
+import { Menu1 } from '../Menu/Menu';
 import { Order } from '../ParticipantForm/ParticipantForm';
 import { Unnamed as Status } from '../Status/Status';  // Add this import
 import HostForm from '../HostForm_new/HostForm';  // Add this import

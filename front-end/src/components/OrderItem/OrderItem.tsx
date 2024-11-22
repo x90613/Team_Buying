@@ -114,7 +114,7 @@ export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
               className={classes.transferButton}
               onClick={() => handleTransferClick(index)}
               style={{
-                backgroundImage: `url('/public/assets/transfer_${clickedStates[index] ? 'white' : 'green'}.png')`
+                backgroundImage: `url('/assets/transfer_${clickedStates[index] ? 'white' : 'green'}.png')`
               }}
             />
           </div>
