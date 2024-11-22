@@ -54,9 +54,9 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
         </div>
         <div className={classes.headerBottom}>
           <div className={classes.frame27}>
-            <input 
-              type="text" 
-              className={classes.userNameInput} 
+            <input
+              type="text"
+              className={classes.userNameInput}
               placeholder="Enter your name"
               readOnly={isAnonymous}
             />
@@ -69,7 +69,7 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
           </div>
           <div className={classes.anonymousContainer}>
             <div className={classes.anonymous}>Anonymous</div>
-            <Component1_Property1NotCheck 
+            <Component1_Property1NotCheck
               className={classes.anonymousCheck}
               onClick={() => setIsAnonymous(!isAnonymous)} // 切換匿名狀態
               isChecked={isAnonymous} // 傳遞檢查狀態
@@ -81,7 +81,7 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
       <div className={classes.order}>Order</div>
       <div className={classes.quantity}>Quantity</div>
       <div className={classes.price}>Price</div>
-      
+
       <div className={classes.orderContainer}>
         {inputGroups.map((key, index) => (
           <div key={key}>
@@ -113,9 +113,9 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
             </div>
           </div>
         ))}
-        
+
       </div>
-      
+
       <Component1_Property1PlusCircle
         className={classes.component7}
         swap={{
@@ -127,7 +127,7 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
         className={classes.component9}
         onClick={handleConfirm}
       />
-      
+
     </div>
   );
 });

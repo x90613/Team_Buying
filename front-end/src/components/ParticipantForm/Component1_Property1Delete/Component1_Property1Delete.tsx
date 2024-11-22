@@ -18,7 +18,7 @@ interface Props {
 /* @figmaId 20:470 */
 export const Component1_Property1Delete: FC<Props> = memo(function Component1_Property1Delete(props = {}) {
   return (
-    <div 
+    <div
       className={`${resets.clapyResets} ${props.classes?.root || ''} ${props.className || ''} ${classes.root}`}
       onClick={props.onClick} // 添加 onClick 事件處理器
     >

@@ -64,7 +64,7 @@ const orderDetails: OrderDetail[] = [
     ],
     total: 190,
   },
-  
+
 ];
 
 export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
@@ -110,7 +110,7 @@ export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
               <div className={classes.number}></div>
               <div className={classes.price}>{order.total}</div>
             </div>
-            <button 
+            <button
               className={classes.transferButton}
               onClick={() => handleTransferClick(index)}
               style={{

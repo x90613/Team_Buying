@@ -66,12 +66,12 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    
+
     const jsonData = {
       ...formData,
       image: formData.image ? formData.image.name : null // Only sending filename for demo
     };
-    
+
     console.log('Form data:', JSON.stringify(jsonData, null, 2));
     // Here you would typically send the data to your backend
   };
@@ -111,11 +111,11 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
             )}
             <div className={styles.othersContainer}>
               <label className={styles.publiclabel}>Others</label>
-              <input 
-                type="checkbox" 
-                className={styles.checkbox2} 
-                checked={isOtherSelected} 
-                onChange={() => setIsOtherSelected(!isOtherSelected)} 
+              <input
+                type="checkbox"
+                className={styles.checkbox2}
+                checked={isOtherSelected}
+                onChange={() => setIsOtherSelected(!isOtherSelected)}
               />
             </div>
           </div>

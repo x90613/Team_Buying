@@ -17,7 +17,7 @@ interface Props {
 /* @figmaId 2:2020 */
 export const Component5_Property1Create: FC<Props> = memo(function Component5_Property1Create(props = {}) {
   return (
-    <div 
+    <div
       className={`${resets.clapyResets} ${props.classes?.root || ''} ${props.className || ''} ${classes.root}`}
       onClick={props.onClick} // Add this line
     >
