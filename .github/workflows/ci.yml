@@ -24,6 +24,7 @@ jobs:
       - name: Build Frontend
         run: |
           cd front-end
+          npm install --global yarn
           yarn install
           yarn build
 
