@@ -1,4 +1,5 @@
 import { memo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';  // Add this
 import type { FC } from 'react';
 
 import resets from '../_resets.module.css';
@@ -25,6 +26,7 @@ interface Props {
 
 /* @figmaId 40000037:634 */
 export const Order: FC<Props> = memo(function Order(props = {}) {
+  const navigate = useNavigate();  // Add this
   const [inputGroups, setInputGroups] = useState([1]); // Just use numbers for keys
   const [isAnonymous, setIsAnonymous] = useState(false); // 添加匿名狀態
 
@@ -37,6 +39,13 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
     setInputGroups(inputGroups.filter((_, index) => index !== indexToDelete));
   };
 
+  const handleConfirm = () => {
+    if (props.onConfirm) {
+      props.onConfirm(); // 先調用onConfirm關閉modal
+    }
+    navigate('/status'); // 然後再導航
+  };
+
   return (
     <div className={`${resets.clapyResets} ${classes.root}`}>
       <div className={classes.headerContainer}>
@@ -44,20 +53,23 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
           <div className={classes.yourName}>Your Name</div>
         </div>
         <div className={classes.headerBottom}>
-          {!isAnonymous && (
-            <div className={classes.frame27}>
-              <input type="text" className={classes.userNameInput} placeholder="Enter your name" />
-              <Component1_Property1Pencil
-                className={classes.component1}
-                swap={{
-                  vector: <VectorIcon className={classes.icon} />,
-                }}
-              />
-            </div>
-          )}
+          <div className={classes.frame27}>
+            <input 
+              type="text" 
+              className={classes.userNameInput} 
+              placeholder="Enter your name"
+              readOnly={isAnonymous}
+            />
+            <Component1_Property1Pencil
+              className={classes.component1}
+              swap={{
+                vector: <VectorIcon className={classes.icon} />,
+              }}
+            />
+          </div>
           <div className={classes.anonymousContainer}>
             <div className={classes.anonymous}>Anonymous</div>
-            <Component1_Property1NotCheck
+            <Component1_Property1NotCheck 
               className={classes.anonymousCheck}
               onClick={() => setIsAnonymous(!isAnonymous)} // 切換匿名狀態
               isChecked={isAnonymous} // 傳遞檢查狀態
@@ -69,7 +81,7 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
       <div className={classes.order}>Order</div>
       <div className={classes.quantity}>Quantity</div>
       <div className={classes.price}>Price</div>
-
+      
       <div className={classes.orderContainer}>
         {inputGroups.map((key, index) => (
           <div key={key}>
@@ -101,9 +113,9 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
             </div>
           </div>
         ))}
-
+        
       </div>
-
+      
       <Component1_Property1PlusCircle
         className={classes.component7}
         swap={{
@@ -113,9 +125,9 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
       />
       <Component5_Property1Create
         className={classes.component9}
-        onClick={props.onConfirm} // Add this
+        onClick={handleConfirm}
       />
-
+      
     </div>
   );
 });

@@ -12,7 +12,7 @@ interface Props {
 
 export const Component1_Property1NotCheck: FC<Props> = memo(function Component1_Property1NotCheck(props = {}) {
   return (
-    <div
+    <div 
       className={`${resets.clapyResets} ${props.className || ''} ${props.isChecked ? classes.checked : ''} ${classes.root}`}
       onClick={props.onClick}
     >
