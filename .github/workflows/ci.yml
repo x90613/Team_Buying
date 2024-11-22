@@ -24,9 +24,8 @@ jobs:
       - name: Build Frontend
         run: |
           cd front-end
-          npm install --global yarn
-          yarn install
-          yarn build
+          npm install
+          npm run build
 
       - name: Set up JDK
         uses: actions/setup-java@v3
