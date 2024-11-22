@@ -1,6 +1,7 @@
 import { memo, useState } from 'react';
 import type { FC } from 'react';
 import * as ReactDOM from 'react-dom/client';  // Add this import
+import { useNavigate } from 'react-router-dom';  // Add this
 import { Menu1 } from '../Menu/Menu';
 import { Order } from '../ParticipantForm/ParticipantForm';
 import { Unnamed as Status } from '../Status/Status';  // Add this import
@@ -19,6 +20,7 @@ interface Props {
 }
 /* @figmaId 29:516 */
 export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
+  const navigate = useNavigate();  // Add this
   const [showComponents, setShowComponents] = useState(false);
   const [showMenu1Modal, setShowMenu1Modal] = useState(false);
   const [showOrderModal, setShowOrderModal] = useState(false);
@@ -39,29 +41,7 @@ export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
 
   const handleOrderConfirm = () => {
     setShowOrderModal(false);
-    // Open the Status component in a new window
-    const newWindow = window.open('', '_blank', 'width=1920,height=1080');
-    if (newWindow) {
-      newWindow.document.write(`
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <title>Status</title>
-            ${document.head.innerHTML}
-          </head>
-          <body>
-            <div id="status-root"></div>
-          </body>
-        </html>
-      `);
-
-      // Render Status component in the new window
-      const statusRoot = newWindow.document.getElementById('status-root');
-      if (statusRoot) {
-        const root = ReactDOM.createRoot(statusRoot);
-        root.render(<Status />);
-      }
-    }
+    navigate('/status'); // 直接導航到狀態頁面
   };
 
   return (
