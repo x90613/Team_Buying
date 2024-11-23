@@ -63,7 +63,7 @@ const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose}) => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className={styles.inputField}/>
-                
+
             <img
               src={showPassword ? eyeIcon : eyeIcon} // 切換圖標
               alt="Password Visibility"

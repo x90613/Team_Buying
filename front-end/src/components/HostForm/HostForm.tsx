@@ -32,15 +32,15 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
-  
+
     // 檢查是否為 checkbox 類型
     if (event.target instanceof HTMLInputElement && event.target.type === "checkbox") {
       const checked = event.target.checked;
-  
+
       setFormData((prevData) => ({
         ...prevData,
         [name]: checked,
-        
+
       }));
     } else {
       setFormData((prevData) => {
@@ -51,7 +51,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
             menuId: -1,
           };
         }
-  
+
         return {
           ...prevData,
           [name]: value,

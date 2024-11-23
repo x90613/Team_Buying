@@ -30,7 +30,7 @@ const useCreateHostForm = () => {
         menuId: formData.menuId === -1 ? null : formData.menuId, // 將 menuId 的 -1 改為 null
         image: formData.image === '' ? null : formData.image, // 將空字串的 image 改為 null
       };
-      
+
       console.log(processedFormData);
       const response = await fetch('http://localhost:9090/api/hostforms', {
         method: 'POST',
