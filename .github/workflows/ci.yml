@@ -3,10 +3,10 @@ name: CI Pipeline
 on:
   pull_request:
     branches:
-      - main
+      - '*' # Trigger for pull requests on all branches
   push:
     branches:
-      - main
+      - '*' # Trigger for pushes on all branches
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-     - name: Set up Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -32,8 +32,3 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-
-      # - name: Build Backend
-      #   run: |
-      #     cd back-end
-      #     ./mvnw clean install
