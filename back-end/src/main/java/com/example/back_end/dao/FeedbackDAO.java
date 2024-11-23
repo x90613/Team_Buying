@@ -1,9 +1,8 @@
 package com.example.back_end.dao;
-import org.springframework.stereotype.Repository;
-import com.example.back_end.entity.UserFeedBack;
 
+import com.example.back_end.entity.UserFeedBack;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FeedbackDAO extends JpaRepository<UserFeedBack, Integer> {
-}
+public interface FeedbackDAO extends JpaRepository<UserFeedBack, Integer> {}
