@@ -1,6 +1,5 @@
 package com.example.back_end.dao;
 
-import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,9 +16,8 @@ public class MenuDao {
   public boolean insertMenu(String name, String img, List<Map<String, Object>> products) {
     try {
       // 插入菜單
-      byte[] imgBytes = Base64.getDecoder().decode(img);
       String insertMenuSql = "INSERT INTO menu (name, img) VALUES (?, ?)";
-      jdbcTemplate.update(insertMenuSql, name, imgBytes);
+      jdbcTemplate.update(insertMenuSql, name, img);
 
       // 獲取剛剛插入的菜單 ID
       String getMenuIdSql = "SELECT LAST_INSERT_ID()";
