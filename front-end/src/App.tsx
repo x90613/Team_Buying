@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import type { FC } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classes from './App.module.css';
 import logo from '/assets/logo.png';
 import UserImage from '/assets/User.png';
@@ -17,6 +17,17 @@ interface Props {
   className?: string;
 }
 export const App: FC<Props> = memo(function App(props = {}) {
+
+  const [isUserOpen, setIsUserOpen] = useState(false);
+  const [isAddOpen, setIsAddOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 用於追蹤登入狀態
+
+  useEffect(() => {
+    // 這裡可以放一些邏輯來檢查使用者是否已經登入，例如從 localStorage 或 cookies 中讀取 token
+    const token = localStorage.getItem('authToken');
+    setIsLoggedIn(!!token);
+  }, []);
+
   const handleSearch = (query: string) => {
     console.log('Search query:', query); // 用於確認搜尋字串的輸出
     // 在這裡處理搜尋邏輯，例如發送 API 請求等
@@ -29,9 +40,11 @@ export const App: FC<Props> = memo(function App(props = {}) {
   const handleUserClick = () => {
     setIsUserOpen(!isUserOpen);
   };
-  const [isUserOpen, setIsUserOpen] = useState(false);
-  const [isAddOpen, setIsAddOpen] = useState(false);
 
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+    setIsUserOpen(true); // 成功登入後打開 UserBotton
+  };
 
 
 
@@ -74,10 +87,18 @@ export const App: FC<Props> = memo(function App(props = {}) {
         <button className={classes.UserButton} onClick={handleUserClick} >
         <img
           className={classes.userImage} src={UserImage}/>
+          </button>
+          {isUserOpen && (
+            isLoggedIn ? (
+              <UserBotton isOpen={isUserOpen} onClose={handleUserClick}></UserBotton>
+            ) : (
+              <QuickLogin isOpen={isUserOpen} onClose={handleUserClick} onLoginSuccess={handleLoginSuccess}></QuickLogin>
+            )
+          )}
           {/* <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin> */}
-          <UserBotton isOpen={isUserOpen} onClose={handleUserClick}></UserBotton>
+          {/* <UserBotton isOpen={isUserOpen} onClose={handleUserClick}></UserBotton> */}
           {/* <Review isOpen={isUserOpen} onClose={handleUserClick}></Review> */}
-        </button>
+        {/* </button> */}
       </div>
       </div>
     </>

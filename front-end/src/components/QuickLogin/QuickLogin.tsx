@@ -8,14 +8,22 @@ import eyeIcon from '/assets/Eye.png';
 interface QuickLoginProps {
   isOpen: boolean;
   onClose: () => void;
+  onLoginSuccess: () => void;
 }
 
-const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose}) => {
+const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose, onLoginSuccess}) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   if (!isOpen) return null;
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleLogin = () => {
+    // 在這裡進行登入邏輯，例如 API 認證請求
+    onLoginSuccess();
   };
 
   return (
@@ -47,7 +55,7 @@ const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose}) => {
               onClick={togglePasswordVisibility}
             />
             </div>
-          <button type='submit' className={styles.loginButton}>Login</button>
+          <button type='submit' className={styles.loginButton} onClick={handleLogin}>Login</button>
         </div>
       </div>
     </div>
