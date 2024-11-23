@@ -15,7 +15,7 @@ export interface ActivityProps {
 }
 
 const Activity: FC<ActivityProps> = ({ hoster_name, contactInformation, transferInformation, image, storeName, description, feedbackPoint, deadline, participants_num }) => {
-    const formattedDeadline = deadline.toLocaleString('zh-TW', {
+    const formattedDeadline = new Date(deadline).toLocaleString('zh-TW', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',

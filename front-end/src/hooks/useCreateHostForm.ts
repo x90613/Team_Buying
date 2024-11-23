@@ -1,0 +1,59 @@
+import { useState } from 'react';
+
+// 定義請求的資料結構類型
+interface HostFormRequest {
+  title: string;
+  others: boolean;
+  storeName: string;
+  description: string;
+  deadline: string; // 格式為 “2024-12-31T23:59:59”
+  hostContactInformation: string;
+  transferInformation: string;
+  image: string | null;
+  menuId: number | null;
+  open: boolean;
+}
+
+// 自訂 Hook
+const useCreateHostForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+
+  const createHostForm = async (formData: HostFormRequest) => {
+    try {
+      setLoading(true);
+      setError(null);
+      setSuccess(false);
+      const processedFormData = {
+        ...formData,
+        menuId: formData.menuId === -1 ? null : formData.menuId, // 將 menuId 的 -1 改為 null
+        image: formData.image === '' ? null : formData.image, // 將空字串的 image 改為 null
+      };
+      
+      console.log(processedFormData);
+      const response = await fetch('http://localhost:9090/api/hostforms', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(processedFormData),
+      });
+      console.log(response);
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      setSuccess(true);
+    } catch (err: any) {
+      setError(err.message);
+      console.error(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { createHostForm, loading, error, success };
+};
+
+export default useCreateHostForm;

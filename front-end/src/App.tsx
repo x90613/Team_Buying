@@ -10,16 +10,18 @@ import UserBotton from './components/UserBotton/UserBotton';
 import HostForm from './components/HostForm/HostForm';
 import Review from './components/Review/Review';
 import Activity from './components/Activity/Activity';
+import useTeamBuying from './hooks/useTeamBuying';
 
-import { activities } from './micmicData';
+import { activities as allActivities } from './micmicData';
 
 interface Props {
   className?: string;
 }
 export const App: FC<Props> = memo(function App(props = {}) {
+
+  const { teamBuyings, loading, error } = useTeamBuying();
   const handleSearch = (query: string) => {
-    console.log('Search query:', query); // 用於確認搜尋字串的輸出
-    // 在這裡處理搜尋邏輯，例如發送 API 請求等
+    setSearchQuery(query);
   };
 
   const handleAddClick = () => {
@@ -29,11 +31,13 @@ export const App: FC<Props> = memo(function App(props = {}) {
   const handleUserClick = () => {
     setIsUserOpen(!isUserOpen);
   };
+  const [searchQuery, setSearchQuery] = useState('');
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isAddOpen, setIsAddOpen] = useState(false);
-
-
-
+  console.log(teamBuyings);
+  const filteredActivities = teamBuyings.filter((activity) =>
+    activity.store_name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
@@ -48,20 +52,22 @@ export const App: FC<Props> = memo(function App(props = {}) {
     </div>
     <div className={classes.activityContainer}>
     <div className={classes.activityGrid}>
-        {activities.map((activity, index) => (
+        {filteredActivities.map((activity, index) => {
+          const imageSrc = activity.img || activity.menu_store_img || "n";
+          return(
           <Activity
             key={index}
-            hoster_name={activity.hoster_name}
-            contactInformation={activity.contactInformation}
-            transferInformation={activity.transferInformation}
-            image={activity.image}
-            storeName={activity.storeName}
+            hoster_name={activity.user_name}
+            contactInformation={activity.contact_information}
+            transferInformation={activity.transfer_information}
+            image={imageSrc}
+            storeName={activity.store_name}
             description={activity.description}
-            feedbackPoint={activity.feedbackPoint}
-            deadline={activity.deadline}
-            participants_num={activity.participants_num}
+            feedbackPoint={activity.averageFeedbackScore}
+            deadline={activity.dead_time}
+            participants_num={activity.participantCount}
           />
-        ))}
+        )})}
       </div>
       </div>
       <div>
@@ -74,8 +80,8 @@ export const App: FC<Props> = memo(function App(props = {}) {
         <button className={classes.UserButton} onClick={handleUserClick} >
         <img
           className={classes.userImage} src={UserImage}/>
-          {/* <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin> */}
-          <UserBotton isOpen={isUserOpen} onClose={handleUserClick}></UserBotton>
+          <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin>
+          {/* <UserBotton isOpen={isUserOpen} onClose={handleUserClick}></UserBotton> */}
           {/* <Review isOpen={isUserOpen} onClose={handleUserClick}></Review> */}
         </button>
       </div>
