@@ -10,8 +10,9 @@ public class Menu {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id; // Primary Key, Menu ID
 
-  @Column(name = "img", columnDefinition = "TEXT", nullable = false)
-  private String img; // Menu image code
+  @Lob
+  @Column(name = "img", columnDefinition = "MEDIUMBLOB", nullable = false)
+  private byte[] img; // Menu image code
 
   @Column(name = "name", nullable = false, length = 100)
   private String name; // Menu name
@@ -20,7 +21,7 @@ public class Menu {
   public Menu() {}
 
   // All-arguments constructor for convenience
-  public Menu(String img, String name) {
+  public Menu(byte[] img, String name) {
     this.img = img;
     this.name = name;
   }
@@ -34,11 +35,11 @@ public class Menu {
     this.id = id;
   }
 
-  public String getImg() {
+  public byte[] getImg() {
     return img;
   }
 
-  public void setImg(String img) {
+  public void setImg(byte[] img) {
     this.img = img;
   }
 
