@@ -1,7 +1,9 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.dto.UserHistory;
 import com.example.back_end.dto.UserInfo;
 import com.example.back_end.service.UserService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,15 +40,26 @@ public class UserController {
   }
 
   @GetMapping("/historylist/{userId}")
-  public String getHistoryList(@PathVariable int userId) {
+  public ResponseEntity<?> getHistoryList(@PathVariable int userId) {
+    // 假設 userService 有一個方法可以獲取使用者的歷史記錄
+    List<UserHistory.HostHistory> hostHistory = userService.getHostHistoryByUserId(userId);
+    List<UserHistory.ParticipantHistory> participantHistory =
+        userService.getParticipantHistoryByUserId(userId);
 
-    return "123";
+    if (hostHistory != null || participantHistory != null) {
+      UserHistory response = new UserHistory();
+      response.setHost(hostHistory);
+      response.setParticipant(participantHistory);
+      return ResponseEntity.ok(response); // 返回 JSON 格式的歷史記錄
+    } else {
+      return ResponseEntity.status(404).body("History not found for user with ID: " + userId);
+    }
   }
 
   @GetMapping("/nowhosting/{userId}")
-  public String getNowHosting(@PathVariable int userId) {
-
-    return "123";
+  public ResponseEntity<?> getNowHosting(@PathVariable int userId) {
+    List<UserHistory.HostHistory> nowHosting = userService.getNowHostingByUserId(userId);
+    return ResponseEntity.ok(nowHosting);
   }
 
   @GetMapping("/nowbuyinging/{userId}")
