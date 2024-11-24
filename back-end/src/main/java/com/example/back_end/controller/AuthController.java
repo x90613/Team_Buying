@@ -15,26 +15,26 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private static final Logger log = LoggerFactory.getLogger(AuthController.class);
-    private final AuthService authService;
+  private static final Logger log = LoggerFactory.getLogger(AuthController.class);
+  private final AuthService authService;
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-        try {
-            log.info("Received login request for user: {}", request.getUserName());
-            LoginResponse response = authService.login(request);
+  @PostMapping("/login")
+  public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+    try {
+      log.info("Received login request for user: {}", request.getUserName());
+      LoginResponse response = authService.login(request);
 
-            log.info("Login successful for user: {}", request.getUserName());
-            return ResponseEntity.ok(response);
+      log.info("Login successful for user: {}", request.getUserName());
+      return ResponseEntity.ok(response);
 
-        } catch (Exception e) {
-           log.error("Login failed for user: {}", request.getUserName(), e);
-            return ResponseEntity.status(401).body("Invalid credentials: " + e.getMessage());
-        }
+    } catch (Exception e) {
+      log.error("Login failed for user: {}", request.getUserName(), e);
+      return ResponseEntity.status(401).body("Invalid credentials: " + e.getMessage());
     }
+  }
 
-    @GetMapping("/test")
-    public ResponseEntity<String> test() {
-        return ResponseEntity.ok("API is working!");
-    }
+  @GetMapping("/test")
+  public ResponseEntity<String> test() {
+    return ResponseEntity.ok("API is working!");
+  }
 }
