@@ -46,7 +46,6 @@ export const App: FC<Props> = memo(function App(props = {}) {
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
-    setIsUserOpen(true); // 成功登入後打開 UserBotton
   };
 
 
@@ -84,9 +83,14 @@ export const App: FC<Props> = memo(function App(props = {}) {
               </div>
               <div>
                 <button className={classes.AddButton} onClick={handleAddClick}>
-                  +
-                  <HostForm isOpen={isAddOpen} onClose={handleAddClick}></HostForm>
+                +
                 </button>
+                  {isAddOpen && 
+                  (isLoggedIn?(
+                    <HostForm isOpen={isAddOpen} onClose={handleAddClick}></HostForm>
+                  ):(
+                    <QuickLogin isOpen={isAddOpen} onClose={handleAddClick} onLoginSuccess={handleLoginSuccess}></QuickLogin>
+                  ))}
               </div>
               <div>
                 <button className={classes.UserButton} onClick={handleUserClick}>
