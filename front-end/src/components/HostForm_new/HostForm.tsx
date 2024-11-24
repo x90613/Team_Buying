@@ -230,7 +230,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          <button type="submit" className={styles.createButton}>Create</button>
+          <button type="submit" className={styles.createButton}>Update</button>
         </form>
       </div>
     </div>

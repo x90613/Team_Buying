@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Activity.module.css';
 import cross from '/assets/Cross_item.png'
 
@@ -15,7 +16,10 @@ export interface ActivityProps {
 }
 
 const Activity: FC<ActivityProps> = ({ hoster_name, contactInformation, transferInformation, image, storeName, description, feedbackPoint, deadline, participants_num }) => {
-    const formattedDeadline = deadline.toLocaleString('zh-TW', {
+    
+  const navigate = useNavigate();
+  
+  const formattedDeadline = deadline.toLocaleString('zh-TW', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -40,6 +44,13 @@ const Activity: FC<ActivityProps> = ({ hoster_name, contactInformation, transfer
       const closeInfo = () => {
         setIsInfoOpen(false);
       };
+      
+      // 當點擊 Join 按鈕時，導航到 order-item 頁面
+      const handleJoinClick = () => {
+        navigate('/order-item');
+      };
+
+      
   return (
     <div className={styles.activityCard}>
       <div className={styles.imageContainer}>
@@ -48,7 +59,8 @@ const Activity: FC<ActivityProps> = ({ hoster_name, contactInformation, transfer
       </div>
       <div className={styles.content}>
         <h3 className={styles.storeName}>{storeName}</h3>
-        <button className={styles.joinButton}>Join</button>
+        <button className={styles.joinButton} onClick={handleJoinClick}>Join</button>
+        {/* <button className={styles.joinButton}>Join</button> */}
       </div>
       <div className={styles.footer}>
         <div className={styles.rating}>
