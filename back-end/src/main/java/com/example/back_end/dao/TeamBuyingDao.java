@@ -21,8 +21,9 @@ public class TeamBuyingDao {
             + " hf.contact_information, (SELECT COUNT(*) FROM Participant_form pf WHERE"
             + " pf.host_form_id = hf.id) AS participantCount, (SELECT COALESCE(AVG(uf.score), 0)"
             + " FROM user_feed_back uf WHERE uf.host_id = hf.host_id) AS averageFeedbackScore,"
-            + " m.name AS menu_store_name, m.img as menu_store_img FROM host_form hf LEFT JOIN menu"
-            + " m ON hf.menu_id = m.id WHERE hf.open = true AND hf.status = 0";
+            + " m.name AS menu_store_name, m.img as menu_store_img, u.username As user_name FROM"
+            + " host_form hf LEFT JOIN menu m ON hf.menu_id = m.id LEFT JOIN user u ON hf.host_id ="
+            + " u.id WHERE hf.open = true AND hf.status = 0";
     return jdbcTemplate.queryForList(sql);
   }
 }
