@@ -77,7 +77,7 @@ public class UserDao {
     // SQL 1: 查詢 participant_form 表，獲取 payment_status 和 host_form_id
     String sql1 =
         "SELECT payment_status, host_form_id FROM participant_form WHERE participant_id = :userId"
-            + " AND status = :status";
+            + " AND payment_status = :status";
 
     Map<String, Object> params1 = new HashMap<>();
     params1.put("userId", userId);
@@ -148,7 +148,7 @@ public class UserDao {
     // SQL 1: 查詢 participant_form 表，獲取 payment_status 和 host_form_id
     String sql1 =
         "SELECT payment_status, host_form_id FROM participant_form WHERE participant_id = :userId"
-            + " AND status = :status";
+            + " AND payment_status = :status";
 
     Map<String, Object> params1 = new HashMap<>();
     params1.put("userId", userId);
