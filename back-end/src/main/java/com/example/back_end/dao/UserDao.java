@@ -1,5 +1,6 @@
 package com.example.back_end.dao;
 
+import com.example.back_end.dto.ReviewDto;
 import com.example.back_end.dto.ReviewListDto;
 import com.example.back_end.dto.UserHistoryDto;
 import com.example.back_end.dto.UserInfoDto;
@@ -195,11 +196,11 @@ public class UserDao {
   }
 
   public List<ReviewListDto> getReviewListByUserId(int userId) {
-    System.out.println("test for reviewlist");
     String sql =
         "SELECT tb.title AS name, "
             + "ROUND(AVG(uf.score), 0) AS star, "
-            + "tb.dead_time AS date "
+            + "tb.dead_time AS date, "
+            + "tb.id AS hostFormId "
             + "FROM host_form tb "
             + "JOIN user_feed_back uf ON tb.id = uf.host_form_id "
             + "WHERE tb.host_id = :userId "
@@ -212,6 +213,26 @@ public class UserDao {
         namedParameterJdbcTemplate.query(
             sql, map, new BeanPropertyRowMapper<>(ReviewListDto.class));
 
+    return list;
+  }
+
+  public List<ReviewDto> getReviewByHostFormId(int hostFormId) {
+    System.out.println("test before");
+    String sql =
+        "SELECT us.username AS name, "
+            + "uf.score AS star, "
+            + "uf.datetime AS date, "
+            + "uf.content AS content "
+            + "FROM user_feed_back uf "
+            + "JOIN user us ON uf.user_id = us.id "
+            + "WHERE uf.host_form_id = :hostFormId ";
+
+    Map<String, Object> map = new HashMap<>();
+    map.put("hostFormId", hostFormId);
+
+    List<ReviewDto> list =
+        namedParameterJdbcTemplate.query(sql, map, new BeanPropertyRowMapper<>(ReviewDto.class));
+    System.out.println("test after");
     return list;
   }
 }

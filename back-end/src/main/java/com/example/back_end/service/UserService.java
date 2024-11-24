@@ -1,6 +1,7 @@
 package com.example.back_end.service;
 
 import com.example.back_end.dao.UserDao;
+import com.example.back_end.dto.ReviewDto;
 import com.example.back_end.dto.ReviewListDto;
 import com.example.back_end.dto.UserHistoryDto;
 import com.example.back_end.dto.UserInfoDto;
@@ -46,5 +47,10 @@ public class UserService {
   public List<ReviewListDto> getReviewListByUserId(int userId) {
 
     return userDao.getReviewListByUserId(userId);
+  }
+
+  public List<ReviewDto> getReviewByHostFormId(int hostFormId) {
+
+    return userDao.getReviewByHostFormId(hostFormId);
   }
 }

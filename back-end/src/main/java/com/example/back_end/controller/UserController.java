@@ -1,5 +1,6 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.dto.ReviewDto;
 import com.example.back_end.dto.ReviewListDto;
 import com.example.back_end.dto.UserHistoryDto;
 import com.example.back_end.dto.UserInfoDto;
@@ -72,13 +73,13 @@ public class UserController {
 
   @GetMapping("/reviewlist/{userId}")
   public List<ReviewListDto> getReviewList(@PathVariable("userId") int userId) {
-    List<ReviewListDto> reviews = userService.getReviewListByUserId(userId);
-    return reviews;
+    List<ReviewListDto> reviewList = userService.getReviewListByUserId(userId);
+    return reviewList;
   }
 
-  @GetMapping("/reviewlist/review/{hostFromId}")
-  public String getReviews(@PathVariable int hostFromId) {
-
-    return "123";
+  @GetMapping("/reviewlist/review/{hostFormId}")
+  public List<ReviewDto> getReviews(@PathVariable int hostFormId) {
+    List<ReviewDto> reviews = userService.getReviewByHostFormId(hostFormId);
+    return reviews;
   }
 }

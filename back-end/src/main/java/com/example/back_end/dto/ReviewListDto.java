@@ -4,6 +4,7 @@ public class ReviewListDto {
   private String name;
   private String date;
   private int star;
+  private int hostFormId;
 
   // Getters and Setters
   public String getName() {
@@ -28,5 +29,13 @@ public class ReviewListDto {
 
   public void setStar(int star) {
     this.star = star;
+  }
+
+  public int getHostFormId() {
+    return hostFormId;
+  }
+
+  public void setHostFormId(int hostFormId) {
+    this.hostFormId = hostFormId;
   }
 }
