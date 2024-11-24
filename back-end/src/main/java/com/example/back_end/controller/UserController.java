@@ -57,15 +57,16 @@ public class UserController {
   }
 
   @GetMapping("/nowhosting/{userId}")
-  public ResponseEntity<?> getNowHosting(@PathVariable int userId) {
+  public ResponseEntity<List<UserHistory.HostHistory>> getNowHosting(@PathVariable int userId) {
     List<UserHistory.HostHistory> nowHosting = userService.getNowHostingByUserId(userId);
     return ResponseEntity.ok(nowHosting);
   }
 
-  @GetMapping("/nowbuyinging/{userId}")
-  public String getNowBuying(@PathVariable int userId) {
-
-    return "123";
+  @GetMapping("/nowbuying/{userId}")
+  public ResponseEntity<List<UserHistory.ParticipantHistory>> getNowBuying(
+      @PathVariable int userId) {
+    List<UserHistory.ParticipantHistory> nowBuying = userService.getNowBuyingByUserId(userId);
+    return ResponseEntity.ok(nowBuying);
   }
 
   @GetMapping("/reviewlist/{userId}")

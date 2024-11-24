@@ -36,4 +36,9 @@ public class UserService {
     // Retrieve current Host records from the data layer
     return userDao.getNowHostingByUserID(userId);
   }
+
+  public List<UserHistory.ParticipantHistory> getNowBuyingByUserId(int userId) {
+    // Retrieve current Participant records from the data layer
+    return userDao.getNowBuyingByUserID(userId);
+  }
 }
