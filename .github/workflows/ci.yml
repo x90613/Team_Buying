@@ -23,12 +23,30 @@ jobs:
 
       - name: Build Frontend
         run: |
+          ls
           cd front-end
           npm install
           npm run build
+          cd ..
 
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '21'
           distribution: 'temurin'
+
+      - name: Install Docker Compose
+        run: |
+          ls
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+      - name: Start MySQL with Docker Compose
+        run: |
+          docker-compose up -d
+        env:
+          DOCKER_CLI_EXPERIMENTAL: enabled
+      - name: Build Backend
+        run: |
+          cd back-end
+          ls
+          mvnw clean install
