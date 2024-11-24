@@ -49,4 +49,5 @@ jobs:
         run: |
           cd back-end
           ls
+          chmod +x mvnw
           mvnw clean install
