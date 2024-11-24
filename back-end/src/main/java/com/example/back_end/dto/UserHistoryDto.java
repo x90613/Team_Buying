@@ -2,7 +2,7 @@ package com.example.back_end.dto;
 
 import java.util.List;
 
-public class UserHistory {
+public class UserHistoryDto {
 
   private List<HostHistory> host;
   private List<ParticipantHistory> participant;

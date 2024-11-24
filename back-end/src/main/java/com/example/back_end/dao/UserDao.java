@@ -1,7 +1,8 @@
 package com.example.back_end.dao;
 
-import com.example.back_end.dto.UserHistory;
-import com.example.back_end.dto.UserInfo;
+import com.example.back_end.dto.ReviewListDto;
+import com.example.back_end.dto.UserHistoryDto;
+import com.example.back_end.dto.UserInfoDto;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,15 +17,15 @@ public class UserDao {
 
   @Autowired private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-  public UserInfo getUserInfoByUserId(Integer userId) {
+  public UserInfoDto getUserInfoByUserId(Integer userId) {
     String sql = "SELECT username, email, phone_number FROM user WHERE id = :userId";
     //        System.out.println("receive getUserInfo Dao" + userId);
 
     Map<String, Object> map = new HashMap<>();
     map.put("userId", userId);
 
-    List<UserInfo> list =
-        namedParameterJdbcTemplate.query(sql, map, new BeanPropertyRowMapper<>(UserInfo.class));
+    List<UserInfoDto> list =
+        namedParameterJdbcTemplate.query(sql, map, new BeanPropertyRowMapper<>(UserInfoDto.class));
 
     //        System.out.println(list.get(0).getUsername());
     //        System.out.println(list.get(0).getPhoneNumber());
@@ -36,7 +37,7 @@ public class UserDao {
     return null;
   }
 
-  public Boolean updateUserInfoByUserId(int userId, UserInfo userInfo) {
+  public Boolean updateUserInfoByUserId(int userId, UserInfoDto userInfo) {
     String sql =
         "UPDATE user SET username = :username, email = :email, phone_number = :phoneNumber WHERE id"
             + " = :userId";
@@ -50,7 +51,7 @@ public class UserDao {
     return namedParameterJdbcTemplate.update(sql, params) > 0; // 返回是否更新
   }
 
-  public List<UserHistory.HostHistory> getHostHistoryByUserId(int userId) {
+  public List<UserHistoryDto.HostHistory> getHostHistoryByUserId(int userId) {
     String sql =
         "SELECT title AS name, dead_time AS datetime, status, id AS hostformId FROM host_form WHERE"
             + " host_id = :userId AND status = :status";
@@ -63,7 +64,7 @@ public class UserDao {
         sql,
         params,
         (rs, rowNum) -> {
-          UserHistory.HostHistory history = new UserHistory.HostHistory();
+          UserHistoryDto.HostHistory history = new UserHistoryDto.HostHistory();
           history.setName(rs.getString("name")); // 對應 SELECT 中的別名 `name`
           history.setDatetime(rs.getString("datetime")); // 對應 `dead_time`
           history.setStatus(rs.getString("status")); // 對應 `status`
@@ -72,8 +73,8 @@ public class UserDao {
         });
   }
 
-  public List<UserHistory.ParticipantHistory> getParticipantHistoryByUserId(int userId) {
-    System.out.println("getParticipantHistoryByUserId received");
+  public List<UserHistoryDto.ParticipantHistory> getParticipantHistoryByUserId(int userId) {
+    // System.out.println("getParticipantHistoryByUserId received");
     // SQL 1: 查詢 participant_form 表，獲取 payment_status 和 host_form_id
     String sql1 =
         "SELECT payment_status, host_form_id FROM participant_form WHERE participant_id = :userId"
@@ -88,7 +89,7 @@ public class UserDao {
         namedParameterJdbcTemplate.queryForList(sql1, params1);
 
     // 保存最終結果
-    List<UserHistory.ParticipantHistory> participantHistories = new ArrayList<>();
+    List<UserHistoryDto.ParticipantHistory> participantHistories = new ArrayList<>();
 
     for (Map<String, Object> result : participantFormResults) {
       // 從第一個查詢結果中提取 host_form_id 和 payment_status
@@ -102,12 +103,12 @@ public class UserDao {
       Map<String, Object> params2 = new HashMap<>();
       params2.put("hostFormId", hostFormId);
 
-      List<UserHistory.ParticipantHistory> hostFormResults =
+      List<UserHistoryDto.ParticipantHistory> hostFormResults =
           namedParameterJdbcTemplate.query(
               sql2,
               params2,
               (rs, rowNum) -> {
-                UserHistory.ParticipantHistory history = new UserHistory.ParticipantHistory();
+                UserHistoryDto.ParticipantHistory history = new UserHistoryDto.ParticipantHistory();
                 history.setName(rs.getString("name"));
                 history.setDatetime(rs.getString("datetime"));
                 history.setPaymentStatus(paymentStatus.toString()); // 使用第一個查詢結果的 payment_status
@@ -122,7 +123,7 @@ public class UserDao {
     return participantHistories;
   }
 
-  public List<UserHistory.HostHistory> getNowHostingByUserID(int userId) {
+  public List<UserHistoryDto.HostHistory> getNowHostingByUserId(int userId) {
     String sql =
         "SELECT title AS name, dead_time AS datetime, id AS hostformId "
             + "FROM host_form WHERE host_id = :userId AND status = :status";
@@ -135,7 +136,7 @@ public class UserDao {
         sql,
         params,
         (rs, rowNum) -> {
-          UserHistory.HostHistory history = new UserHistory.HostHistory();
+          UserHistoryDto.HostHistory history = new UserHistoryDto.HostHistory();
           history.setName(rs.getString("name")); // 對應 SELECT 中的別名 `name`
           history.setDatetime(rs.getString("datetime")); // 對應 `dead_time`
           history.setStatus("0"); // 對應 `status`
@@ -144,7 +145,7 @@ public class UserDao {
         });
   }
 
-  public List<UserHistory.ParticipantHistory> getNowBuyingByUserID(int userId) {
+  public List<UserHistoryDto.ParticipantHistory> getNowBuyingByUserId(int userId) {
     // SQL 1: 查詢 participant_form 表，獲取 payment_status 和 host_form_id
     String sql1 =
         "SELECT payment_status, host_form_id FROM participant_form WHERE participant_id = :userId"
@@ -159,7 +160,7 @@ public class UserDao {
         namedParameterJdbcTemplate.queryForList(sql1, params1);
 
     // 保存最終結果
-    List<UserHistory.ParticipantHistory> participantHistories = new ArrayList<>();
+    List<UserHistoryDto.ParticipantHistory> participantHistories = new ArrayList<>();
 
     for (Map<String, Object> result : participantFormResults) {
       // 從第一個查詢結果中提取 host_form_id 和 payment_status
@@ -173,12 +174,12 @@ public class UserDao {
       Map<String, Object> params2 = new HashMap<>();
       params2.put("hostFormId", hostFormId);
 
-      List<UserHistory.ParticipantHistory> hostFormResults =
+      List<UserHistoryDto.ParticipantHistory> hostFormResults =
           namedParameterJdbcTemplate.query(
               sql2,
               params2,
               (rs, rowNum) -> {
-                UserHistory.ParticipantHistory history = new UserHistory.ParticipantHistory();
+                UserHistoryDto.ParticipantHistory history = new UserHistoryDto.ParticipantHistory();
                 history.setName(rs.getString("name"));
                 history.setDatetime(rs.getString("datetime"));
                 history.setPaymentStatus(paymentStatus.toString()); // 使用第一個查詢結果的 payment_status
@@ -191,5 +192,26 @@ public class UserDao {
     }
 
     return participantHistories;
+  }
+
+  public List<ReviewListDto> getReviewListByUserId(int userId) {
+    System.out.println("test for reviewlist");
+    String sql =
+        "SELECT tb.title AS name, "
+            + "ROUND(AVG(uf.score), 0) AS star, "
+            + "tb.dead_time AS date "
+            + "FROM host_form tb "
+            + "JOIN user_feed_back uf ON tb.id = uf.host_form_id "
+            + "WHERE tb.host_id = :userId "
+            + "GROUP BY uf.host_form_id, tb.title, tb.host_id, tb.dead_time";
+
+    Map<String, Object> map = new HashMap<>();
+    map.put("userId", userId);
+
+    List<ReviewListDto> list =
+        namedParameterJdbcTemplate.query(
+            sql, map, new BeanPropertyRowMapper<>(ReviewListDto.class));
+
+    return list;
   }
 }

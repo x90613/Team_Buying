@@ -1,6 +1,6 @@
 package com.example.back_end.dto;
 
-public class UserInfo {
+public class UserInfoDto {
 
   private String username;
   private String email;
