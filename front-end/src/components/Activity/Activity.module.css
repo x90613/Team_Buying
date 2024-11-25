@@ -156,7 +156,8 @@
 .wrapper {
   width: 100%;
   max-width: 1432px;
-  margin-top: 20px;
+  margin-top: 10px;
+  padding:0 20px;
   align-items: center;
 }
 .modalImageWrapper {
@@ -183,6 +184,7 @@
 }
 
 .modalTitle {
+  left:1%;
   font-size: 32px;
   margin: 20px 0 10px;
   font-family: 'ABeeZee', sans-serif;
@@ -194,6 +196,9 @@
   font-family: 'ABeeZee', sans-serif;
   color: #3D3D3D;
   margin-bottom: 20px;
+  overflow-y: auto; /* 启用垂直滚动 */
+  overflow-wrap: break-word; /*现代浏览器支持*/
+  white-space: normal; /* 正常换行 */
 }
 
 .separator {
@@ -265,4 +270,5 @@
   align-items: center; /* 垂直置中對齊 */
   width: 100%; /* 讓容器寬度佔滿可用空間 */
   margin: 10px 0; /* 增加上下的外邊距，可根據需求調整 */
+  position: relative; /* 定位参考点 */
 }
