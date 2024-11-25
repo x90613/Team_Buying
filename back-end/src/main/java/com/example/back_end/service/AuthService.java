@@ -1,6 +1,6 @@
 package com.example.back_end.service;
 
-import com.example.back_end.dao.UserDAO;
+import com.example.back_end.dao.LoginDAO;
 import com.example.back_end.entity.User;
 import com.example.back_end.model.LoginRequest;
 import com.example.back_end.model.LoginResponse;
@@ -17,9 +17,9 @@ public class AuthService {
   private static final Logger log = LoggerFactory.getLogger(AuthService.class);
   private final JwtUtil jwtUtil;
   private final PasswordEncoder passwordEncoder;
-  private final UserDAO userDAO;
+  private final LoginDAO userDAO;
 
-  public AuthService(JwtUtil jwtUtil, PasswordEncoder passwordEncoder, UserDAO userDAO) {
+  public AuthService(JwtUtil jwtUtil, PasswordEncoder passwordEncoder, LoginDAO userDAO) {
     this.jwtUtil = jwtUtil;
     this.passwordEncoder = passwordEncoder;
     this.userDAO = userDAO;

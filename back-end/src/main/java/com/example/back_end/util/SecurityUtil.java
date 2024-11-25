@@ -1,6 +1,6 @@
 package com.example.back_end.util;
 
-import com.example.back_end.dao.UserDAO;
+import com.example.back_end.dao.LoginDAO;
 import com.example.back_end.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class SecurityUtil {
   private static final Logger log = LoggerFactory.getLogger(SecurityUtil.class);
-  private final UserDAO userDAO;
+  private final LoginDAO userDAO;
 
-  public SecurityUtil(UserDAO userDAO) {
+  public SecurityUtil(LoginDAO userDAO) {
     this.userDAO = userDAO;
   }
 
