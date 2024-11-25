@@ -2,20 +2,18 @@ package com.example.back_end.controller;
 
 import com.example.back_end.dto.OrderFormRequest;
 import com.example.back_end.service.OrderFormService;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
-
 @RestController
 @RequestMapping("/api/orderforms")
 public class OrderFormController {
 
-  @Autowired
-  private OrderFormService orderFormService;
+  @Autowired private OrderFormService orderFormService;
 
   public OrderFormController(OrderFormService orderFormService) {
     this.orderFormService = orderFormService;
