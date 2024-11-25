@@ -20,7 +20,7 @@ public class User {
   @Column(name = "password", nullable = false, length = 255)
   private String password; // User’s hashed password
 
-  @Column(name = "phoneNumber", nullable = true, length = 255)
+  @Column(name = "phoneNumber", nullable = true, length = 20)
   private String phoneNumber; // User’s contact number
 
   @Column(name = "createdAt", nullable = false)
