@@ -85,7 +85,7 @@ export const App: FC<Props> = memo(function App(props = {}) {
                 <button className={classes.AddButton} onClick={handleAddClick}>
                 +
                 </button>
-                  {isAddOpen && 
+                  {isAddOpen &&
                   (isLoggedIn?(
                     <HostForm isOpen={isAddOpen} onClose={handleAddClick}></HostForm>
                   ):(

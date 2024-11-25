@@ -60,7 +60,7 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
   const handleReviewClick = () => {
     setIsReviewOpen(!isReviewOpen);
   };
-  
+
   // 使用 API 返回的狀態
   const paymentStatus = mockApiResponse.status;
   useEffect(() => {

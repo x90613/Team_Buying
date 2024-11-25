@@ -16,9 +16,9 @@ export interface ActivityProps {
 }
 
 const Activity: FC<ActivityProps> = ({ hoster_name, contactInformation, transferInformation, image, storeName, description, feedbackPoint, deadline, participants_num }) => {
-    
+
   const navigate = useNavigate();
-  
+
   const formattedDeadline = deadline.toLocaleString('zh-TW', {
         year: 'numeric',
         month: 'long',
@@ -44,13 +44,13 @@ const Activity: FC<ActivityProps> = ({ hoster_name, contactInformation, transfer
       const closeInfo = () => {
         setIsInfoOpen(false);
       };
-      
+
       // 當點擊 Join 按鈕時，導航到 order-item 頁面
       const handleJoinClick = () => {
         navigate('/order-item');
       };
 
-      
+
   return (
     <div className={styles.activityCard}>
       <div className={styles.imageContainer}>

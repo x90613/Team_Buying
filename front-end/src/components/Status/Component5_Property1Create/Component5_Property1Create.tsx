@@ -18,7 +18,7 @@ interface Props {
 export const Component5_Property1Create: FC<Props> = memo(function Component5_Property1Create(props = {}) {
   return (
     <div className={`${resets.clapyResets} ${props.classes?.root || ''} ${props.className || ''} ${classes.root}`}
-    onClick={props.onClick} 
+    onClick={props.onClick}
     >
       {props.text?.create != null ? props.text?.create : <div className={classes.create}>Create</div>}
     </div>

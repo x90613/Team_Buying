@@ -45,7 +45,7 @@ export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
       navigate('/order-item/status');
     }, 0);
     // navigate('/order-item/status'); // 直接導航到狀態頁面
-    
+
   };
 
   return (
