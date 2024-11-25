@@ -20,8 +20,8 @@ public class User {
   @Column(name = "password", nullable = false, length = 255)
   private String password; // User’s hashed password
 
-  @Column(name = "phoneNumber", nullable = true, length = 255)
-  private Integer phoneNumber; // User’s contact number
+  @Column(name = "phoneNumber", nullable = true, length = 20)
+  private String phoneNumber; // User’s contact number
 
   @Column(name = "createdAt", nullable = false)
   private LocalDateTime createdAt; // Account creation time, default current timestamp
@@ -30,7 +30,7 @@ public class User {
   public User() {}
 
   // All-arguments constructor for convenience
-  public User(String username, String email, String password, Integer phoneNumber) {
+  public User(String username, String email, String password, String phoneNumber) {
     this.username = username;
     this.email = email;
     this.password = password;
@@ -71,11 +71,11 @@ public class User {
     this.password = password;
   }
 
-  public Integer getPhoneNumber() {
+  public String getPhoneNumber() {
     return phoneNumber;
   }
 
-  public void setPhoneNumber(Integer phoneNumber) {
+  public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 
