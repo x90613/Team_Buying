@@ -80,9 +80,9 @@ export const App: FC<Props> = memo(function App(props = {}) {
         <button className={classes.UserButton} onClick={handleUserClick} >
         <img
           className={classes.userImage} src={UserImage}/>
-          <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin>
+          {/* <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin> */}
           {/* <UserBotton isOpen={isUserOpen} onClose={handleUserClick}></UserBotton> */}
-          {/* <Review isOpen={isUserOpen} onClose={handleUserClick}></Review> */}
+          <Review isOpen={isUserOpen} onClose={handleUserClick}></Review>
         </button>
       </div>
       </div>
