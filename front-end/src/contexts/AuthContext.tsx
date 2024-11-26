@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUserId(userId);
     setUserToken(token);
     setIsLoggedIn(true);
-    console.log(username, userId, token);
+
   };
 
   const logout = () => {

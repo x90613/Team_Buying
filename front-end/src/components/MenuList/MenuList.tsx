@@ -14,19 +14,28 @@ import { Component5_Property1Create } from './MenuList_Property1Create/MenuList_
 import classes from './MenuList.module.css';
 import { VectorIcon2 } from './VectorIcon2.js';
 import { VectorIcon } from './VectorIcon.js';
-
+import { useAuth } from '../../contexts/AuthContext';
+import { useParams } from 'react-router-dom';
+import QuickLogin from '../QuickLogin/QuickLogin';
+import UserBotton from '../UserBotton/UserBotton';
 interface Props {
   className?: string;
 }
 /* @figmaId 29:516 */
 export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
   const navigate = useNavigate();  // Add this
+  const { host_id, host_form_id } = useParams();
+  const { token, username, userId, isLoggedIn } = useAuth();
   const [showComponents, setShowComponents] = useState(false);
   const [showMenu1Modal, setShowMenu1Modal] = useState(false);
   const [showOrderModal, setShowOrderModal] = useState(false);
   const [showStatusModal, setShowStatusModal] = useState(false);
   const [showHostFormModal, setShowHostFormModal] = useState(false);  // Add this
 
+  const [isUserOpen, setIsUserOpen] = useState(false);
+  const handleUserClick = () => {
+    setIsUserOpen(!isUserOpen);
+  };
   const handleMenuClick = () => {
     setShowComponents(!showComponents);
   };
@@ -36,13 +45,17 @@ export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
   };
 
   const handleOrderClick = () => {
+    if (!isLoggedIn) {
+      alert('請先點右下角頭像進行快速登入');
+      return; // 阻止後續行動
+    }
     setShowOrderModal(true);
   };
 
-  const handleOrderConfirm = () => {
+  const handleOrderConfirm = (host_form_id:any, user_id:any) => {
     setShowOrderModal(false);
     setTimeout(() => {
-      navigate('/order-item/status');
+      navigate(`/order-item/status/${host_form_id}/${user_id}`);  // Add this
     }, 0);
     // navigate('/order-item/status'); // 直接導航到狀態頁面
 
@@ -52,14 +65,20 @@ export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
     <>
       <div className={`${resets.clapyResets} ${classes.root}`}>
         <div className={classes.frame34}>
-          <div className={classes.unnamed}>
-            <Component1_Property1Account
+          <button className={classes.unnamed} onClick={handleUserClick}>
+          <Component1_Property1Account
               className={classes.component2}
               swap={{
                 vector: <VectorIcon className={classes.icon} />,
               }}
             />
-          </div>
+          </button>
+          {isUserOpen &&
+                  (isLoggedIn ? (
+                    <UserBotton isOpen={isUserOpen} onClose={handleUserClick}></UserBotton>
+                  ) : (
+                    <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin>
+                  ))}
         </div>
         {showComponents && (
           <>
@@ -105,7 +124,7 @@ export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
       {showOrderModal && (
         <div className={classes.modalOverlay} onClick={() => setShowOrderModal(false)}>
           <div className={classes.modalContent} onClick={e => e.stopPropagation()}>
-            <Order onConfirm={handleOrderConfirm} />
+            <Order onConfirm={() => handleOrderConfirm(host_form_id ,userId)} />
           </div>
         </div>
       )}

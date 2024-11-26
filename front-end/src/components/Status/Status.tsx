@@ -14,7 +14,7 @@ import { VectorIcon } from './VectorIcon.js';
 import { Component7_Property1Fail } from './Component7_Property1Fail/Component7_Property1Fail.js';
 import { Component7_Property1NotYet } from './Component7_Property1NotYet/Component7_Property1NotYet.js';
 import Review from '../Review/Review'
-
+import { useNavigate } from 'react-router-dom';
 
 // import Review from '../UserBotton/ReviewList/Review';
 
@@ -48,6 +48,8 @@ const orderDetails: OrderDetail[] = [
   }
 ];
 
+const host_id = "1"; //幫我用api拿到創建這個teambuying的user_id ->叫做host_id，然後傳到review裡面
+
 // 模擬 API 返回的 JSON 數據
 const mockApiResponse: OrderStatus = {
   status: 'notYet',
@@ -64,10 +66,12 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
   // 使用 API 返回的狀態
   const paymentStatus = mockApiResponse.status;
   useEffect(() => {
-    console.log('Status component mounted');
     // 你可以在這裡進行一些初始化操作，例如數據加載
   }, []);
-
+  const navigate = useNavigate();
+  const handleLogoClick = () => {
+    navigate('/');
+  };
   const renderPaymentStatus = () => {
     switch (paymentStatus) {
       case 'done':
@@ -85,7 +89,7 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
     <div className={`${resets.clapyResets} ${classes.root}`}>
       <div className={classes.unsplashQJ0zGkrE1Zg}></div>
       <div className={classes.frame29}></div>
-      <div className={classes.logo}>
+      <div onClick={handleLogoClick} className={classes.logo}>
         <div className={classes.logo21}></div>
         <div className={classes.logo31}></div>
       </div>
@@ -151,14 +155,14 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
           onClick={handleReviewClick}
         />
         {isReviewOpen && (
-          <Review isOpen={isReviewOpen} onClose={handleReviewClick} />
+          <Review isOpen={isReviewOpen} onClose={handleReviewClick} hostId={host_id}/>
         )}
       </div>
 
       <Component1_Property1LinkVarian
         className={classes.menuList}
         swap={{
-          vector: <VectorIcon className={classes.icon} />,
+          vector: <VectorIcon className={classes.icon}/>,
         }}
       />
       </div>

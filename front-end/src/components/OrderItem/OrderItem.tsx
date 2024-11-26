@@ -5,7 +5,7 @@ import resets from '../_resets.module.css';
 import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account.js';
 import classes from './OrderItem.module.css';
 import { VectorIcon } from './VectorIcon.js';
-
+import { useNavigate } from 'react-router-dom';
 interface Props {
   className?: string;
 }
@@ -76,13 +76,16 @@ export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
       [index]: !prev[index]
     }));
   };
-
+  const navigate = useNavigate();
+  const handleLogoClick = () => {
+    navigate('/');
+  };
   return (
     <div className={`${resets.clapyResets} ${classes.container}`}>
       <div className={classes.unsplashQJ0zGkrE1Zg}></div>
       <div className={classes.frame29}></div>
       <div className={classes.logo}>
-        <div className={classes.logo21}></div>
+        <div onClick={handleLogoClick} className={classes.logo21}></div>
         <div className={classes.logo31}></div>
       </div>
       {orderDetails.map((order, index) => (

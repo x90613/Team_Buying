@@ -27,8 +27,10 @@ const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose}) => {
 
     const response = await quickLogin(userName, password);
     if (response) {
-      login(response.token, response.username, response.userId); // 更新全域登入狀態
+      login(response.token, response.userName, response.userId); // 更新全域登入狀態
       onClose(); // 登入成功後關閉對話框
+    } else {
+      alert('密碼不正確');
     }
   };
 

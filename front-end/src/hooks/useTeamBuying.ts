@@ -11,10 +11,10 @@ interface TeamBuying {
   open: boolean;
   status: number;
   title: string;
-  img: string | null;
+  image: string | null;
   store_name: string;
   transfer_information: string;
-  contact_information: string;
+  host_contact_information: string;
   participantCount: number;
   averageFeedbackScore: number;
   menu_store_name: string | null;
@@ -44,7 +44,7 @@ const useTeamBuying = () => {
         }
 
         const rawData = await response.json();
-        console.log(rawData);
+
         // 將時間字串轉換為 timestamp
         const data: TeamBuying[] = rawData.map((item: any) => ({
           ...item,
@@ -55,7 +55,7 @@ const useTeamBuying = () => {
         setTeamBuyings(data);
       } catch (err: any) {
         setError(err.message);
-        console.error(err.message);
+
       } finally {
         setLoading(false);
       }

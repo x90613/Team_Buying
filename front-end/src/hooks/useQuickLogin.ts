@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 interface LoginResponse {
   token: string;
-  username: string;
+  userName: string;
   userId: string;
 }
 
@@ -18,7 +18,7 @@ const useQuickLogin = () => {
       const response = await fetch('http://localhost:9090/api/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json; charset=utf-8',
         },
         body: JSON.stringify({ userName, password }),
       });
@@ -28,10 +28,11 @@ const useQuickLogin = () => {
       }
 
       const data: LoginResponse = await response.json();
+
       return data;
     } catch (err: any) {
       setError(err.message);
-      console.error(err);
+
       return null;
     } finally {
       setLoading(false);

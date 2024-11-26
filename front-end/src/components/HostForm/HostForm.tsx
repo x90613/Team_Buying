@@ -36,6 +36,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
     const { name, value } = event.target;
 
     // 檢查是否為 checkbox 類型
+
     if (event.target instanceof HTMLInputElement && event.target.type === "checkbox") {
       const checked = event.target.checked;
 
@@ -44,7 +45,14 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
         [name]: checked,
 
       }));
-    } else {
+    } else if (name === "menuId"){
+      const parsedValue = JSON.parse(value);
+      setFormData((prevData) => ({
+        ...prevData,
+        menuId: parsedValue.id,
+        storeName: parsedValue.name,
+      }));}
+    else {
       setFormData((prevData) => {
         if (name === "storeName" && prevData.others) {
           return {
@@ -105,7 +113,6 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
 
     const formattedMonth = month.padStart(2, '0');
     const formattedDay = day.padStart(2, '0');
-    console.log(`${year}-${formattedMonth}-${formattedDay}T${time}:00`);
     return `${year}-${formattedMonth}-${formattedDay}T${time}:00`;
   };
   const handleSubmit = async (event: React.FormEvent) => {
@@ -122,9 +129,9 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
       image: formData.image ? await toBase64(formData.image) : '', // 將圖片轉為 base64
     };
 
-    const result = await createHostForm(preparedData);
+    await createHostForm(preparedData);
 
-    onClose(); // 提交成功後關閉表單
+    onClose();
     navigate('/order-item');
   };
   if (!isOpen) return null;
@@ -151,7 +158,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
             {!formData.others ? (
               <select
                 name="menuId"
-                value={formData.menuId}
+                value={JSON.stringify({ id: formData.menuId, name: formData.storeName })}
                 onChange={handleChange}
                 className={styles.selectField}
                 required
@@ -160,7 +167,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
                 {menuLoading && <option>Loading...</option>}
                 {menuError && <option>Error loading menus</option>}
                 {menus.map((menu) => (
-                  <option key={menu.id} value={menu.id}>
+                  <option key={menu.id} value={JSON.stringify({ id: menu.id, name: menu.name })}>
                     {menu.name}
                   </option>
                 ))}

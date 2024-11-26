@@ -75,7 +75,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
       image: formData.image ? formData.image.name : null // Only sending filename for demo
     };
 
-    console.log('Form data:', JSON.stringify(jsonData, null, 2));
+
     // Here you would typically send the data to your backend
   };
 

@@ -38,9 +38,10 @@ export const App: FC<Props> = memo(function App(props = {}) {
     setIsUserOpen(!isUserOpen);
   };
   const [searchQuery, setSearchQuery] = useState('');
-  console.log(teamBuyings);
+
   const filteredActivities = teamBuyings.filter((activity) =>
-    activity.store_name.toLowerCase().includes(searchQuery.toLowerCase())
+    activity.store_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    activity.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
 
@@ -61,15 +62,18 @@ export const App: FC<Props> = memo(function App(props = {}) {
               <div className={classes.activityContainer}>
                 <div className={classes.activityGrid}>
                 {filteredActivities.map((activity, index) => {
-                  const imageSrc = activity.img || activity.menu_store_img || "n";
+                  const imageSrc = activity.image || activity.menu_store_img || "n";
                   return(
                   <Activity
                     key={index}
+                    id={activity.id}
+                    host_id={activity.host_id}
                     hoster_name={activity.user_name}
-                    contactInformation={activity.contact_information}
+                    contactInformation={activity.host_contact_information}
                     transferInformation={activity.transfer_information}
                     image={imageSrc}
                     storeName={activity.store_name}
+                    title={activity.title}
                     description={activity.description}
                     feedbackPoint={activity.averageFeedbackScore}
                     deadline={activity.dead_time}
@@ -104,8 +108,8 @@ export const App: FC<Props> = memo(function App(props = {}) {
           }
         />
         {/* 訂單頁面路由 */}
-        <Route path="/order-item" element={<App_orderitem />} />
-        <Route path="/order-item/status" element={<Status />} />
+        <Route path="/order-item/:host_id/:host_form_id" element={<App_orderitem />} />
+        <Route path="/order-item/status/:host_form_id/:user_id" element={<Status />} />
       </Routes>
     </Router>
   );
