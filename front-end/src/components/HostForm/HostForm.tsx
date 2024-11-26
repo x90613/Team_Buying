@@ -122,18 +122,10 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
       image: formData.image ? await toBase64(formData.image) : '', // 將圖片轉為 base64
     };
 
-    await createHostForm(preparedData);
+    const result = await createHostForm(preparedData);
 
-    if (success) {
-      alert('Host form created successfully!');
-      onClose(); // 提交成功後關閉表單
-    }
-  };
-
-  const handleCreateClick = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Prevent page refresh
-    onClose(); // Close the modal
-    navigate('/order-item'); // Navigate to '/order-item'
+    onClose(); // 提交成功後關閉表單
+    navigate('/order-item');
   };
   if (!isOpen) return null;
   return (

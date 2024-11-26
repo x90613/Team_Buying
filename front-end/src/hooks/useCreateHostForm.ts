@@ -46,11 +46,13 @@ const useCreateHostForm = () => {
       }
 
       setSuccess(true);
+      return true;
     } catch (err: any) {
       setError(err.message);
       console.error(err.message);
     } finally {
       setLoading(false);
+      return false;
     }
   };
 
