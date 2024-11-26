@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { useAuth } from '..//contexts/AuthContext';
 interface Product {
   id: number;
   menu_id: number;
@@ -18,7 +18,7 @@ const useGetMenu = () => {
   const [menus, setMenus] = useState<Menu[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
+  const { token, username, userId, isLoggedIn } = useAuth();
   useEffect(() => {
     const fetchMenus = async () => {
       try {
@@ -29,6 +29,7 @@ const useGetMenu = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
           },
         });
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 interface LoginResponse {
+  token: string;
   username: string;
   userId: string;
 }

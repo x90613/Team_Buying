@@ -10,7 +10,6 @@ import { useAuth } from '../../contexts/AuthContext';
 interface QuickLoginProps {
   isOpen: boolean;
   onClose: () => void;
-  onLoginSuccess: () => void;
 }
 
 const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose}) => {
@@ -28,7 +27,7 @@ const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose}) => {
 
     const response = await quickLogin(userName, password);
     if (response) {
-      login(response.username, response.userId); // 更新全域登入狀態
+      login(response.token, response.username, response.userId); // 更新全域登入狀態
       onClose(); // 登入成功後關閉對話框
     }
   };
@@ -38,10 +37,6 @@ const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose}) => {
     setShowPassword(!showPassword);
   };
 
-  const handleLogin = () => {
-    // 在這裡進行登入邏輯，例如 API 認證請求
-    onLoginSuccess();
-  };
 
   return (
     <div className={styles.overlay} onClick={onClose}>

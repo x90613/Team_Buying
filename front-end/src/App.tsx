@@ -14,8 +14,7 @@ import Activity from './components/Activity/Activity';
 import useTeamBuying from './hooks/useTeamBuying';
 import {App_orderitem} from './App_orderitem';
 import { Unnamed as Status } from './components/Status/Status';
-
-import { activities as allActivities } from './micmicData';
+import { useAuth } from './contexts/AuthContext';
 
 interface Props {
   className?: string;
@@ -25,13 +24,7 @@ export const App: FC<Props> = memo(function App(props = {}) {
   const { teamBuyings, loading, error } = useTeamBuying();
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isAddOpen, setIsAddOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // 用於追蹤登入狀態
-
-  useEffect(() => {
-    // 這裡可以放一些邏輯來檢查使用者是否已經登入，例如從 localStorage 或 cookies 中讀取 token
-    const token = localStorage.getItem('authToken');
-    setIsLoggedIn(!!token);
-  }, []);
+  const { token, username, userId, isLoggedIn } = useAuth();
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -49,10 +42,6 @@ export const App: FC<Props> = memo(function App(props = {}) {
   const filteredActivities = teamBuyings.filter((activity) =>
     activity.store_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-  };
 
 
 
@@ -97,7 +86,7 @@ export const App: FC<Props> = memo(function App(props = {}) {
                   (isLoggedIn?(
                     <HostForm isOpen={isAddOpen} onClose={handleAddClick}></HostForm>
                   ):(
-                    <QuickLogin isOpen={isAddOpen} onClose={handleAddClick} onLoginSuccess={handleLoginSuccess}></QuickLogin>
+                    <QuickLogin isOpen={isAddOpen} onClose={handleAddClick}></QuickLogin>
                   ))}
               </div>
               <div>
@@ -108,7 +97,7 @@ export const App: FC<Props> = memo(function App(props = {}) {
                   (isLoggedIn ? (
                     <UserBotton isOpen={isUserOpen} onClose={handleUserClick}></UserBotton>
                   ) : (
-                    <QuickLogin isOpen={isUserOpen} onClose={handleUserClick} onLoginSuccess={handleLoginSuccess}></QuickLogin>
+                    <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin>
                   ))}
               </div>
             </div>

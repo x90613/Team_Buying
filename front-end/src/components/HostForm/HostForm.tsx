@@ -184,8 +184,8 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
                 required
               />
             )}
-            <label className={styles.publiclabel}>
-              Others
+            <div className={styles.publicContainer}>
+            <label className={styles.publiclabel}>Others</label>
               <input
                 type="checkbox"
                 checked={formData.others}
@@ -193,7 +193,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
                 name="others"
                 className={styles.checkbox}
               />
-            </label>
+            </div>
           </div>
 
           <label className={styles.label}>Description</label>
@@ -279,8 +279,6 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
           <button type="submit" className={styles.createButton} disabled={loading}>
             {loading ? 'Creating...' : 'Create'}
           </button>
-          {error && <p className={styles.errorMessage}>Error: {error}</p>}
-          {success && <p className={styles.successMessage}>Host form created successfully!</p>}
         </form>
       </div>
     </div>

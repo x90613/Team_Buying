@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { useAuth } from '..//contexts/AuthContext';
 // 定義請求的資料結構類型
 interface HostFormRequest {
   title: string;
@@ -19,7 +19,7 @@ const useCreateHostForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
-
+  const { token, username, userId, isLoggedIn } = useAuth();
   const createHostForm = async (formData: HostFormRequest) => {
     try {
       setLoading(true);
@@ -36,6 +36,7 @@ const useCreateHostForm = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(processedFormData),
       });
