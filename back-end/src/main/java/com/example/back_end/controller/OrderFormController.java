@@ -25,13 +25,15 @@ public class OrderFormController {
     return ResponseEntity.status(HttpStatus.CREATED).body("Order form created successfully!");
   }
 
-  @GetMapping("/{participantFormId}")
-  public ResponseEntity<Map<String, Object>> getOrderStatus(@PathVariable int participantFormId) {
-    Map<String, Object> orderStatus = orderFormService.getOrderStatus(participantFormId);
+  @GetMapping("/{hostformId}/{participantFormId}")
+  public ResponseEntity<Map<String, Object>> getOrderStatus(
+      @PathVariable int participantFormId, @PathVariable int hostformId) {
+    Map<String, Object> orderStatus =
+        orderFormService.getOrderStatus(hostformId, participantFormId);
     return ResponseEntity.ok(orderStatus);
   }
 
-  @GetMapping("/host/{hostformId}")
+  @GetMapping("/{hostformId}")
   public ResponseEntity<Map<String, Object>> getOrderList(@PathVariable int hostformId) {
     List<Map<String, Object>> orderList = orderFormService.getOrderList(hostformId);
     return ResponseEntity.ok(Map.of("orderList", orderList));

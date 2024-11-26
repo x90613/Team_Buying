@@ -10,12 +10,43 @@ Content-Type: application/json
   "quantity": ["1", "2"],
   "price": [160.0, 30.0]
 }
+###
+POST http://localhost:9090/api/orderforms
+Content-Type: application/json
 
+{
+  "hostformId": 1,
+  "participantId": 12,
+  "anonymous": true,
+  "order": ["Chocolate Cake", "Black Tea"],
+  "quantity": ["1", "2"],
+  "price": [160.0, 30.0]
+}
+###
+POST http://localhost:9090/api/orderforms
+Content-Type: application/json
+
+{
+  "hostformId": 12,
+  "participantId": 1,
+  "anonymous": true,
+  "order": ["Chocolate Cake", "Black Tea"],
+  "quantity": ["1", "2"],
+  "price": [160.0, 30.0]
+}
 ### Get Order Status
-GET http://localhost:9090/api/orderforms/1
+GET http://localhost:9090/api/orderforms/1/12
+
+###
+GET http://localhost:9090/api/orderforms/1/1
+
 
 ### Get Order List
-GET http://localhost:9090/api/orderforms/host/1
+GET http://localhost:9090/api/orderforms/1
+###
+GET http://localhost:9090/api/orderforms/12
+###
+GET http://localhost:9090/api/orderforms/33
 
 ### Get Menu Image
 GET http://localhost:9090/api/orderforms/menu/1

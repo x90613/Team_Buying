@@ -26,8 +26,8 @@ public class OrderFormDao {
   // 保存參與者表單
   public int saveParticipantForm(ParticipantForm participantForm) {
     String sql =
-        "INSERT INTO ParticipantForm (hostFormId, participantId, anonymous, username, status,"
-            + " paymentStatus, joinedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO participant_form (host_form_id, participant_id, anonymous, username, status,"
+            + " payment_status, joined_at) VALUES (?, ?, ?, ?, ?, ?, ?)";
     jdbcTemplate.update(
         sql,
         participantForm.getHostFormId(),
@@ -64,7 +64,7 @@ public class OrderFormDao {
             + "       pf.payment_status, "
             + "       pf.host_form_id "
             + "FROM participant_form pf "
-            + "WHERE pf.id = ?";
+            + "WHERE pf.participant_id = ?";
     try {
       return jdbcTemplate.queryForMap(sql, participantFormId);
     } catch (EmptyResultDataAccessException e) {
@@ -75,12 +75,7 @@ public class OrderFormDao {
 
   // Get HostForm details
   public Map<String, Object> getHostFormDetails(int hostFormId) {
-    String sql =
-        "SELECT hf.dead_time AS teamBuyingDeadline, "
-            + "       hf.contact_information AS hostContact, "
-            + "       hf.transfer_information "
-            + "FROM host_form hf "
-            + "WHERE hf.id = ?";
+    String sql = "SELECT * " + "FROM host_form hf " + "WHERE hf.host_id = ?";
     try {
       return jdbcTemplate.queryForMap(sql, hostFormId);
     } catch (EmptyResultDataAccessException e) {
@@ -105,10 +100,7 @@ public class OrderFormDao {
   // read order list
   // Get all participants linked to hostformId
   public List<Map<String, Object>> getParticipantsByHostFormId(int hostformId) {
-    String sql =
-        "SELECT pf.id AS participantFormId, pf.username, pf.payment_status AS paymentStatus "
-            + "FROM participant_form pf "
-            + "WHERE pf.host_form_id = ?";
+    String sql = "SELECT *" + "FROM participant_form pf " + "WHERE pf.host_form_id = ?";
     try {
       return jdbcTemplate.queryForList(sql, hostformId);
     } catch (EmptyResultDataAccessException e) {
