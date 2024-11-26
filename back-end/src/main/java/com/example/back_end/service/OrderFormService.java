@@ -63,41 +63,40 @@ public class OrderFormService {
   }
 
   // Read Order Status
-  public Map<String, Object> getOrderStatus(int participantFormId) {
+  public Map<String, Object> getOrderStatus(int hostformId, int participantFormId) {
     Map<String, Object> response = new HashMap<>();
-
     try {
-      // Get ParticipantForm details
-      Map<String, Object> participantForm =
-          orderFormDAO.getParticipantFormDetails(participantFormId);
-      if (participantForm == null || participantForm.isEmpty()) {
-        logger.warn("No participant form found with id: {}", participantFormId);
-        response.put("error", "Participant form not found");
-        return response;
+      // Get all participants linked to the hostformId
+      List<Map<String, Object>> participants = orderFormDAO.getParticipantsByHostFormId(hostformId);
+      Map<String, Object> hostForm = orderFormDAO.getHostFormDetails(hostformId);
+
+      // Initialize participantForm to an empty map
+      Map<String, Object> participantForm = null;
+
+      // Find the matching participant
+      for (Map<String, Object> participant : participants) {
+        if ((int) participant.get("participant_id") == participantFormId) {
+          participantForm = participant;
+          break;
+        }
       }
 
-      // Get HostForm details
-      int hostFormId = (int) participantForm.get("hostFormId");
-      Map<String, Object> hostForm = orderFormDAO.getHostFormDetails(hostFormId);
-      if (hostForm == null || hostForm.isEmpty()) {
-        logger.warn("No host form found with id: {}", hostFormId);
-        response.put("error", "Host form not found");
-        return response;
+      // Handle case where participantForm is not found
+      if (participantForm == null) {
+        logger.warn("No participant found for participantFormId: {}", participantFormId);
+        response.put("error", "Participant not found");
+        return response; // Return early if no participant found
       }
 
-      // Get order details related to ParticipantForm
-      String orderDetails = orderFormDAO.getOrderDetailsByParticipantFormId(participantFormId);
-      if (orderDetails == null) {
-        orderDetails = "No items found for this participant form";
-      }
+      List<Map<String, Object>> items = orderFormDAO.getItemsByParticipantFormId(participantFormId);
 
       // Assemble final response data
-      response.put("teamBuyingName", participantForm.getOrDefault("teamBuyingName", "N/A"));
-      response.put("teamBuyngDeadline", hostForm.getOrDefault("teamBuyingDeadline", "N/A"));
-      response.put("order", orderDetails);
-      response.put("hostcontact", hostForm.getOrDefault("hostContact", "N/A"));
-      response.put("transferInformation", hostForm.getOrDefault("transferInformation", "N/A"));
-      response.put("paymentSatus", participantForm.getOrDefault("paymentStatus", 0));
+      response.put("teamBuyingName", hostForm.getOrDefault("title", "N/A"));
+      response.put("teamBuyngDeadline", hostForm.getOrDefault("dead_time", "N/A"));
+      response.put("order", items);
+      response.put("hostcontact", hostForm.getOrDefault("contact_information", "N/A"));
+      response.put("transferInformation", hostForm.getOrDefault("transfer_information", "N/A"));
+      response.put("paymentSatus", participantForm.getOrDefault("payment_status", 0));
 
     } catch (Exception e) {
       logger.error(
@@ -124,9 +123,9 @@ public class OrderFormService {
 
       // Assemble the result list
       for (Map<String, Object> participant : participants) {
-        int participantFormId = (int) participant.get("participantFormId");
+        int participantFormId = (int) participant.get("participant_id");
         String participantName = (String) participant.get("username");
-        int paymentStatus = (int) participant.get("paymentStatus");
+        int paymentStatus = (int) participant.get("payment_status");
 
         // Get items related to the participant
         List<Map<String, Object>> items =
