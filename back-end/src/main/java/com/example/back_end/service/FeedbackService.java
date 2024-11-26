@@ -26,7 +26,7 @@ public class FeedbackService {
                 ? Integer.parseInt(feedbackDTO.getHostFormId())
                 : null,
             feedbackDTO.getContent(),
-            feedbackDTO.getStar(),
+            feedbackDTO.getScore(),
             LocalDateTime.now());
     feedbackDAO.save(userFeedback);
   }

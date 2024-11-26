@@ -59,7 +59,11 @@ public class AuthService {
         log.info("Created new user: {}", newUser.getUsername());
 
         String token = jwtUtil.generateToken(newUser.getUsername());
-        return LoginResponse.builder().token(token).userName(newUser.getUsername()).userId(newUser.getId()).build();
+        return LoginResponse.builder()
+            .token(token)
+            .userName(newUser.getUsername())
+            .userId(newUser.getId())
+            .build();
       }
 
       // 驗證密碼
@@ -68,7 +72,11 @@ public class AuthService {
       }
 
       String token = jwtUtil.generateToken(user.getUsername());
-      return LoginResponse.builder().token(token).userName(user.getUsername()).build();
+      return LoginResponse.builder()
+          .token(token)
+          .userName(user.getUsername())
+          .userId(user.getId())
+          .build();
 
     } catch (BadCredentialsException e) {
       throw e;

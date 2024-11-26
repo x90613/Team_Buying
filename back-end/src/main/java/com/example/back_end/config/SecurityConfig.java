@@ -1,7 +1,6 @@
 package com.example.back_end.config;
 
 import java.util.Arrays;
-import java.util.Collections;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +24,7 @@ public class SecurityConfig {
   private final JwtAuthFilter jwtAuthFilter;
 
   private static final String[] WHITE_LIST_URLS = {
-    "/api/login", "/api/test", "/error", "/swagger-ui/**", "/v3/api-docs/**"
+    "/api/login", "/api/test", "/error", "/swagger-ui/**", "/v3/api-docs/**", "/api/TeamBuyings/"
   };
 
   @Bean
@@ -65,7 +64,8 @@ public class SecurityConfig {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Collections.singletonList("*"));
+    configuration.setAllowedOrigins(
+        Arrays.asList("http://localhost:5173", "http://127.0.0.1:5173"));
     configuration.setAllowedMethods(
         Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
     configuration.setAllowedHeaders(

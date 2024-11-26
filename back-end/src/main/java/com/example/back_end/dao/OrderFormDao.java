@@ -77,7 +77,7 @@ public class OrderFormDao {
   public Map<String, Object> getHostFormDetails(int hostFormId) {
     String sql =
         "SELECT hf.dead_time AS teamBuyingDeadline, "
-            + "       hf.contact_information AS hostContact, "
+            + "       hf.host_contact_information AS hostContact, "
             + "       hf.transfer_information "
             + "FROM host_form hf "
             + "WHERE hf.id = ?";
