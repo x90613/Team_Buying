@@ -59,7 +59,7 @@ public class AuthService {
         log.info("Created new user: {}", newUser.getUsername());
 
         String token = jwtUtil.generateToken(newUser.getUsername());
-        return LoginResponse.builder().token(token).userName(newUser.getUsername()).build();
+        return LoginResponse.builder().token(token).userName(newUser.getUsername()).userId(newUser.getId()).build();
       }
 
       // 驗證密碼

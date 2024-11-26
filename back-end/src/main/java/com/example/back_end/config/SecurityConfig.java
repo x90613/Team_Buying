@@ -44,7 +44,7 @@ public class SecurityConfig {
                     .hasRole("ADMIN")
                     .requestMatchers("/api/users/**")
                     .authenticated()
-                    .anyRequest()
+                    .anyRequest() // 其他所有的endpoints都需要登入
                     .authenticated())
         .exceptionHandling(
             exception ->
