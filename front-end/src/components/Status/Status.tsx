@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo,useEffect , useState } from 'react';
 import type { FC } from 'react';
 
 import resets from '../_resets.module.css';
@@ -13,6 +13,10 @@ import { VectorIcon2 } from './VectorIcon2.js';
 import { VectorIcon } from './VectorIcon.js';
 import { Component7_Property1Fail } from './Component7_Property1Fail/Component7_Property1Fail.js';
 import { Component7_Property1NotYet } from './Component7_Property1NotYet/Component7_Property1NotYet.js';
+import Review from '../Review/Review'
+
+
+// import Review from '../UserBotton/ReviewList/Review';
 
 interface Props {
   className?: string;
@@ -52,8 +56,17 @@ const mockApiResponse: OrderStatus = {
 
 /* @figmaId 21:1462 */
 export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
+  const handleReviewClick = () => {
+    setIsReviewOpen(!isReviewOpen);
+  };
+
   // 使用 API 返回的狀態
   const paymentStatus = mockApiResponse.status;
+  useEffect(() => {
+    console.log('Status component mounted');
+    // 你可以在這裡進行一些初始化操作，例如數據加載
+  }, []);
 
   const renderPaymentStatus = () => {
     switch (paymentStatus) {
@@ -135,7 +148,11 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
           text={{
             create: <div className={classes.create}>Review</div>,
           }}
+          onClick={handleReviewClick}
         />
+        {isReviewOpen && (
+          <Review isOpen={isReviewOpen} onClose={handleReviewClick} />
+        )}
       </div>
 
       <Component1_Property1LinkVarian
@@ -144,6 +161,6 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
           vector: <VectorIcon className={classes.icon} />,
         }}
       />
-    </div>
+      </div>
   );
 });

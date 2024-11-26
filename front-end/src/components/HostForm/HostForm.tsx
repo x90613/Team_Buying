@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './HostForm.module.css';
 import cross from '/assets/Cross_item.png'
 import useCreateHostForm from '../../hooks/useCreateHostForm';
@@ -10,6 +11,7 @@ interface HostFormProps {
 }
 
 const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
+  const navigate = useNavigate();
   const { createHostForm, loading, error, success } = useCreateHostForm();
   const { menus, loading: menuLoading, error: menuError } = useGetMenu();
 
@@ -127,12 +129,18 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
       onClose(); // 提交成功後關閉表單
     }
   };
+
+  const handleCreateClick = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Prevent page refresh
+    onClose(); // Close the modal
+    navigate('/order-item'); // Navigate to '/order-item'
+  };
   if (!isOpen) return null;
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>
-            <img className={styles.closeButton} src={cross}/>
+          <img className={styles.closeButton} src={cross} alt="Close" />
         </button>
         <form className={styles.form} onSubmit={handleSubmit}>
           <label className={styles.label}>Title</label>
@@ -252,7 +260,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
                 id="upload-image"
                 accept="image/*"
                 onChange={handleImageChange}
-                className={styles.fileInput} // 隱藏檔案選擇按鈕
+                className={styles.fileInput}
               />
               {formData.image && <p className={styles.label}>{formData.image.name}</p>}
             </div>

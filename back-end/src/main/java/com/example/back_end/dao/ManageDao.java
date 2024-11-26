@@ -34,7 +34,7 @@ public class ManageDao {
     String sql_participant_status =
         "UPDATE participant_form SET payment_status = 2 WHERE host_form_id = ? AND payment_status ="
             + " 0";
-    int update_participant_status = jdbcTemplate.update(sql_participant_status, hostformID);
+    jdbcTemplate.update(sql_participant_status, hostformID);
     return update_hostform > 0;
   }
 }

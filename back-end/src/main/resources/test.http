@@ -1,0 +1,56 @@
+### Create Order Form
+POST http://localhost:9090/api/orderforms
+Content-Type: application/json
+
+{
+  "hostformId": 1,
+  "participantId": 1,
+  "anonymous": true,
+  "order": ["Chocolate Cake", "Black Tea"],
+  "quantity": ["1", "2"],
+  "price": [160.0, 30.0]
+}
+
+### Get Order Status
+GET http://localhost:9090/api/orderforms/1
+
+### Get Order List
+GET http://localhost:9090/api/orderforms/host/1
+
+### Get Menu Image
+GET http://localhost:9090/api/orderforms/menu/1
+
+### Test Feedback API - Create Feedback
+POST http://localhost:9090/api/feedbacks
+Content-Type: application/json
+
+{
+  "userId": "1",
+  "hostId": "2",
+  "hostFormId": "3",
+  "star": 4,
+  "content": "This was a great experience!"
+}
+
+### Test Feedback API - Invalid Data (Empty Content)
+POST http://localhost:9090/api/feedbacks
+Content-Type: application/json
+
+{
+  "userId": "1",
+  "hostId": "2",
+  "hostFormId": "3",
+  "star": 5,
+  "content": ""
+}
+
+### Test Feedback API - Missing Required Field (userId)
+POST http://localhost:9090/api/feedbacks
+Content-Type: application/json
+
+{
+  "hostId": "2",
+  "hostFormId": "3",
+  "star": 3,
+  "content": "User ID is missing in this test case."
+}

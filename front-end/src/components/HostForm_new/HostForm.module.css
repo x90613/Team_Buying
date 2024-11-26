@@ -25,7 +25,9 @@
     position: relative;
     cursor: default;
     display: flex;
-    justify-content: center; /* 將整體置中 */
+    flex-direction: column; /* 修正讓內容呈現為垂直佈局 */
+    align-items: center; /* 將整體置中 */
+    /* justify-content: center; 將整體置中 */
   }
 
   .label {
@@ -162,6 +164,9 @@
     display: none;
   }
   .createButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 230px;
     max-height: 40px;
@@ -175,7 +180,7 @@
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 0 auto;
+    margin: 0px auto;
   }
 
   .publicContainer {

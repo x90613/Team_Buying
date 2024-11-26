@@ -10,6 +10,7 @@ import { useAuth } from '../../contexts/AuthContext';
 interface QuickLoginProps {
   isOpen: boolean;
   onClose: () => void;
+  onLoginSuccess: () => void;
 }
 
 const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose}) => {
@@ -35,6 +36,11 @@ const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose}) => {
   if (!isOpen) return null;
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleLogin = () => {
+    // 在這裡進行登入邏輯，例如 API 認證請求
+    onLoginSuccess();
   };
 
   return (
