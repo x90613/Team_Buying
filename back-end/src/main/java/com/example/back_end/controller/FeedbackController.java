@@ -19,8 +19,9 @@ public class FeedbackController {
   }
 
   @PostMapping
-  public ResponseEntity<String> createFeedback(@RequestBody FeedbackRequest feedbackDTO) {
+  public ResponseEntity<Object> createFeedback(@RequestBody FeedbackRequest feedbackDTO) {
+    System.out.println("Received FeedbackRequest: " + feedbackDTO);
     feedbackService.saveFeedback(feedbackDTO);
-    return ResponseEntity.status(HttpStatus.CREATED).body("Feedback submitted successfully!");
+    return ResponseEntity.status(HttpStatus.CREATED).body(feedbackDTO);
   }
 }

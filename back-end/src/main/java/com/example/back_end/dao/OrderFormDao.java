@@ -75,7 +75,9 @@ public class OrderFormDao {
 
   // Get HostForm details
   public Map<String, Object> getHostFormDetails(int hostFormId) {
+
     String sql = "SELECT * " + "FROM host_form hf " + "WHERE hf.host_id = ?";
+
     try {
       return jdbcTemplate.queryForMap(sql, hostFormId);
     } catch (EmptyResultDataAccessException e) {

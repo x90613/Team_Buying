@@ -10,7 +10,7 @@ public class Menu {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id; // Primary Key, Menu ID
 
-  @Column(name = "img", columnDefinition = "TEXT", nullable = false)
+  @Column(name = "img", columnDefinition = "LONGTEXT", nullable = false)
   private String img; // Menu image code
 
   @Column(name = "name", nullable = false, length = 100)

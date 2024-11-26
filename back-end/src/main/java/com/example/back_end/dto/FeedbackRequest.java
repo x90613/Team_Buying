@@ -32,11 +32,11 @@ public class FeedbackRequest {
     this.hostFormId = hostFormId;
   }
 
-  public int getStar() {
+  public int getScore() {
     return score;
   }
 
-  public void setStar(int score) {
+  public void setScore(int score) {
     this.score = score;
   }
 
