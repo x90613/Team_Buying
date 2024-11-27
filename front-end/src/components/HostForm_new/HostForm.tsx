@@ -57,6 +57,9 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, storeName: event.target.value });
   };
+  const handletextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setFormData({ ...formData, description: event.target.value });
+  };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -72,7 +75,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
       image: formData.image ? formData.image.name : null // Only sending filename for demo
     };
 
-    console.log('Form data:', JSON.stringify(jsonData, null, 2));
+
     // Here you would typically send the data to your backend
   };
 
@@ -126,7 +129,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
             className={styles.textareaField}
             placeholder="Descrption"
             value={formData.description}
-            onChange={(e) => setFormData({...formData, description: e.target.value})}
+            onChange={handletextChange}
           />
 
           <label className={styles.label}>Deadline</label>

@@ -37,7 +37,7 @@ export const ReviewList: FC<ReviewListProps> = ({}) => {
 
   const [reviewOfHost, setReviewOfHost] = useState<string | null>(null);
   const handleClick = (hostFormID: string) => {
-    console.log(hostFormID);
+
     setReviewOfHost(hostFormID);
   };
 

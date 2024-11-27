@@ -16,7 +16,7 @@ export const Menu1: FC<Props> = memo(function Menu1(props = {}) {
   const [currentImage, setCurrentImage] = useState(1);  // Add this line
 
   useEffect(() => {
-    console.log('Component switched to:', currentComponent);
+
   }, [currentComponent]);
 
   const handleMenuRightClick = () => {

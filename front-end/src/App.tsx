@@ -11,29 +11,23 @@ import UserBotton from './components/UserBotton/UserBotton';
 import HostForm from './components/HostForm/HostForm';
 import Review from './components/Review/Review';
 import Activity from './components/Activity/Activity';
+import useTeamBuying from './hooks/useTeamBuying';
 import {App_orderitem} from './App_orderitem';
 import { Unnamed as Status } from './components/Status/Status';
-
-import { activities } from './micmicData';
+import { useAuth } from './contexts/AuthContext';
 
 interface Props {
   className?: string;
 }
 export const App: FC<Props> = memo(function App(props = {}) {
 
+  const { teamBuyings, loading, error } = useTeamBuying();
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isAddOpen, setIsAddOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // 用於追蹤登入狀態
-
-  useEffect(() => {
-    // 這裡可以放一些邏輯來檢查使用者是否已經登入，例如從 localStorage 或 cookies 中讀取 token
-    const token = localStorage.getItem('authToken');
-    setIsLoggedIn(!!token);
-  }, []);
+  const { token, username, userId, isLoggedIn } = useAuth();
 
   const handleSearch = (query: string) => {
-    console.log('Search query:', query); // 用於確認搜尋字串的輸出
-    // 在這裡處理搜尋邏輯，例如發送 API 請求等
+    setSearchQuery(query);
   };
 
   const handleAddClick = () => {
@@ -43,10 +37,12 @@ export const App: FC<Props> = memo(function App(props = {}) {
   const handleUserClick = () => {
     setIsUserOpen(!isUserOpen);
   };
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-  };
+  const filteredActivities = teamBuyings.filter((activity) =>
+    activity.store_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    activity.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
 
 
@@ -65,20 +61,25 @@ export const App: FC<Props> = memo(function App(props = {}) {
               </div>
               <div className={classes.activityContainer}>
                 <div className={classes.activityGrid}>
-                  {activities.map((activity, index) => (
-                    <Activity
-                      key={index}
-                      hoster_name={activity.hoster_name}
-                      contactInformation={activity.contactInformation}
-                      transferInformation={activity.transferInformation}
-                      image={activity.image}
-                      storeName={activity.storeName}
-                      description={activity.description}
-                      feedbackPoint={activity.feedbackPoint}
-                      deadline={activity.deadline}
-                      participants_num={activity.participants_num}
-                    />
-                  ))}
+                {filteredActivities.map((activity, index) => {
+                  const imageSrc = activity.image || activity.menu_store_img || "n";
+                  return(
+                  <Activity
+                    key={index}
+                    id={activity.id}
+                    host_id={activity.host_id}
+                    hoster_name={activity.user_name}
+                    contactInformation={activity.host_contact_information}
+                    transferInformation={activity.transfer_information}
+                    image={imageSrc}
+                    storeName={activity.store_name}
+                    title={activity.title}
+                    description={activity.description}
+                    feedbackPoint={activity.averageFeedbackScore}
+                    deadline={activity.dead_time}
+                    participants_num={activity.participantCount}
+                  />
+                )})}
                 </div>
               </div>
               <div>
@@ -89,7 +90,7 @@ export const App: FC<Props> = memo(function App(props = {}) {
                   (isLoggedIn?(
                     <HostForm isOpen={isAddOpen} onClose={handleAddClick}></HostForm>
                   ):(
-                    <QuickLogin isOpen={isAddOpen} onClose={handleAddClick} onLoginSuccess={handleLoginSuccess}></QuickLogin>
+                    <QuickLogin isOpen={isAddOpen} onClose={handleAddClick}></QuickLogin>
                   ))}
               </div>
               <div>
@@ -100,15 +101,15 @@ export const App: FC<Props> = memo(function App(props = {}) {
                   (isLoggedIn ? (
                     <UserBotton isOpen={isUserOpen} onClose={handleUserClick}></UserBotton>
                   ) : (
-                    <QuickLogin isOpen={isUserOpen} onClose={handleUserClick} onLoginSuccess={handleLoginSuccess}></QuickLogin>
+                    <QuickLogin isOpen={isUserOpen} onClose={handleUserClick}></QuickLogin>
                   ))}
               </div>
             </div>
           }
         />
         {/* 訂單頁面路由 */}
-        <Route path="/order-item" element={<App_orderitem />} />
-        <Route path="/order-item/status" element={<Status />} />
+        <Route path="/order-item/:host_id/:host_form_id" element={<App_orderitem />} />
+        <Route path="/order-item/status/:host_form_id/:user_id" element={<Status />} />
       </Routes>
     </Router>
   );
