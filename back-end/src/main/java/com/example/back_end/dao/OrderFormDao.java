@@ -90,7 +90,7 @@ public class OrderFormDao {
   public String getOrderDetailsByParticipantFormId(int participantFormId) {
     String sql =
         "SELECT GROUP_CONCAT(i.product, ' (Quantity: ', i.number, ', Price: ', i.price, ')') AS"
-            + " orderDetails FROM item i WHERE i.formId = ?";
+            + " orderDetails FROM item i WHERE i.form_id = ?";
     try {
       return jdbcTemplate.queryForObject(sql, String.class, participantFormId);
     } catch (EmptyResultDataAccessException e) {

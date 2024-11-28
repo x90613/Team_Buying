@@ -1,48 +1,89 @@
+
+@token= "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNzMyNzkxNzMwLCJleHAiOjE3MzI4NzgxMzB9.vTEp8acfbWXWNsiW4ig2Q_cPwyfZOLQidVVUlZVLPfaOAp8-QL7c2MdXzE8vxcoSVmHyRVfNtDSqTDjphRdqhA"
+
+### login
+POST http://localhost:9090/api/login
+Content-Type: application/json
+
+{
+"userName": "3",
+"password": "3"
+}
+
+### create host form
+POST http://localhost:9090/api/hostforms
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNzMyNzkxNzMwLCJleHAiOjE3MzI4NzgxMzB9.vTEp8acfbWXWNsiW4ig2Q_cPwyfZOLQidVVUlZVLPfaOAp8-QL7c2MdXzE8vxcoSVmHyRVfNtDSqTDjphRdqhA
+Content-Type: application/json
+
+{
+"title": "1",
+"storeName": "123",
+"deadline": "2024-12-31T23:59:59",
+"others": false,
+"description":"none",
+"hostContactInformation": "123",
+"image": "",
+"transferInformation": "123",
+"menuId": 123
+}
+
+
 ### Create Order Form
 POST http://localhost:9090/api/orderforms
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNzMyNzkxNzMwLCJleHAiOjE3MzI4NzgxMzB9.vTEp8acfbWXWNsiW4ig2Q_cPwyfZOLQidVVUlZVLPfaOAp8-QL7c2MdXzE8vxcoSVmHyRVfNtDSqTDjphRdqhA
+
 
 {
-  "hostformId": 1,
-  "participantId": 1,
+  "hostformId": 2,
+  "participantId": 33,
   "anonymous": true,
+  "userName": "123",
   "order": ["Chocolate Cake", "Black Tea"],
   "quantity": ["1", "2"],
   "price": [160.0, 30.0]
 }
 ###
 POST http://localhost:9090/api/orderforms
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNzMyNzkxNzMwLCJleHAiOjE3MzI4NzgxMzB9.vTEp8acfbWXWNsiW4ig2Q_cPwyfZOLQidVVUlZVLPfaOAp8-QL7c2MdXzE8vxcoSVmHyRVfNtDSqTDjphRdqhA
 Content-Type: application/json
 
 {
-  "hostformId": 1,
+  "hostformId": 2,
   "participantId": 12,
   "anonymous": true,
-  "order": ["Chocolate Cake", "Black Tea"],
+  "userName": "123",
+  "order": ["Chocolate", "Black"],
   "quantity": ["1", "2"],
   "price": [160.0, 30.0]
 }
+
 ###
 POST http://localhost:9090/api/orderforms
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNzMyNzkxNzMwLCJleHAiOjE3MzI4NzgxMzB9.vTEp8acfbWXWNsiW4ig2Q_cPwyfZOLQidVVUlZVLPfaOAp8-QL7c2MdXzE8vxcoSVmHyRVfNtDSqTDjphRdqhA
 
 {
-  "hostformId": 12,
-  "participantId": 1,
+  "hostformId": 2,
+  "participantId": 34,
   "anonymous": true,
-  "order": ["Chocolate Cake", "Black Tea"],
+  "userName": "123",
+  "order": ["Cake", "Tea"],
   "quantity": ["1", "2"],
   "price": [160.0, 30.0]
 }
 ### Get Order Status
 GET http://localhost:9090/api/orderforms/1/12
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNzMyNzkxNzMwLCJleHAiOjE3MzI4NzgxMzB9.vTEp8acfbWXWNsiW4ig2Q_cPwyfZOLQidVVUlZVLPfaOAp8-QL7c2MdXzE8vxcoSVmHyRVfNtDSqTDjphRdqhA
 
 ###
-GET http://localhost:9090/api/orderforms/1/1
-
+GET http://localhost:9090/api/orderforms/1/34
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNzMyNzkxNzMwLCJleHAiOjE3MzI4NzgxMzB9.vTEp8acfbWXWNsiW4ig2Q_cPwyfZOLQidVVUlZVLPfaOAp8-QL7c2MdXzE8vxcoSVmHyRVfNtDSqTDjphRdqhA
 
 ### Get Order List
-GET http://localhost:9090/api/orderforms/1
+GET http://localhost:9090/api/orderforms/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNzMyNzkxNzMwLCJleHAiOjE3MzI4NzgxMzB9.vTEp8acfbWXWNsiW4ig2Q_cPwyfZOLQidVVUlZVLPfaOAp8-QL7c2MdXzE8vxcoSVmHyRVfNtDSqTDjphRdqhA
+
 ###
 GET http://localhost:9090/api/orderforms/12
 ###
@@ -84,4 +125,14 @@ Content-Type: application/json
   "hostFormId": "3",
   "star": 3,
   "content": "User ID is missing in this test case."
+}
+
+
+### update payment status
+PUT http://localhost:9090/api/management/transfer/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNzMyNzkxNzMwLCJleHAiOjE3MzI4NzgxMzB9.vTEp8acfbWXWNsiW4ig2Q_cPwyfZOLQidVVUlZVLPfaOAp8-QL7c2MdXzE8vxcoSVmHyRVfNtDSqTDjphRdqhA
+Content-Type: application/json
+
+{
+  "paymentStatus": 3
 }

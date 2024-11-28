@@ -32,8 +32,8 @@ public class OrderFormService {
     participantForm.setHostFormId(request.getHostformId());
     participantForm.setParticipantId(request.getParticipantId());
     participantForm.setAnonymous(request.getAnonymous());
-    participantForm.setUsername("Anonymous User"); // 默認用戶名
-    participantForm.setStatus(1); // 默認狀態 1
+    participantForm.setUsername(request.getUserName()); // 默認用戶名
+    participantForm.setStatus(0); //
     participantForm.setPaymentStatus(0); // 默認付款狀態 0
     participantForm.setJoinedAt(java.time.LocalDateTime.now());
 
@@ -88,7 +88,8 @@ public class OrderFormService {
         return response; // Return early if no participant found
       }
 
-      List<Map<String, Object>> items = orderFormDAO.getItemsByParticipantFormId(participantFormId);
+      List<Map<String, Object>> items =
+          orderFormDAO.getItemsByParticipantFormId((int) participantForm.get("id"));
 
       // Assemble final response data
       response.put("teamBuyingName", hostForm.getOrDefault("title", "N/A"));
@@ -123,9 +124,10 @@ public class OrderFormService {
 
       // Assemble the result list
       for (Map<String, Object> participant : participants) {
-        int participantFormId = (int) participant.get("participant_id");
+        int participantFormId = (int) participant.get("id");
         String participantName = (String) participant.get("username");
         int paymentStatus = (int) participant.get("payment_status");
+        int participant_id = (int) participant.get("participant_id");
 
         // Get items related to the participant
         List<Map<String, Object>> items =
@@ -144,6 +146,7 @@ public class OrderFormService {
           order.put("price", item.get("price")); // Product price
           order.put("note", item.get("note")); // Note
           order.put("paymentStatus", paymentStatus); // Payment status
+          order.put("participant id", participant_id);
 
           orderList.add(order);
         }
