@@ -2,17 +2,17 @@ import { memo,useEffect , useState } from 'react';
 import type { FC } from 'react';
 
 import resets from '../_resets.module.css';
-import { ArrowRightDropCircleIcon2 } from './ArrowRightDropCircleIcon2.js';
-import { ArrowRightDropCircleIcon } from './ArrowRightDropCircleIcon.js';
-import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account.js';
-import { Component1_Property1LinkVarian } from './Component1_Property1LinkVarian/Component1_Property1LinkVarian.js';
-import { Component5_Property1Create } from './Component5_Property1Create/Component5_Property1Create.js';
-import { Component7_Property1Done } from './Component7_Property1Done/Component7_Property1Done.js';
+import { ArrowRightDropCircleIcon2 } from './ArrowRightDropCircleIcon2';
+import { ArrowRightDropCircleIcon } from './ArrowRightDropCircleIcon';
+import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account';
+import { Component1_Property1LinkVarian } from './Component1_Property1LinkVarian/Component1_Property1LinkVarian';
+import { Component5_Property1Create } from './Component5_Property1Create/Component5_Property1Create';
+import { Component7_Property1Done } from './Component7_Property1Done/Component7_Property1Done';
 import classes from './Status.module.css';
-import { VectorIcon2 } from './VectorIcon2.js';
-import { VectorIcon } from './VectorIcon.js';
-import { Component7_Property1Fail } from './Component7_Property1Fail/Component7_Property1Fail.js';
-import { Component7_Property1NotYet } from './Component7_Property1NotYet/Component7_Property1NotYet.js';
+import { VectorIcon2 } from './VectorIcon2';
+import { VectorIcon } from './VectorIcon';
+import { Component7_Property1Fail } from './Component7_Property1Fail/Component7_Property1Fail';
+import { Component7_Property1NotYet } from './Component7_Property1NotYet/Component7_Property1NotYet';
 import Review from '../Review/Review'
 import { useNavigate } from 'react-router-dom';
 

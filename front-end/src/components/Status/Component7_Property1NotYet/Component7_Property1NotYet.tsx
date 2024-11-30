@@ -3,7 +3,7 @@ import type { FC } from 'react';
 
 import resets from '../../_resets.module.css';
 import classes from './Component7_Property1NotYet.module.css';
-import { PanoramaFisheyeIcon } from './PanoramaFisheyeIcon.js';
+import { PanoramaFisheyeIcon } from './PanoramaFisheyeIcon';
 
 interface Props {
   className?: string;

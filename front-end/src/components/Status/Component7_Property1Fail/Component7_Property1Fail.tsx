@@ -2,7 +2,7 @@ import { memo } from 'react';
 import type { FC } from 'react';
 
 import resets from '../../_resets.module.css';
-import { AlphaXCircleOutlineIcon } from './AlphaXCircleOutlineIcon.js';
+import { AlphaXCircleOutlineIcon } from './AlphaXCircleOutlineIcon';
 import classes from './Component7_Property1Fail.module.css';
 
 interface Props {

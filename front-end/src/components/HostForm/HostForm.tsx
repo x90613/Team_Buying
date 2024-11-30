@@ -162,6 +162,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
                 onChange={handleChange}
                 className={styles.selectField}
                 required
+                aria-label="menuId"
               >
                 <option value="">Select Store</option>
                 {menuLoading && <option>Loading...</option>}
@@ -191,6 +192,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
                 onChange={handleChange}
                 name="others"
                 className={styles.checkbox}
+                aria-label="Others"
               />
             </div>
           </div>

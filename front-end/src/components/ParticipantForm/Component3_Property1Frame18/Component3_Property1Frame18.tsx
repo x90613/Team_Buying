@@ -2,9 +2,9 @@ import { memo } from 'react';
 import type { FC } from 'react';
 
 import resets from '../../_resets.module.css';
-import { Component1_Property1ArrowDownD } from '../Component1_Property1ArrowDownD/Component1_Property1ArrowDownD.js';
+import { Component1_Property1ArrowDownD } from '../Component1_Property1ArrowDownD/Component1_Property1ArrowDownD';
 import classes from './Component3_Property1Frame18.module.css';
-import { VectorIcon } from './VectorIcon.js';
+import { VectorIcon } from './VectorIcon';
 
 interface Props {
   className?: string;

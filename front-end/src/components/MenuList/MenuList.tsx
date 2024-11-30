@@ -8,12 +8,12 @@ import { Unnamed as Status } from '../Status/Status';  // Add this import
 import HostForm from '../HostForm_new/HostForm';  // Add this import
 
 import resets from '../_resets.module.css';
-import { Component1_Property1Account } from './MenuList_Property1Account/MenuList_Property1Account.js';
-import { Component1_Property1Menu } from './MenuList_Property1Menu/MenuList_Property1Menu.js';
-import { Component5_Property1Create } from './MenuList_Property1Create/MenuList_Property1Create.js';
+import { Component1_Property1Account } from './MenuList_Property1Account/MenuList_Property1Account';
+import { Component1_Property1Menu } from './MenuList_Property1Menu/MenuList_Property1Menu';
+import { Component5_Property1Create } from './MenuList_Property1Create/MenuList_Property1Create';
 import classes from './MenuList.module.css';
-import { VectorIcon2 } from './VectorIcon2.js';
-import { VectorIcon } from './VectorIcon.js';
+import { VectorIcon2 } from './VectorIcon2';
+import { VectorIcon } from './VectorIcon';
 import { useAuth } from '../../contexts/AuthContext';
 import { useParams } from 'react-router-dom';
 import QuickLogin from '../QuickLogin/QuickLogin';

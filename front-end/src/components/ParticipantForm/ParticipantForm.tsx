@@ -3,18 +3,18 @@ import { useNavigate } from 'react-router-dom';  // Add this
 import type { FC } from 'react';
 
 import resets from '../_resets.module.css';
-import { Component1_Property1Delete } from './Component1_Property1Delete/Component1_Property1Delete.js';
-import { Component1_Property1NotCheck } from './Component1_Property1NotCheck/Component1_Property1NotCheck.js';
-import { Component1_Property1Pencil } from './Component1_Property1Pencil/Component1_Property1Pencil.js';
-import { Component1_Property1PlusCircle } from './Component1_Property1PlusCircle/Component1_Property1PlusCircle.js';
-import { Component1_Property1PlusThick } from './Component1_Property1PlusThick/Component1_Property1PlusThick.js';
-import { Component3_Property1Frame18 } from './Component3_Property1Frame18/Component3_Property1Frame18.js';
-import { Component5_Property1Create } from './Component5_Property1Comfirm/Component5_Property1Create.js';
+import { Component1_Property1Delete } from './Component1_Property1Delete/Component1_Property1Delete';
+import { Component1_Property1NotCheck } from './Component1_Property1NotCheck/Component1_Property1NotCheck';
+import { Component1_Property1Pencil } from './Component1_Property1Pencil/Component1_Property1Pencil';
+import { Component1_Property1PlusCircle } from './Component1_Property1PlusCircle/Component1_Property1PlusCircle';
+import { Component1_Property1PlusThick } from './Component1_Property1PlusThick/Component1_Property1PlusThick';
+import { Component3_Property1Frame18 } from './Component3_Property1Frame18/Component3_Property1Frame18';
+import { Component5_Property1Create } from './Component5_Property1Comfirm/Component5_Property1Create';
 import classes from './ParticipantForm.module.css';
-import { VectorIcon2 } from './VectorIcon2.js';
-import { VectorIcon3 } from './VectorIcon3.js';
-import { VectorIcon4 } from './VectorIcon4.js';
-import { VectorIcon } from './VectorIcon.js';
+import { VectorIcon2 } from './VectorIcon2';
+import { VectorIcon3 } from './VectorIcon3';
+import { VectorIcon4 } from './VectorIcon4';
+import { VectorIcon } from './VectorIcon';
 
 interface Props {
   className?: string;

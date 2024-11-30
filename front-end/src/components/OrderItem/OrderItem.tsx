@@ -2,9 +2,9 @@ import { memo, useState } from 'react';
 import type { FC } from 'react';
 
 import resets from '../_resets.module.css';
-import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account.js';
+import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account';
 import classes from './OrderItem.module.css';
-import { VectorIcon } from './VectorIcon.js';
+import { VectorIcon } from './VectorIcon';
 import { useNavigate } from 'react-router-dom';
 interface Props {
   className?: string;

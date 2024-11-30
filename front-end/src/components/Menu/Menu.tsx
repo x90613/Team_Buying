@@ -3,9 +3,9 @@ import type { FC } from 'react';
 
 import resets from '../_resets.module.css';
 import classes from './Menu.module.css';
-import { MenuLeftIcon } from './MenuLeftIcon.js';
-import { MenuRightIcon } from './MenuRightIcon.js';
-import { VectorIcon } from './VectorIcon.js';
+import { MenuLeftIcon } from './MenuLeftIcon';
+import { MenuRightIcon } from './MenuRightIcon';
+import { VectorIcon } from './VectorIcon';
 
 interface Props {
   className?: string;
