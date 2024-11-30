@@ -98,6 +98,8 @@ public class OrderFormService {
       response.put("hostcontact", hostForm.getOrDefault("contact_information", "N/A"));
       response.put("transferInformation", hostForm.getOrDefault("transfer_information", "N/A"));
       response.put("paymentSatus", participantForm.getOrDefault("payment_status", 0));
+      response.put("participant_form_id", (int)participantForm.get("id"));
+      response.put("host_id", hostForm.getOrDefault("host_id", "N/A"));
 
     } catch (Exception e) {
       logger.error(
@@ -129,6 +131,7 @@ public class OrderFormService {
         int paymentStatus = (int) participant.get("payment_status");
         int participant_id = (int) participant.get("participant_id");
 
+
         // Get items related to the participant
         List<Map<String, Object>> items =
             orderFormDAO.getItemsByParticipantFormId(participantFormId);
@@ -147,6 +150,7 @@ public class OrderFormService {
           order.put("note", item.get("note")); // Note
           order.put("paymentStatus", paymentStatus); // Payment status
           order.put("participant id", participant_id);
+          order.put("participant_form_id", participantFormId);
 
           orderList.add(order);
         }
