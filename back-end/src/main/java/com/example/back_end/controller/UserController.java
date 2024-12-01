@@ -29,10 +29,6 @@ public class UserController {
   @PutMapping("/userinfo/{userId}")
   public ResponseEntity<String> updateUserInfo(
       @PathVariable int userId, @RequestBody UserInfoDto userInfo) {
-    //    System.out.println("=== Received Request ===");
-    //    System.out.println("Username: " + userInfo.getUsername());
-    //    System.out.println("Email: " + userInfo.getEmail());
-    //    System.out.println("Phone: " + userInfo.getPhoneNumber());
     boolean isSuccess = userService.updateUserInfo(userId, userInfo);
     if (isSuccess) {
       return ResponseEntity.ok("User information updated successfully.");
@@ -43,19 +39,15 @@ public class UserController {
 
   @GetMapping("/historylist/{userId}")
   public ResponseEntity<?> getHistoryList(@PathVariable int userId) {
-    // 假設 userService 有一個方法可以獲取使用者的歷史記錄
+    System.out.println("exec getHistoryList");
     List<UserHistoryDto.HostHistory> hostHistory = userService.getHostHistoryByUserId(userId);
     List<UserHistoryDto.ParticipantHistory> participantHistory =
         userService.getParticipantHistoryByUserId(userId);
 
-    if (hostHistory != null || participantHistory != null) {
-      UserHistoryDto response = new UserHistoryDto();
-      response.setHost(hostHistory);
-      response.setParticipant(participantHistory);
-      return ResponseEntity.ok(response); // 返回 JSON 格式的歷史記錄
-    } else {
-      return ResponseEntity.status(404).body("History not found for user with ID: " + userId);
-    }
+    UserHistoryDto response = new UserHistoryDto();
+    response.setHost(hostHistory);
+    response.setParticipant(participantHistory);
+    return ResponseEntity.ok(response);
   }
 
   @GetMapping("/nowhosting/{userId}")

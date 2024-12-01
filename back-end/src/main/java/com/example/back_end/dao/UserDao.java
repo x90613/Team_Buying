@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -27,10 +28,6 @@ public class UserDao {
 
     List<UserInfoDto> list =
         namedParameterJdbcTemplate.query(sql, map, new BeanPropertyRowMapper<>(UserInfoDto.class));
-
-    //        System.out.println(list.get(0).getUsername());
-    //        System.out.println(list.get(0).getPhoneNumber());
-    //        System.out.println(list.get(0).getEmail());
 
     if (list.size() > 0) {
       return list.get(0);
@@ -53,6 +50,10 @@ public class UserDao {
   }
 
   public List<UserHistoryDto.HostHistory> getHostHistoryByUserId(int userId) {
+    if (userId <= 0) {
+      throw new IllegalArgumentException("Invalid userId");
+    }
+
     String sql =
         "SELECT title AS name, dead_time AS datetime, status, id AS hostformId FROM host_form WHERE"
             + " host_id = :userId AND status = :status";
@@ -60,18 +61,21 @@ public class UserDao {
     Map<String, Object> params = new HashMap<>();
     params.put("userId", userId);
     params.put("status", 1);
-
-    return namedParameterJdbcTemplate.query(
-        sql,
-        params,
-        (rs, rowNum) -> {
-          UserHistoryDto.HostHistory history = new UserHistoryDto.HostHistory();
-          history.setName(rs.getString("name")); // 對應 SELECT 中的別名 `name`
-          history.setDatetime(rs.getString("datetime")); // 對應 `dead_time`
-          history.setStatus(rs.getString("status")); // 對應 `status`
-          history.setHostformId(rs.getString("hostformId")); // 對應 `id` 的別名
-          return history;
-        });
+    try {
+      return namedParameterJdbcTemplate.query(
+          sql,
+          params,
+          (rs, rowNum) -> {
+            UserHistoryDto.HostHistory history = new UserHistoryDto.HostHistory();
+            history.setName(rs.getString("name")); // 對應 SELECT 中的別名 `name`
+            history.setDatetime(rs.getString("datetime")); // 對應 `dead_time`
+            history.setStatus(rs.getString("status")); // 對應 `status`
+            history.setHostformId(rs.getString("hostformId")); // 對應 `id` 的別名
+            return history;
+          });
+    } catch (DataAccessException e) {
+      throw new RuntimeException("Failed to retrieve host history for userId: " + userId, e);
+    }
   }
 
   public List<UserHistoryDto.ParticipantHistory> getParticipantHistoryByUserId(int userId) {
@@ -79,7 +83,7 @@ public class UserDao {
     // SQL 1: 查詢 participant_form 表，獲取 payment_status 和 host_form_id
     String sql1 =
         "SELECT payment_status, host_form_id FROM participant_form WHERE participant_id = :userId"
-            + " AND payment_status = :status";
+            + " AND payment_status IN (:status)";
 
     Map<String, Object> params1 = new HashMap<>();
     params1.put("userId", userId);
