@@ -93,6 +93,7 @@ public class OrderFormService {
 
       // Assemble final response data
       response.put("teamBuyingName", hostForm.getOrDefault("title", "N/A"));
+      response.put("teambuyingHostId", hostForm.getOrDefault("host_id", "N/A"));
       response.put("teamBuyngDeadline", hostForm.getOrDefault("dead_time", "N/A"));
       response.put("order", items);
       response.put("hostcontact", hostForm.getOrDefault("contact_information", "N/A"));
@@ -128,6 +129,7 @@ public class OrderFormService {
         String participantName = (String) participant.get("username");
         int paymentStatus = (int) participant.get("payment_status");
         int participant_id = (int) participant.get("participant_id");
+        boolean anonymous = (boolean) participant.get("anonymous");
 
         // Get items related to the participant
         List<Map<String, Object>> items =
@@ -141,13 +143,14 @@ public class OrderFormService {
         for (Map<String, Object> item : items) {
           Map<String, Object> order = new HashMap<>();
           order.put("participantName", participantName); // Participant name
+          order.put("anonymous", anonymous); // Anonymous status
           order.put("product", item.get("product")); // Product name
           order.put("quantity", item.get("number")); // Product quantity
           order.put("price", item.get("price")); // Product price
           order.put("note", item.get("note")); // Note
           order.put("paymentStatus", paymentStatus); // Payment status
           order.put("participant id", participant_id);
-
+          order.put("participantFormId", participantFormId);
           orderList.add(order);
         }
       }
