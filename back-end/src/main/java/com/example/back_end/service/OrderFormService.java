@@ -143,7 +143,6 @@ public class OrderFormService {
         for (Map<String, Object> item : items) {
           Map<String, Object> order = new HashMap<>();
           order.put("participantName", participantName); // Participant name
-          order.put("anonymous", anonymous); // Anonymous status
           order.put("product", item.get("product")); // Product name
           order.put("quantity", item.get("number")); // Product quantity
           order.put("price", item.get("price")); // Product price
