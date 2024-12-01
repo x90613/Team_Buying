@@ -1,31 +1,25 @@
 .root {
   position: absolute;
-  left: 13px;  /* 67% of 20px */
-  top: 13px;  /* 67% of 20px */
-  width: 86px;  /* 67% of 128px */
-  height: 21px;  /* 67% of 32px */
-  flex-direction: column;
+  width: 86px;
+  height: 21px;
+  flex-direction: column;  /* 移除了 left: 24px */
   align-items: flex-start;
   overflow: hidden;
 }
+
 .done {
   color: #009a33;
-  font-size: 19px;  /* 67% of 28px */
-  line-height: 15px;  /* 67% of 22px */
+  font-size: 19px;
+  line-height: 15px;
   font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   letter-spacing: -0.408px;
   position: absolute;
-  left: calc(50% - 20px);  /* Adjusted from 30.5px */
-  top: 50%;
-  width: min-content;
-  height: min-content;
-  text-align: end;
-  align-items: end;
-  white-space: nowrap;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
+  left: 3px;           /* 與 fail 一致 */
+  top: 3px;           /* 與 fail 一致 */
+  white-space: nowrap; /* 添加了這個屬性以保持一致性 */
 }
+
 .vector {
   position: absolute;
   left: 58.5938%;
@@ -34,6 +28,7 @@
   bottom: 18.75%;
   overflow: visible;
 }
+
 .icon {
   width: 100%;
   height: 100%;

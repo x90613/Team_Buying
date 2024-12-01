@@ -13,11 +13,16 @@ interface Props {
   swap?: {
     vector?: ReactNode;
   };
+  onClick?: () => void;
 }
-/* @figmaId 2:1850 */
+
 export const Component1_Property1ArrowDownD: FC<Props> = memo(function Component1_Property1ArrowDownD(props = {}) {
   return (
-    <div className={`${resets.clapyResets} ${props.classes?.root || ''} ${props.className || ''} ${classes.root}`}>
+    <div 
+      className={`${resets.clapyResets} ${props.classes?.root || ''} ${props.className || ''} ${classes.root}`}
+      onClick={props.onClick}
+      style={{ cursor: 'pointer' }}
+    >
       <div className={classes.vector}>{props.swap?.vector || <VectorIcon className={classes.icon} />}</div>
     </div>
   );

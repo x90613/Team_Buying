@@ -1,6 +1,7 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import styles from './HostForm.module.css';
-import cross from '/assets/Cross_item.png';  // Update path to match your project structure
+import cross from '/assets/Cross_item.png';
+import { useHostFormData } from '../../hooks/useHostFormData';
 
 interface HostFormProps {
   isOpen: boolean;
@@ -24,25 +25,56 @@ interface FormData {
 }
 
 const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
+  const { hostFormData, loading, error } = useHostFormData();
+  const [isOtherSelected, setIsOtherSelected] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
-    title: "奶茶團購",
-    storeName: "五十嵐",
-    description: "一起來喝五十嵐，買五杯送一杯！",
+    title: "",
+    storeName: "",
+    description: "",
     deadline: {
-      year: "2024",
-      month: "1",
-      day: "31",
-      time: "22:00"
+      year: "",
+      month: "",
+      day: "",
+      time: ""
     },
-    contactInfo: "Line ID: drink123",
-    transferInfo: "國泰世華 1234-5678-9012",
+    contactInfo: "",
+    transferInfo: "",
     image: null,
     isPublic: true
   });
 
-  const [isOtherSelected, setIsOtherSelected] = useState(false); // 是否為 "Others"
+  // Update form data when API data is received
+  useEffect(() => {
+    if (hostFormData) {
+      const deadlineDate = new Date(hostFormData.deadTime);
+      
+      // Check if the store is in the predefined list
+      const predefinedStores = ["龜記", "五十嵐"];
+      const isOther = !predefinedStores.includes(hostFormData.storeName);
+      
+      setIsOtherSelected(isOther);
+      setFormData({
+        title: hostFormData.title,
+        storeName: hostFormData.storeName,
+        description: hostFormData.description,
+        deadline: {
+          year: deadlineDate.getFullYear().toString(),
+          month: (deadlineDate.getMonth() + 1).toString(),
+          day: deadlineDate.getDate().toString(),
+          time: `${deadlineDate.getHours().toString().padStart(2, '0')}:${deadlineDate.getMinutes().toString().padStart(2, '0')}`
+        },
+        contactInfo: hostFormData.hostContactInformation,
+        transferInfo: hostFormData.transferInformation,
+        image: null,
+        isPublic: hostFormData.open
+      });
+    }
+  }, [hostFormData]);
+
+  if (!isOpen) return null;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   const handleStoreChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value === 'Others') {
@@ -57,35 +89,92 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, storeName: event.target.value });
   };
-  const handletextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+
+  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setFormData({ ...formData, description: event.target.value });
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
-      setFormData({ ...formData, image: event.target.files[0] }); // 保存上傳的圖片檔案
+      setFormData({ ...formData, image: event.target.files[0] });
     }
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No authentication token found');
+      }
 
-    const jsonData = {
-      ...formData,
-      image: formData.image ? formData.image.name : null // Only sending filename for demo
-    };
+      // 從 URL 獲取 hostformId
+      const pathParts = window.location.pathname.split('/');
+      const hostformId = pathParts[pathParts.length - 1];
 
+      // 構建要發送的數據
+      const submitData = {
+        title: formData.title,
+        storeName: formData.storeName,
+        description: formData.description,
+        deadTime: new Date(
+          parseInt(formData.deadline.year),
+          parseInt(formData.deadline.month) - 1,
+          parseInt(formData.deadline.day),
+          ...formData.deadline.time.split(':').map(Number)
+        ).toISOString(),
+        hostContactInformation: formData.contactInfo,
+        transferInformation: formData.transferInfo,
+        open: formData.isPublic
+      };
 
-    // Here you would typically send the data to your backend
+      const response = await fetch(`http://localhost:9090/api/hostforms/${hostformId}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update host form');
+      }
+
+      // 如果有圖片，另外處理圖片上傳
+      if (formData.image) {
+        const formDataWithImage = new FormData();
+        formDataWithImage.append('image', formData.image);
+
+        const imageResponse = await fetch(`http://localhost:9090/api/hostforms/${hostformId}/image`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+          body: formDataWithImage
+        });
+
+        if (!imageResponse.ok) {
+          throw new Error('Failed to upload image');
+        }
+      }
+
+      onClose(); // 成功後關閉表單
+    } catch (error) {
+      console.error('Error updating host form:', error);
+    }
   };
 
+  // The rest of your render code remains the same...
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>
-            <img className={styles.closeButton} src={cross}/>
+          <img className={styles.closeButton} src={cross} alt="close" />
         </button>
         <form className={styles.form} onSubmit={handleSubmit}>
+          {/* Form fields remain the same... */}
           <label className={styles.label}>Title</label>
           <input
             type="text"
@@ -98,10 +187,16 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
           <label className={styles.label}>Store Name</label>
           <div className={styles.storeContainer}>
             {!isOtherSelected ? (
-              <select name="storeName" onChange={handleStoreChange} className={styles.selectField}>
+              <select 
+                name="storeName" 
+                value={formData.storeName}
+                onChange={handleStoreChange} 
+                className={styles.selectField}
+              >
                 <option value="">Select Store</option>
                 <option value="龜記">龜記</option>
                 <option value="五十嵐">五十嵐</option>
+                <option value="Others">Others</option>
               </select>
             ) : (
               <input
@@ -125,11 +220,10 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
 
           <label className={styles.label}>Description</label>
           <textarea
-            name="description"
             className={styles.textareaField}
-            placeholder="Descrption"
+            placeholder="Description"
             value={formData.description}
-            onChange={handletextChange}
+            onChange={handleTextChange}
           />
 
           <label className={styles.label}>Deadline</label>
@@ -153,22 +247,13 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
               })}
             >
               <option value="">Month</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
+              {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
+                <option key={month} value={month}>{month}</option>
+              ))}
             </select>
             <input
               type="text"
-              placeholder="2"
+              placeholder="Day"
               className={styles.dateField}
               value={formData.deadline.day}
               onChange={(e) => setFormData({
@@ -191,9 +276,8 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
           <label className={styles.label}>Hoster Contact Information</label>
           <input
             type="text"
-            name="contactInfo"
             className={styles.inputField}
-            placeholder="ContactInfo"
+            placeholder="Contact Info"
             value={formData.contactInfo}
             onChange={(e) => setFormData({...formData, contactInfo: e.target.value})}
           />
@@ -201,9 +285,8 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
           <label className={styles.label}>Transfer Information</label>
           <input
             type="text"
-            name="transferInfo"
             className={styles.inputField}
-            placeholder="TransferInfo"
+            placeholder="Transfer Info"
             value={formData.transferInfo}
             onChange={(e) => setFormData({...formData, transferInfo: e.target.value})}
           />
@@ -218,7 +301,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
                 id="upload-image"
                 accept="image/*"
                 onChange={handleImageChange}
-                className={styles.fileInput} // 隱藏檔案選擇按鈕
+                className={styles.fileInput}
               />
               {formData.image && <p className={styles.label}>{formData.image.name}</p>}
             </div>

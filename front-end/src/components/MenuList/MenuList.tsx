@@ -3,8 +3,8 @@ import type { FC } from 'react';
 import * as ReactDOM from 'react-dom/client';  // Add this import
 import { useNavigate } from 'react-router-dom';  // Add this
 import { Menu1 } from '../Menu/Menu';
-import { Order } from '../ParticipantForm/ParticipantForm';
-import { Unnamed as Status } from '../Status/Status';  // Add this import
+import { ParticipantForm } from '../ParticipantForm/ParticipantForm';  // Update this line
+import { StatusComponent as Status } from '../Status/Status';  // Add this import
 import HostForm from '../HostForm_new/HostForm';  // Add this import
 
 import resets from '../_resets.module.css';
@@ -124,7 +124,7 @@ export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
       {showOrderModal && (
         <div className={classes.modalOverlay} onClick={() => setShowOrderModal(false)}>
           <div className={classes.modalContent} onClick={e => e.stopPropagation()}>
-            <Order onConfirm={() => handleOrderConfirm(host_form_id ,userId)} />
+            <ParticipantForm onConfirm={() => handleOrderConfirm(host_form_id ,userId)} />  
           </div>
         </div>
       )}
