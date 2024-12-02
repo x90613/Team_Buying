@@ -1,7 +1,5 @@
-
-import { FC, useRef, useState } from 'react';
+import { FC } from 'react';
 import TeamBuying from '../TeamBuying';
-import { useNavigate } from 'react-router-dom';
 import useUserHook from '../../../hooks/useUserHook';
 
 interface NowBuyingProps {
@@ -18,7 +16,7 @@ export const NowBuying: FC<NowBuyingProps> = ({}) => {
         name = {item.name}
         datetime = {item.datetime}
         status={item.paymentStatus}
-        hostFormID = {item.hostFormID}
+        hostformId = {item.hostformId}
         />
       ))}
     </>

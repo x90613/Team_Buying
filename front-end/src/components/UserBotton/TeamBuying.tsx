@@ -5,15 +5,20 @@ import fail from '/assets/Status/Fail.png';
 import Done from '/assets/Status/Done.png';
 import NotYet from '/assets/Status/NotYet.png';
 
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+
 interface TeamBuyingProps {
   name: string;
   datetime: string;
   status: string;
-  hostFormID: string;
-  onClick?: () => void; // Include onClick prop
+  hostformId: string;
 }
 
-const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostFormID, onClick }) => {
+const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostformId}) => {
+  const navigate = useNavigate();
+  const { isLoggedIn } = useAuth();
+
   const statusIcon = (status: string) => {
     if (status === "2") {
       return <img src={fail} alt="Fail" />;
@@ -25,8 +30,17 @@ const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostFormID, o
     return null; // Handle any other cases
   };
 
+  const handleJoinClick = () => {
+    console.log('hostFormId', hostformId);
+    if (!isLoggedIn) {
+      alert('請先點右下角頭像進行快速登入');
+      return;
+    }
+    navigate(`/order-item/${1}/${hostformId}`);
+  };
+
   return (
-    <button className={styles.TeamBuyingButton} onClick={onClick}>
+    <button className={styles.TeamBuyingButton} onClick={() => handleJoinClick()}>
       <span className={styles.name}>{name}</span>
       <div className={styles.rightSection}>
         <span className={styles.datetime}>{datetime}</span>

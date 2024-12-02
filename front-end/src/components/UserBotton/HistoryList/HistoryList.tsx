@@ -21,7 +21,7 @@ export const HistoryList: FC<HistoryListProps> = ({}) => {
               name={item.name}
               datetime={item.datetime}
               status={item.status}
-              hostFormID={item.hostFormID}
+              hostformId={item.hostformId}
             />
           ))
         ) : (
@@ -37,7 +37,7 @@ export const HistoryList: FC<HistoryListProps> = ({}) => {
               name={item.name}
               datetime={item.datetime}
               status={item.paymentStatus}
-              hostFormID={item.hostFormID}
+              hostformId={item.hostformId}
             />
           ))
         ) : (

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import NowHosting from '../components/UserBotton/NowHosting/NowHosting';
 
 interface UserInfo {
     username: string;
@@ -13,7 +12,7 @@ interface TeamBuyingInfo {
   datetime: string;
   status: "0" | "1" | "2"; // for shared component
   paymentStatus: "0" | "1" | "2"; // for shared component
-  hostFormID: string;
+  hostformId: string;
 }
 
 interface HistoryList {
@@ -135,7 +134,7 @@ const useUserHook = () => {
       }
 
       const rawData = await response.json();
-      //console.log("Nowhosting: " + JSON.stringify(rawData, null, 2));
+      console.log("Nowhosting: " + JSON.stringify(rawData, null, 2));
 
       setNowHostingData(rawData);
     } catch (err: any) {
@@ -183,7 +182,7 @@ const useUserHook = () => {
       }
 
       const rawData = await response.json();
-      console.log("ReviewList: " + JSON.stringify(rawData, null, 2));
+      //console.log("ReviewList: " + JSON.stringify(rawData, null, 2));
 
       setReviewListData(rawData);
     } catch (err: any) {
@@ -208,7 +207,7 @@ const useUserHook = () => {
       }
 
       const rawData = await response.json();
-      console.log("Reviews: " + JSON.stringify(rawData, null, 2));
+      //console.log("Reviews: " + JSON.stringify(rawData, null, 2));
 
       setReviewData(rawData);
     } catch (err: any) {
