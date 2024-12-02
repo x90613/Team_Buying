@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
+//import { useAuth } from '../contexts/AuthContext';
 
 interface UserInfo {
     username: string;
@@ -52,7 +52,9 @@ const useUserHook = () => {
   const [userReviewListData, setReviewListData] = useState<ReviewList[]>();
   const [userReviewData, setReviewData] = useState<Review[]>();
 
-  const { token, userId } = useAuth();
+  // By localStorage, get userId and token
+  const userId = localStorage.getItem('userId');
+  const token = localStorage.getItem('token');
 
   // 1. Read User Information -> GET /api/user/userinfo/{userId}
   const fetchUserInfo = async () => {
