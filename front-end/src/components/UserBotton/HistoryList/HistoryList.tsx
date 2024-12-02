@@ -2,47 +2,48 @@
 import { FC, useRef, useState } from 'react';
 import styles from './HistoryList.module.css';
 import TeamBuying from '../TeamBuying';
+import useUserHook from '../../../hooks/useUserHook';
 
 interface HistoryListProps {
 }
 
 export const HistoryList: FC<HistoryListProps> = ({}) => {
-  // TODO: get History from backend
-  // TODO: choose Status type
-
-  const data = {
-    host: [
-      {"name": "QQQ's TeamBuying", "datetime": "2024/12/13 22:00", "status": "notyet", "hostFormID": "123"},
-      {"name": "QQQ's TeamBuying", "datetime": "2024/12/13 22:00", "status": "done", "hostFormID": "123"}
-    ],
-    participant: [
-      {"name": "QQQ's TeamBuying", "datetime": "2024/12/13 22:00", "status": "fail", "hostFormID": "123"},
-      {"name": "QQQ's TeamBuying", "datetime": "2024/12/13 22:00", "status": "done", "hostFormID": "123"}
-    ]
-  };
+  const { userHistoryListData } = useUserHook();
 
   return (
     <>
       <label className={styles.label}>Host</label>
-      {data.host.map((item, index) => (
-        <TeamBuying
-        key={index}
-        name = {item.name}
-        datetime = {item.datetime}
-        status={item.status}
-        hostFormID = {item.hostFormID}
-        />
-      ))}
+      {
+        (userHistoryListData?.host?.length || 0)> 0 ? (
+          userHistoryListData?.host.map((item, index) => (
+            <TeamBuying
+              key={index}
+              name={item.name}
+              datetime={item.datetime}
+              status={item.status}
+              hostformId={item.hostformId}
+            />
+          ))
+        ) : (
+          <label className={styles.label}> - NULL</label>
+        )
+      }
       <label className={styles.label}>Particpant</label>
-      {data.participant.map((item, index) => (
-        <TeamBuying
-        key={index}
-        name = {item.name}
-        datetime = {item.datetime}
-        status={item.status}
-        hostFormID = {item.hostFormID}
-        />
-      ))}
+      {
+        (userHistoryListData?.participant?.length || 0) > 0 ? (
+          userHistoryListData?.participant.map((item, index) => (
+            <TeamBuying
+              key={index}
+              name={item.name}
+              datetime={item.datetime}
+              status={item.paymentStatus}
+              hostformId={item.hostformId}
+            />
+          ))
+        ) : (
+          <label className={styles.label}> - NULL</label>
+        )
+      }
     </>
   );
 };
