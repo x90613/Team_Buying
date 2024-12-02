@@ -124,7 +124,7 @@ export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
       {showOrderModal && (
         <div className={classes.modalOverlay} onClick={() => setShowOrderModal(false)}>
           <div className={classes.modalContent} onClick={e => e.stopPropagation()}>
-            <ParticipantForm onConfirm={() => handleOrderConfirm(host_form_id ,userId)} />  
+            <ParticipantForm onConfirm={() => handleOrderConfirm(host_form_id ,userId)} />
           </div>
         </div>
       )}

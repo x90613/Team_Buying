@@ -30,11 +30,11 @@ export const ParticipantForm: FC<Props> = memo(function ParticipantForm(props = 
       console.error('Missing required parameters');
       return;
     }
-    
+
     try {
       // Navigate to status page with the required parameters
       navigate(`/order-item/status/${hostformId}/${userId}`);
-      
+
       // Call the original onConfirm if provided
       props.onConfirm?.();
     } catch (error) {
@@ -72,7 +72,7 @@ export const ParticipantForm: FC<Props> = memo(function ParticipantForm(props = 
           {error}
         </div>
       )}
-      
+
       <div className={classes.headerContainer}>
         <div className={classes.headerTop}>
           <div className={classes.yourName}>Your Name</div>
@@ -131,8 +131,8 @@ export const ParticipantForm: FC<Props> = memo(function ParticipantForm(props = 
                 {menuLoading && <option>Loading...</option>}
                 {menuError && <option>Error loading products</option>}
                 {products.map((product, idx) => (
-                  <option 
-                    key={idx} 
+                  <option
+                    key={idx}
                     value={product.product}
                   >
                     {product.product}

@@ -27,8 +27,8 @@ export const Menu1: FC<Props> = memo(function Menu1(props = {}) {
     <div className={`${resets.clapyResets} ${classes.root}`}>
       <div className={classes.frame16} />
       {menuData?.img && (
-        <div 
-          className={classes.menuImage} 
+        <div
+          className={classes.menuImage}
           style={{
             backgroundImage: `url(${menuData.img})`,
             backgroundPosition: 'center',

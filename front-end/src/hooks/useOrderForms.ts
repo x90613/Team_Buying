@@ -21,9 +21,9 @@ interface OrderResponse {
 interface OrderDetail {
   participantId: number;
   name: string;
-  items: { 
-    itemName: string; 
-    number: string; 
+  items: {
+    itemName: string;
+    number: string;
     price: number;
     participantFormId: number;
   }[];
@@ -70,7 +70,7 @@ const useOrderForms = () => {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
 
-      setOrderDetails(prevDetails => 
+      setOrderDetails(prevDetails =>
         prevDetails.map(order => ({
           ...order,
           status: order.items.some(item => item.participantFormId === participantFormId) ? 1 : order.status,
@@ -163,7 +163,7 @@ const useOrderForms = () => {
       } catch (err) {
         console.error('Fetch error:', err);
         setError(err instanceof Error ? err.message : 'An error occurred while fetching orders');
-        
+
         if (err instanceof Error && err.message.includes('401')) {
           localStorage.clear();
           setError('Session expired. Please log in again.');

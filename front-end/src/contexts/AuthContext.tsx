@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem('token', token);
     localStorage.setItem('username', username);
     localStorage.setItem('userId', userId);
-    
+
     setUsername(username);
     setUserId(userId);
     setUserToken(token);
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('userId');
-    
+
     setUsername(null);
     setUserId(null);
     setUserToken(null);

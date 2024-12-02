@@ -5,7 +5,7 @@ import resets from '../../_resets.module.css';
 import classes from './Component5_Property1Create.module.css';
 
 interface Props {
-  
+
   className?: string;
   classes?: {
     root?: string;
@@ -26,7 +26,7 @@ export const Component5_Property1Create: FC<Props> = memo(function Component5_Pr
   };
 
   return (
-    <div 
+    <div
       className={`${resets.clapyResets} ${props.classes?.root || ''} ${props.className || ''} ${classes.root}`}
       onClick={(e) => {
         console.log('Button clicked', props.disabled);

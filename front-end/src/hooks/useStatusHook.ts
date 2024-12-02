@@ -70,7 +70,7 @@ export const useStatusHook = (hostformId: string, participantId: string): UseSta
   }, 0) ?? 0;
 
   // Format deadline
-  const formattedDeadline = statusData?.teamBuyngDeadline 
+  const formattedDeadline = statusData?.teamBuyngDeadline
     ? new Date(statusData.teamBuyngDeadline).toLocaleString()
     : '';
 

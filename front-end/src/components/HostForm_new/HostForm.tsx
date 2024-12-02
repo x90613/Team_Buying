@@ -48,11 +48,11 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (hostFormData) {
       const deadlineDate = new Date(hostFormData.deadTime);
-      
+
       // Check if the store is in the predefined list
       const predefinedStores = ["龜記", "五十嵐"];
       const isOther = !predefinedStores.includes(hostFormData.storeName);
-      
+
       setIsOtherSelected(isOther);
       setFormData({
         title: hostFormData.title,
@@ -102,7 +102,7 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    
+
     try {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -187,10 +187,10 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose }) => {
           <label className={styles.label}>Store Name</label>
           <div className={styles.storeContainer}>
             {!isOtherSelected ? (
-              <select 
-                name="storeName" 
+              <select
+                name="storeName"
                 value={formData.storeName}
-                onChange={handleStoreChange} 
+                onChange={handleStoreChange}
                 className={styles.selectField}
               >
                 <option value="">Select Store</option>

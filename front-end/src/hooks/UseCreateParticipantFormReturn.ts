@@ -44,14 +44,14 @@ export const useCreateParticipantForm = (onConfirm?: () => void): UseCreateParti
   const [error, setError] = useState<string | null>(null);
   const [userName, setUserName] = useState('');
   const { menus, loading: menuLoading, error: menuError } = useGetMenu();
-  
+
   const [inputGroups, setInputGroups] = useState<OrderItem[]>([{
     order: '',
     quantity: '',
     price: '',
     description: ''
   }]);
-  
+
   const [isAnonymous, setIsAnonymous] = useState(false);
 
   const addInputGroup = () => {
@@ -65,7 +65,7 @@ export const useCreateParticipantForm = (onConfirm?: () => void): UseCreateParti
   const updateInputGroup = (index: number, field: keyof OrderItem, value: string) => {
     setInputGroups(prev => {
       const newInputGroups = [...prev];
-      
+
       if (field === 'order') {
         try {
           const selectedItem = JSON.parse(value);
@@ -86,7 +86,7 @@ export const useCreateParticipantForm = (onConfirm?: () => void): UseCreateParti
           [field]: value
         };
       }
-      
+
       return newInputGroups;
     });
   };
@@ -95,7 +95,7 @@ export const useCreateParticipantForm = (onConfirm?: () => void): UseCreateParti
     try {
       setLoading(true);
       setError(null);
-      
+
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('userId');
 
@@ -107,17 +107,17 @@ export const useCreateParticipantForm = (onConfirm?: () => void): UseCreateParti
       if (!userId) {
         throw new Error('使用者ID未找到');
       }
-  
+
       // Validate inputs
       const hasEmptyFields = inputGroups.some(
         item => !item.order || !item.quantity || !item.price
       );
-      
+
       if (hasEmptyFields) {
         alert('請填寫所有必填欄位');
         return;
       }
-  
+
       if (!isAnonymous && !userName.trim()) {
         alert('請輸入姓名或選擇匿名');
         return;
@@ -149,11 +149,11 @@ export const useCreateParticipantForm = (onConfirm?: () => void): UseCreateParti
 
       // 成功後導航到訂單狀態頁面
       navigate(`/order-item/status/${host_form_id}/${userId}`);
-      
+
       if (onConfirm) {
         onConfirm();
       }
-      
+
     } catch (error) {
       alert(error instanceof Error ? error.message : '發生意外錯誤');
       console.error('Error submitting order:', error);

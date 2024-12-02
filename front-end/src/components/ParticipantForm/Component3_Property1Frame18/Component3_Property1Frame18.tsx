@@ -55,7 +55,7 @@ export const Component3_Property1Frame18: FC<Props> = memo(function Component3_P
   };
 
   return (
-    <div 
+    <div
       className={`${resets.clapyResets} ${props.classes?.root || ''} ${props.className || ''} ${classes.root}`}
       ref={dropdownRef}
     >
@@ -71,19 +71,19 @@ export const Component3_Property1Frame18: FC<Props> = memo(function Component3_P
         }}
         onClick={() => setIsOpen(!isOpen)}
       />
-      <input 
-        type="text" 
-        className={classes.component3Input} 
+      <input
+        type="text"
+        className={classes.component3Input}
         placeholder="選擇商品"
         value={props.value || ''}
         onChange={(e) => props.onChange?.(e.target.value)}
         readOnly
       />
-      
+
       {isOpen && (
         <div className={classes.dropdown}>
           {menuItems.map((item, index) => (
-            <div 
+            <div
               key={index}
               className={classes.dropdownItem}
               onClick={() => handleSelect(item)}

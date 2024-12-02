@@ -31,12 +31,12 @@ const handleNotifyClick = async (e: React.MouseEvent) => {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
     const userName = localStorage.getItem('username');
-    
+
     // Use teambuyingHostId from the hook
     if (!statusData?.teambuyingHostId) {
       throw new Error('No teambuyingHostId available');
     }
- 
+
     const response = await fetch(`http://localhost:9090/api/notifications/${statusData.teambuyingHostId}`, {
       method: 'POST',
       headers: {
@@ -44,15 +44,15 @@ const handleNotifyClick = async (e: React.MouseEvent) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        userId: parseInt(userId || '0'), 
+        userId: parseInt(userId || '0'),
         userName: userName
       })
     });
- 
+
     if (!response.ok) {
       throw new Error('Failed to send notification');
     }
- 
+
     setHasNotified(true);
   } catch (error) {
     console.error('Error:', error);
@@ -128,7 +128,7 @@ const handleNotifyClick = async (e: React.MouseEvent) => {
             />
             <div className={classes.orderTitle}>{username}</div>
           </div>
-          
+
           <div className={classes.itemList}>
             {statusData.order.map((item, idx) => (
               <div key={idx} className={classes.item}>
@@ -144,7 +144,7 @@ const handleNotifyClick = async (e: React.MouseEvent) => {
             </div>
           </div>
         </div>
-        
+
         <div className={classes.line1}></div>
 
         <div className={classes.transferSection}>
@@ -175,9 +175,9 @@ const handleNotifyClick = async (e: React.MouseEvent) => {
         />
 
         {isReviewOpen && (
-          <Review 
-            isOpen={isReviewOpen} 
-            onClose={handleReviewClick} 
+          <Review
+            isOpen={isReviewOpen}
+            onClose={handleReviewClick}
             hostId={user_id}
           />
         )}

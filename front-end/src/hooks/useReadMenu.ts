@@ -101,10 +101,10 @@ const useReadMenu = () => {
         }
 
         const allMenus: MenuResponse[] = await menuResponse.json();
-        
+
         // 找到對應的菜單並過濾產品
         const targetMenu = allMenus.find(menu => menu.id === targetMenuId);
-        
+
         if (!targetMenu) {
           throw new Error(`Menu not found for ID: ${targetMenuId}`);
         }
@@ -128,7 +128,7 @@ const useReadMenu = () => {
       } catch (err) {
         console.error('Fetch error:', err);
         setError(err instanceof Error ? err.message : 'An error occurred while fetching menu data');
-        
+
         if (err instanceof Error && err.message.includes('401')) {
           localStorage.clear();
         }
@@ -152,7 +152,7 @@ const useReadMenu = () => {
 
     setLoading(true);
     localStorage.removeItem('menuData');
-    
+
     try {
       const storedToken = localStorage.getItem('token');
       if (!storedToken) {
