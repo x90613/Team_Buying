@@ -13,6 +13,7 @@ interface TeamBuyingInfo {
   status: "0" | "1" | "2"; // for shared component
   paymentStatus: "0" | "1" | "2"; // for shared component
   hostformId: string;
+  hostId: string;
 }
 
 interface HistoryList {
@@ -109,8 +110,8 @@ const useUserHook = () => {
       }
 
       const rawData = await response.json();
-      // console.log("HistoryList.host: " + JSON.stringify(rawData.host, null, 2));
-      // console.log("HistoryList.participant: " + JSON.stringify(rawData.participant, null, 2));
+      console.log("HistoryList.host: " + JSON.stringify(rawData.host, null, 2));
+      console.log("HistoryList.participant: " + JSON.stringify(rawData.participant, null, 2));
 
       setHistoryListData(rawData);
     } catch (err: any) {
@@ -158,7 +159,7 @@ const useUserHook = () => {
       }
 
       const rawData = await response.json();
-      //console.log("Nowhosting: " + JSON.stringify(rawData, null, 2));
+      console.log("NowBuying: " + JSON.stringify(rawData, null, 2));
 
       setNowBuyingData(rawData);
     } catch (err: any) {

@@ -17,6 +17,7 @@ export const NowBuying: FC<NowBuyingProps> = ({}) => {
         datetime = {item.datetime}
         status={item.paymentStatus}
         hostformId = {item.hostformId}
+        hostId = {item.hostId}
         />
       ))}
     </>

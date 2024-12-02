@@ -13,9 +13,10 @@ interface TeamBuyingProps {
   datetime: string;
   status: string;
   hostformId: string;
+  hostId?: string;
 }
 
-const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostformId}) => {
+const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostformId, hostId}) => {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
 
@@ -36,7 +37,7 @@ const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostformId}) 
       alert('請先點右下角頭像進行快速登入');
       return;
     }
-    navigate(`/order-item/${1}/${hostformId}`);
+    navigate(`/order-item/${hostId}/${hostformId}`);
   };
 
   return (
