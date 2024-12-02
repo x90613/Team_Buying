@@ -1,9 +1,7 @@
 
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './UserBotton.module.css';
 import cross from '/assets/Cross_item.png'
-import logo from '/assets/logo.png';
-import eyeIcon from '/assets/Eye.png';
 import UserInformation from './UserInformation/UserInformation';
 import HistoryList from './HistoryList/HistoryList';
 import NowHosting from './NowHosting/NowHosting';
