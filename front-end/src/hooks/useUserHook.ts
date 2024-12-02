@@ -23,9 +23,16 @@ interface HistoryList {
 
 interface ReviewList {
   name: string;
-  date: string;
+  datetime: string;
   star: 1 | 2 | 3 | 4 | 5;
-  hostFormID: string;
+  hostFormId: string;
+}
+
+interface Review {
+  name: string;
+  datetime: string;
+  star: 1 | 2 | 3 | 4 | 5;
+  content: string;
 }
 
 // APIs
@@ -34,6 +41,8 @@ interface ReviewList {
 // 3. Read User History List -> GET /api/user/historylist/{userId}
 // 4. Read User Nowhosting -> GET /api/user/nowhosting/{userId}
 // 5. Read User NowBuying -> GET /api/user/nowbuying/{userId}
+// 6. Read Review List -> GET /api/user/reviewlist/{userId}
+// 7. Read Reviews -> GET /api/user/reviewlist/review/{hostFormId}
 
 const useUserHook = () => {
   const [userInfoData, setUserInfoData] = useState<UserInfo>();
@@ -41,6 +50,7 @@ const useUserHook = () => {
   const [userNowHostingData, setNowHostingData] = useState<TeamBuyingInfo[]>();
   const [userNowBuyingData, setNowBuyingData] = useState<TeamBuyingInfo[]>();
   const [userReviewListData, setReviewListData] = useState<ReviewList[]>();
+  const [userReviewData, setReviewData] = useState<Review[]>();
 
   const { token, userId } = useAuth();
 
@@ -181,6 +191,30 @@ const useUserHook = () => {
     }
   };
 
+  // 7. Read Reviews -> GET /api/user/reviewlist/review/{hostFormId}
+  const fetchReviews = async (hostFormId: string) => {
+    console.log("hostFormId: " + hostFormId);
+    try {
+      const response = await fetch(`http://localhost:9090/api/user/reviewlist/review/${hostFormId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const rawData = await response.json();
+      console.log("Reviews: " + JSON.stringify(rawData, null, 2));
+
+      setReviewData(rawData);
+    } catch (err: any) {
+      alert(`An Reviews error occurred: ${err.message}`);
+    }
+  };
 
   // init all data from API
   useEffect(() => {
@@ -191,6 +225,6 @@ const useUserHook = () => {
     fetchReviewList();
   }, []);
 
-  return { userInfoData, userHistoryListData, userNowHostingData, userNowBuyingData, userReviewListData, updateUserInfo };
+  return { userInfoData, userHistoryListData, userNowHostingData, userNowBuyingData, userReviewListData, userReviewData, fetchReviews, updateUserInfo };
 };
 export default useUserHook;

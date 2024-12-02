@@ -199,7 +199,7 @@ public class UserDao {
     String sql =
         "SELECT tb.title AS name, "
             + "ROUND(AVG(uf.score), 0) AS star, "
-            + "tb.dead_time AS date, "
+            + "tb.dead_time AS datetime, "
             + "tb.id AS hostFormId "
             + "FROM host_form tb "
             + "JOIN user_feed_back uf ON tb.id = uf.host_form_id "
@@ -217,11 +217,10 @@ public class UserDao {
   }
 
   public List<ReviewDto> getReviewByHostFormId(int hostFormId) {
-    System.out.println("test before");
     String sql =
         "SELECT us.username AS name, "
             + "uf.score AS star, "
-            + "uf.datetime AS date, "
+            + "uf.datetime AS datetime, "
             + "uf.content AS content "
             + "FROM user_feed_back uf "
             + "JOIN user us ON uf.user_id = us.id "
@@ -232,7 +231,7 @@ public class UserDao {
 
     List<ReviewDto> list =
         namedParameterJdbcTemplate.query(sql, map, new BeanPropertyRowMapper<>(ReviewDto.class));
-    System.out.println("test after");
+
     return list;
   }
 }

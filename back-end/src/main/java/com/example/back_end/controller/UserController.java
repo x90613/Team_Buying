@@ -41,9 +41,6 @@ public class UserController {
   public ResponseEntity<?> getHistoryList(@PathVariable int userId) {
     System.out.println("exec getHistoryList");
     List<UserHistoryDto.HostHistory> hostHistory = userService.getHostHistoryByUserId(userId);
-    //    if(hostHistory == null || hostHistory.size() == 0) {
-    //      System.out.println("host history is empty");
-    //    }
 
     List<UserHistoryDto.ParticipantHistory> participantHistory =
         userService.getParticipantHistoryByUserId(userId);
@@ -74,7 +71,7 @@ public class UserController {
   }
 
   @GetMapping("/reviewlist/review/{hostFormId}")
-  public List<ReviewDto> getReviews(@PathVariable int hostFormId) {
+  public List<ReviewDto> getReviews(@PathVariable("hostFormId") int hostFormId) {
     List<ReviewDto> reviews = userService.getReviewByHostFormId(hostFormId);
     return reviews;
   }

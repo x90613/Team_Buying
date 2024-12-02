@@ -3,7 +3,7 @@ package com.example.back_end.dto;
 public class ReviewDto {
   private String name;
   private int star;
-  private String date;
+  private String datetime;
   private String content;
 
   // Getters and Setters
@@ -15,12 +15,12 @@ public class ReviewDto {
     this.name = name;
   }
 
-  public String getDate() {
-    return date;
+  public String getDatetime() {
+    return datetime;
   }
 
-  public void setDate(String date) {
-    this.date = date;
+  public void setDatetime(String datetime) {
+    this.datetime = datetime;
   }
 
   public int getStar() {
