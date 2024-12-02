@@ -13,10 +13,11 @@ interface TeamBuyingProps {
   datetime: string;
   status: string;
   hostformId: string;
-  hostId?: string;
+  hostId: string;
+  isHost: boolean;
 }
 
-const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostformId, hostId}) => {
+const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostformId, hostId, isHost}) => {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
 
@@ -34,10 +35,14 @@ const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostformId, h
   const handleJoinClick = () => {
     console.log('hostFormId', hostformId);
     if (!isLoggedIn) {
-      alert('請先點右下角頭像進行快速登入');
+      alert('Please click on the avatar in the bottom-right corner to log in quickly.');
       return;
     }
-    navigate(`/order-item/${hostId}/${hostformId}`);
+    if(isHost){
+      navigate(`/order-item/${hostId}/${hostformId}`);
+    } else {
+      navigate(`/order-item/status/${hostId}/${hostformId}`);
+    }
   };
 
   return (

@@ -19,6 +19,7 @@ export const NowHosting: FC<NowHostingProps> = ({}) => {
         status={item.status}
         hostformId = {item.hostformId}
         hostId = {item.hostId}
+        isHost = {true}
         />
       ))}
     </>

@@ -23,6 +23,7 @@ export const HistoryList: FC<HistoryListProps> = ({}) => {
               status={item.status}
               hostformId={item.hostformId}
               hostId={item.hostId}
+              isHost={true}
             />
           ))
         ) : (
@@ -40,6 +41,7 @@ export const HistoryList: FC<HistoryListProps> = ({}) => {
               status={item.paymentStatus}
               hostformId={item.hostformId}
               hostId={item.hostId}
+              isHost={false}
             />
           ))
         ) : (

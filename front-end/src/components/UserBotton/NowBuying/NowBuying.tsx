@@ -18,6 +18,7 @@ export const NowBuying: FC<NowBuyingProps> = ({}) => {
         status={item.paymentStatus}
         hostformId = {item.hostformId}
         hostId = {item.hostId}
+        isHost = {false}
         />
       ))}
     </>
