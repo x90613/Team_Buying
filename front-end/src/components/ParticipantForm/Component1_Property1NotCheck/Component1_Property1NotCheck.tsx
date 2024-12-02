@@ -6,17 +6,22 @@ import classes from './Component1_Property1NotCheck.module.css';
 
 interface Props {
   className?: string;
-  onClick?: () => void;
   isChecked?: boolean;
+  onClick?: () => void;
 }
 
 export const Component1_Property1NotCheck: FC<Props> = memo(function Component1_Property1NotCheck(props = {}) {
   return (
     <div
-      className={`${resets.clapyResets} ${props.className || ''} ${props.isChecked ? classes.checked : ''} ${classes.root}`}
+      className={`${resets.clapyResets} ${props.className || ''} ${classes.root}`}
       onClick={props.onClick}
     >
-      {props.isChecked ? '✓' : ''}
+      <input
+        type="checkbox"
+        checked={props.isChecked}
+        onChange={props.onClick}
+        className={classes.checkbox}
+      />
     </div>
   );
 });

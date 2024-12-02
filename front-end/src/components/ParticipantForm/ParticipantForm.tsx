@@ -1,53 +1,78 @@
-import { memo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Add this
+import { memo } from 'react';
 import type { FC } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import resets from '../_resets.module.css';
-import { Component1_Property1Delete } from './Component1_Property1Delete/Component1_Property1Delete.js';
-import { Component1_Property1NotCheck } from './Component1_Property1NotCheck/Component1_Property1NotCheck.js';
-import { Component1_Property1Pencil } from './Component1_Property1Pencil/Component1_Property1Pencil.js';
-import { Component1_Property1PlusCircle } from './Component1_Property1PlusCircle/Component1_Property1PlusCircle.js';
-import { Component1_Property1PlusThick } from './Component1_Property1PlusThick/Component1_Property1PlusThick.js';
-import { Component3_Property1Frame18 } from './Component3_Property1Frame18/Component3_Property1Frame18.js';
-import { Component5_Property1Create } from './Component5_Property1Comfirm/Component5_Property1Create.js';
+import { Component1_Property1Delete } from './Component1_Property1Delete/Component1_Property1Delete';
+import { Component1_Property1NotCheck } from './Component1_Property1NotCheck/Component1_Property1NotCheck';
+import { Component1_Property1PlusCircle } from './Component1_Property1PlusCircle/Component1_Property1PlusCircle';
+import { Component5_Property1Create } from './Component5_Property1Comfirm/Component5_Property1Create';
+import { useCreateParticipantForm } from '../../hooks/UseCreateParticipantFormReturn';
+import { useUrlParams } from '../../hooks/useUrlParams';
 import classes from './ParticipantForm.module.css';
-import { VectorIcon2 } from './VectorIcon2.js';
-import { VectorIcon3 } from './VectorIcon3.js';
-import { VectorIcon4 } from './VectorIcon4.js';
-import { VectorIcon } from './VectorIcon.js';
+import { VectorIcon2 } from './VectorIcon2';
+import { VectorIcon3 } from './VectorIcon3';
+import { VectorIcon4 } from './VectorIcon4';
 
 interface Props {
   className?: string;
   hide?: {
     frame21?: boolean;
   };
-  onConfirm?: () => void; // Add this
+  onConfirm?: () => void;
 }
 
-/* @figmaId 40000037:634 */
-export const Order: FC<Props> = memo(function Order(props = {}) {
-  const navigate = useNavigate();  // Add this
-  const [inputGroups, setInputGroups] = useState([1]); // Just use numbers for keys
-  const [isAnonymous, setIsAnonymous] = useState(false); // 添加匿名狀態
+export const ParticipantForm: FC<Props> = memo(function ParticipantForm(props = {}) {
+  const navigate = useNavigate();
+  const { hostformId, userId } = useUrlParams();
 
-  const addInputGroup = () => {
-    setInputGroups([...inputGroups, inputGroups.length + 1]);
-  };
-
-  // 添加刪除函數
-  const deleteInputGroup = (indexToDelete: number) => {
-    setInputGroups(inputGroups.filter((_, index) => index !== indexToDelete));
-  };
-
-  const handleConfirm = () => {
-    if (props.onConfirm) {
-      props.onConfirm(); // 先調用onConfirm關閉modal
+  const handleConfirmSuccess = async () => {
+    if (!hostformId || !userId) {
+      console.error('Missing required parameters');
+      return;
     }
-    navigate('/status'); // 然後再導航
+
+    try {
+      // Navigate to status page with the required parameters
+      navigate(`/order-item/status/${hostformId}/${userId}`);
+
+      // Call the original onConfirm if provided
+      props.onConfirm?.();
+    } catch (error) {
+      console.error('Error navigating to status:', error);
+    }
   };
+
+  const {
+    inputGroups,
+    isAnonymous,
+    userName,
+    loading,
+    error,
+    menus,
+    menuLoading,
+    menuError,
+    addInputGroup,
+    deleteInputGroup,
+    updateInputGroup,
+    setIsAnonymous,
+    setUserName,
+    handleSubmit
+  } = useCreateParticipantForm(handleConfirmSuccess);
+
+  if (loading) {
+    return <div className={classes.loading}>Loading...</div>;
+  }
+
+  const products = menus?.[0]?.products || [];
 
   return (
     <div className={`${resets.clapyResets} ${classes.root}`}>
+      {error && (
+        <div className={classes.error}>
+          {error}
+        </div>
+      )}
+
       <div className={classes.headerContainer}>
         <div className={classes.headerTop}>
           <div className={classes.yourName}>Your Name</div>
@@ -58,76 +83,120 @@ export const Order: FC<Props> = memo(function Order(props = {}) {
               type="text"
               className={classes.userNameInput}
               placeholder="Enter your name"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
               readOnly={isAnonymous}
-            />
-            <Component1_Property1Pencil
-              className={classes.component1}
-              swap={{
-                vector: <VectorIcon className={classes.icon} />,
-              }}
             />
           </div>
           <div className={classes.anonymousContainer}>
             <div className={classes.anonymous}>Anonymous</div>
             <Component1_Property1NotCheck
               className={classes.anonymousCheck}
-              onClick={() => setIsAnonymous(!isAnonymous)} // 切換匿名狀態
-              isChecked={isAnonymous} // 傳遞檢查狀態
+              onClick={() => setIsAnonymous(!isAnonymous)}
+              isChecked={isAnonymous}
             />
           </div>
         </div>
       </div>
 
-      <div className={classes.order}>Order</div>
-      <div className={classes.quantity}>Quantity</div>
-      <div className={classes.price}>Price</div>
+      <div className={classes.orderLabels}>
+        <div className={classes.order}>Order</div>
+        <div className={classes.quantity}>Quantity</div>
+        <div className={classes.price}>Price</div>
+      </div>
 
       <div className={classes.orderContainer}>
-        {inputGroups.map((key, index) => (
-          <div key={key}>
+        {inputGroups.map((item, index) => (
+          <div key={index} className={classes.orderGroup}>
             <div className={classes.inputRow}>
-              <Component3_Property1Frame18
-                className={classes.component3}
-                hide={{
-                  frame21: true,
+              <select
+                className={classes.selectField}
+                value={item.order}
+                onChange={(e) => {
+                  if (e.target.value === "") {
+                    updateInputGroup(index, 'order', '');
+                    return;
+                  }
+                  const selectedProduct = products.find(p => p.product === e.target.value);
+                  if (selectedProduct) {
+                    updateInputGroup(index, 'order', JSON.stringify({
+                      name: selectedProduct.product,
+                      price: selectedProduct.price
+                    }));
+                  }
                 }}
-              />
+                required
+              >
+                <option value="">Select Product</option>
+                {menuLoading && <option>Loading...</option>}
+                {menuError && <option>Error loading products</option>}
+                {products.map((product, idx) => (
+                  <option
+                    key={idx}
+                    value={product.product}
+                  >
+                    {product.product}
+                  </option>
+                ))}
+              </select>
               <div className={classes.frame223}>
-                <input type="text" className={classes.frame223Input} placeholder="Enter value" />
+                <input
+                  type="text"
+                  className={classes.frame223Input}
+                  placeholder="Enter quantity"
+                  value={item.quantity}
+                  onChange={(e) => updateInputGroup(index, 'quantity', e.target.value)}
+                />
               </div>
               <div className={classes.frame24}>
-                <input type="text" className={classes.frame24Input} placeholder="Enter value" />
+                <input
+                  type="text"
+                  className={classes.frame24Input}
+                  placeholder="Enter price"
+                  value={item.price}
+                  onChange={(e) => updateInputGroup(index, 'price', e.target.value)}
+                  readOnly
+                />
               </div>
-              <Component1_Property1Delete
-                className={classes.component8}
-                swap={{
-                  vector: <VectorIcon4 className={classes.icon4} />,
-                }}
-                onClick={() => deleteInputGroup(index)} // 添加 onClick 處理器
-              />
+              {inputGroups.length > 1 && (
+                <Component1_Property1Delete
+                  className={classes.component8}
+                  swap={{
+                    vector: <VectorIcon4 className={classes.icon4} />,
+                  }}
+                  onClick={() => deleteInputGroup(index)}
+                />
+              )}
             </div>
-            <div className={classes.inputRow}>
-              <div className={classes.frame223}>
-                <input type="text" className={classes.frame223Input} placeholder="Enter description" />
+            <div className={classes.descriptionRow}>
+              <div className={classes.frame224}>
+                <input
+                  type="text"
+                  className={classes.descriptionInput}
+                  placeholder="Enter description (optional)"
+                  value={item.description}
+                  onChange={(e) => updateInputGroup(index, 'description', e.target.value)}
+                />
               </div>
             </div>
           </div>
         ))}
-
       </div>
 
-      <Component1_Property1PlusCircle
-        className={classes.component7}
-        swap={{
-          vector: <VectorIcon3 className={classes.icon3} />,
-        }}
-        onClick={addInputGroup} // Ensure onClick is passed here
-      />
-      <Component5_Property1Create
-        className={classes.component9}
-        onClick={handleConfirm}
-      />
-
+      <div className={classes.bottomButtons}>
+        <Component1_Property1PlusCircle
+          className={classes.component7}
+          swap={{
+            vector: <VectorIcon3 className={classes.icon3} />,
+          }}
+          onClick={addInputGroup}
+        />
+        <Component5_Property1Create
+          className={classes.component9}
+          onClick={handleSubmit}
+          error={error}
+        />
+      </div>
     </div>
   );
 });
