@@ -8,10 +8,7 @@ interface HistoryListProps {
 }
 
 export const HistoryList: FC<HistoryListProps> = ({}) => {
-  // TODO: get History from backend
-  // TODO: choose Status type
   const { userHistoryListData } = useUserHook();
-
 
   return (
     <>
@@ -39,7 +36,7 @@ export const HistoryList: FC<HistoryListProps> = ({}) => {
               key={index}
               name={item.name}
               datetime={item.datetime}
-              status={item.status}
+              status={item.paymentStatus}
               hostFormID={item.hostFormID}
             />
           ))

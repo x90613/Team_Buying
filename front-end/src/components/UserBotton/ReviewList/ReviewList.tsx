@@ -2,6 +2,7 @@
 import { FC, useState } from 'react';
 import HostSection from './HostSection';
 import Review from './Review';
+import useUserHook from '../../../hooks/useUserHook';
 
 interface ReviewListProps {
 }
@@ -16,12 +17,7 @@ export const ReviewList: FC<ReviewListProps> = ({}) => {
   // -> review 2
   // ...
 
-  const hostData = [
-    {"name": "QQQ's TeamBuying", "datetime": "2024/12/13 22:00", "star": "1", "hostFormID": "0"},
-    {"name": "XXX's TeamBuying", "datetime": "2024/12/13 22:00", "star": "2", "hostFormID": "1"},
-    {"name": "SSS's TeamBuying", "datetime": "2024/12/13 22:00", "star": "3", "hostFormID": "2"},
-    {"name": "ZZZ's TeamBuying", "datetime": "2024/12/13 22:00", "star": "4", "hostFormID": "3"}
-  ]
+  const { userReviewListData } = useUserHook();
 
   // get review of hostData based on hostFormID
   const reviewData = [
@@ -37,21 +33,18 @@ export const ReviewList: FC<ReviewListProps> = ({}) => {
 
   const [reviewOfHost, setReviewOfHost] = useState<string | null>(null);
   const handleClick = (hostFormID: string) => {
-
     setReviewOfHost(hostFormID);
   };
-
-
 
   return (
     <>
       {reviewOfHost === null ? (
-        hostData.map((item, index) => (
+        userReviewListData && userReviewListData.map((item, index) => (
           <HostSection
           key = {index}
           name = {item.name}
-          datetime = {item.datetime}
-          star = {item.star as "1" | "2" | "3" | "4" | "5"}
+          datetime = {item.date}
+          star = {item.star}
           hostFormID = {item.hostFormID}
           handleClick = {handleClick}
           />

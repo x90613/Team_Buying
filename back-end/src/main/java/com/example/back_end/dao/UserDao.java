@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -61,21 +60,18 @@ public class UserDao {
     Map<String, Object> params = new HashMap<>();
     params.put("userId", userId);
     params.put("status", 1);
-    try {
-      return namedParameterJdbcTemplate.query(
-          sql,
-          params,
-          (rs, rowNum) -> {
-            UserHistoryDto.HostHistory history = new UserHistoryDto.HostHistory();
-            history.setName(rs.getString("name")); // 對應 SELECT 中的別名 `name`
-            history.setDatetime(rs.getString("datetime")); // 對應 `dead_time`
-            history.setStatus(rs.getString("status")); // 對應 `status`
-            history.setHostformId(rs.getString("hostformId")); // 對應 `id` 的別名
-            return history;
-          });
-    } catch (DataAccessException e) {
-      throw new RuntimeException("Failed to retrieve host history for userId: " + userId, e);
-    }
+
+    return namedParameterJdbcTemplate.query(
+        sql,
+        params,
+        (rs, rowNum) -> {
+          UserHistoryDto.HostHistory history = new UserHistoryDto.HostHistory();
+          history.setName(rs.getString("name")); // 對應 SELECT 中的別名 `name`
+          history.setDatetime(rs.getString("datetime")); // 對應 `dead_time`
+          history.setStatus(rs.getString("status")); // 對應 `status`
+          history.setHostformId(rs.getString("hostformId")); // 對應 `id` 的別名
+          return history;
+        });
   }
 
   public List<UserHistoryDto.ParticipantHistory> getParticipantHistoryByUserId(int userId) {

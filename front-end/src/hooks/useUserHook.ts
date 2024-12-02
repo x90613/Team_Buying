@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import NowHosting from '../components/UserBotton/NowHosting/NowHosting';
 
 interface UserInfo {
     username: string;
@@ -10,7 +11,8 @@ interface UserInfo {
 interface TeamBuyingInfo {
   name: string;
   datetime: string;
-  status: "notyet" | "done" | "fail";
+  status: "0" | "1" | "2"; // for shared component
+  paymentStatus: "0" | "1" | "2"; // for shared component
   hostFormID: string;
 }
 
@@ -19,13 +21,30 @@ interface HistoryList {
   participant: TeamBuyingInfo[];
 }
 
+interface ReviewList {
+  name: string;
+  date: string;
+  star: 1 | 2 | 3 | 4 | 5;
+  hostFormID: string;
+}
+
+// APIs
+// 1. Read User Information -> GET /api/user/userinfo/{userId}
+// 2. Update User Information -> PUT /api/user/userinfo/{userId}
+// 3. Read User History List -> GET /api/user/historylist/{userId}
+// 4. Read User Nowhosting -> GET /api/user/nowhosting/{userId}
+// 5. Read User NowBuying -> GET /api/user/nowbuying/{userId}
+
 const useUserHook = () => {
   const [userInfoData, setUserInfoData] = useState<UserInfo>();
   const [userHistoryListData, setHistoryListData] = useState<HistoryList>();
+  const [userNowHostingData, setNowHostingData] = useState<TeamBuyingInfo[]>();
+  const [userNowBuyingData, setNowBuyingData] = useState<TeamBuyingInfo[]>();
+  const [userReviewListData, setReviewListData] = useState<ReviewList[]>();
 
   const { token, userId } = useAuth();
 
-  // Read User Information -> GET /api/user/userinfo/{userId}
+  // 1. Read User Information -> GET /api/user/userinfo/{userId}
   const fetchUserInfo = async () => {
     try {
       const response = await fetch(`http://localhost:9090/api/user/userinfo/${userId}`, {
@@ -45,11 +64,11 @@ const useUserHook = () => {
 
       setUserInfoData(rawData);
     } catch (err: any) {
-      alert(`An error occurred: ${err.message}`);
+      alert(`An fetchUserInfo error occurred: ${err.message}`);
     }
   };
 
-  // Update User Information -> PUT /api/user/userinfo/{userId}
+  // 2. Update User Information -> PUT /api/user/userinfo/{userId}
   const updateUserInfo = async (formData: UserInfo) => {
     try {
       const response = await fetch(`http://localhost:9090/api/user/userinfo/${userId}`, {
@@ -61,11 +80,11 @@ const useUserHook = () => {
         body: JSON.stringify(formData),
       });
     } catch (err: any) {
-      alert(`An error occurred: ${err.message}`);
+      alert(`An updateUserInfo error occurred: ${err.message}`);
     }
  };
 
-  // Read User History List -> GET /api/user/historylist/{userId}
+  // 3. Read User History List -> GET /api/user/historylist/{userId}
   const fetchHistoryList = async () => {
     try {
       const response = await fetch(`http://localhost:9090/api/user/historylist/${userId}`, {
@@ -81,20 +100,97 @@ const useUserHook = () => {
       }
 
       const rawData = await response.json();
-      console.log("HistoryList:" + rawData);
+      // console.log("HistoryList.host: " + JSON.stringify(rawData.host, null, 2));
+      // console.log("HistoryList.participant: " + JSON.stringify(rawData.participant, null, 2));
 
       setHistoryListData(rawData);
     } catch (err: any) {
-      alert(`An error occurred: ${err.message}`);
+      alert(`An HistoryList error occurred: ${err.message}`);
     }
   };
+
+  // 4. Read User Nowhosting -> GET /api/user/nowhosting/{userId}
+  const fetchNowHosting = async () => {
+    try {
+      const response = await fetch(`http://localhost:9090/api/user/nowhosting/${userId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const rawData = await response.json();
+      //console.log("Nowhosting: " + JSON.stringify(rawData, null, 2));
+
+      setNowHostingData(rawData);
+    } catch (err: any) {
+      alert(`An NowHosting error occurred: ${err.message}`);
+    }
+  };
+
+  // 5. Read User NowBuying -> GET /api/user/nowbuying/{userId}
+  const fetchNowBuying = async () => {
+    try {
+      const response = await fetch(`http://localhost:9090/api/user/nowbuying/${userId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const rawData = await response.json();
+      //console.log("Nowhosting: " + JSON.stringify(rawData, null, 2));
+
+      setNowBuyingData(rawData);
+    } catch (err: any) {
+      alert(`An NowBuying error occurred: ${err.message}`);
+    }
+  };
+
+  // 6. Read Review List -> GET /api/user/reviewlist/{userId}
+  const fetchReviewList = async () => {
+    try {
+      const response = await fetch(`http://localhost:9090/api/user/reviewlist/${userId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const rawData = await response.json();
+      console.log("ReviewList: " + JSON.stringify(rawData, null, 2));
+
+      setReviewListData(rawData);
+    } catch (err: any) {
+      alert(`An ReviewList error occurred: ${err.message}`);
+    }
+  };
+
 
   // init all data from API
   useEffect(() => {
     fetchUserInfo();
     fetchHistoryList();
+    fetchNowHosting();
+    fetchNowBuying();
+    fetchReviewList();
   }, []);
 
-  return { userInfoData, userHistoryListData, updateUserInfo };
+  return { userInfoData, userHistoryListData, userNowHostingData, userNowBuyingData, userReviewListData, updateUserInfo };
 };
 export default useUserHook;

@@ -15,11 +15,11 @@ interface TeamBuyingProps {
 
 const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostFormID, onClick }) => {
   const statusIcon = (status: string) => {
-    if (status === 'fail') {
+    if (status === "2") {
       return <img src={fail} alt="Fail" />;
-    } else if (status === 'done') {
+    } else if (status === "1") {
       return <img src={Done} alt="Done" />;
-    } else if (status === 'notyet') {
+    } else if (status === "0") {
       return <img src={NotYet} alt="Not Yet" />;
     }
     return null; // Handle any other cases
