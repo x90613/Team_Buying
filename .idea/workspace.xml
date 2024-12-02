@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98af9c3d-9e4a-4050-b6f6-71d50c8e1186" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/com/example/back_end/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/com/example/back_end/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/com/example/back_end/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/com/example/back_end/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/UserBotton/HistoryList/HistoryList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/UserBotton/HistoryList/HistoryList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/UserBotton/NowBuying/NowBuying.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/UserBotton/NowBuying/NowBuying.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/UserBotton/NowHosting/NowHosting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/UserBotton/NowHosting/NowHosting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/UserBotton/TeamBuying.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/UserBotton/TeamBuying.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/hooks/useUserHook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/hooks/useUserHook.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/yarn.lock" afterDir="false" />
-    </list>
+    <list default="true" id="98af9c3d-9e4a-4050-b6f6-71d50c8e1186" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +109,7 @@
       <workItem from="1732202038662" duration="953000" />
       <workItem from="1732587078060" duration="16126000" />
       <workItem from="1732801226657" duration="2154000" />
-      <workItem from="1732872334500" duration="14675000" />
+      <workItem from="1732872334500" duration="15277000" />
     </task>
     <servers />
   </component>
