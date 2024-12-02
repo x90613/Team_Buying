@@ -29,6 +29,7 @@ const useCreateHostForm = () => {
         ...formData,
         menuId: formData.menuId === -1 ? null : formData.menuId, // 將 menuId 的 -1 改為 null
         image: formData.image === '' ? null : formData.image, // 將空字串的 image 改為 null
+        hostContactInformation: formData.hostContactInformation === '' ? null : formData.hostContactInformation, // 將空字串的 hostContactInformation 改為 null
       };
 
 
