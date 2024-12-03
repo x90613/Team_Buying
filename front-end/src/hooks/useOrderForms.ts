@@ -36,7 +36,7 @@ const useOrderForms = () => {
   const [error, setError] = useState<string | null>(null);
   const [orderDetails, setOrderDetails] = useState<OrderDetail[]>([]);
   const { host_form_id } = useParams();
-  const { token } = useAuth();
+  const { isLoggedIn, token } = useAuth();
 
   const handleTransfer = async (participantFormId: number) => {
     const storedToken = localStorage.getItem('token');
@@ -176,7 +176,7 @@ const useOrderForms = () => {
     if (host_form_id) {
       fetchOrderForms();
     }
-  }, [host_form_id]);
+  }, [host_form_id, isLoggedIn]);
 
   return { orderDetails, loading, error, handleTransfer };
 };

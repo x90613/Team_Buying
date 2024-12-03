@@ -43,8 +43,7 @@ export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
   if (!isLoggedIn) {
     return (
       <div className={`${resets.clapyResets} ${classes.container}`}>
-        <div>Please log in to view orders</div>
-        <button onClick={() => navigate('/login')}>Go to Login</button>
+        <div>請先點右下角頭像進行快速登入</div>
       </div>
     );
   }

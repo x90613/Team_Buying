@@ -20,8 +20,10 @@ body {
   width: 100%;
   max-width: 1200px;  /* Add max-width */
   margin: 100px auto;
-  position: relative; /* Add this */
+  position: center; /* Add this */
   padding-top: 200px; /* 250px * 0.8 */
+  font-family: sans-serif;
+  font-size: 30px; /* 20px * 0.8 */
 }
 
 .unsplashQJ0zGkrE1Zg {
