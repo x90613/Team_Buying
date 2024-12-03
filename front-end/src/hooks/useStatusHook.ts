@@ -65,6 +65,7 @@ export const useStatusHook = (hostformId: string, participantId: string): UseSta
   }, [hostformId, participantId]);
 
   // Calculate total price
+  console.log(statusData)
   const total = statusData?.order.reduce((sum, item) => {
     return sum + (item.price * item.number);
   }, 0) ?? 0;

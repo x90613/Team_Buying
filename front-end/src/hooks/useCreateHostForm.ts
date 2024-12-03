@@ -41,19 +41,18 @@ const useCreateHostForm = () => {
         },
         body: JSON.stringify(processedFormData),
       });
-
+      const data = await response.json();
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
-
       setSuccess(true);
-      return true;
+      return data.id;
+
     } catch (err: any) {
       setError(err.message);
 
     } finally {
       setLoading(false);
-      return false;
     }
   };
 
