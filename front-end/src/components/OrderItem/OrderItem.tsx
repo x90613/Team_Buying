@@ -1,85 +1,73 @@
 import { memo, useState } from 'react';
 import type { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import resets from '../_resets.module.css';
-import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account';
+import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account.js';
 import classes from './OrderItem.module.css';
-import { VectorIcon } from './VectorIcon';
-import { useNavigate } from 'react-router-dom';
+import { VectorIcon } from './VectorIcon.js';
+import useOrderForms from '../../hooks/useOrderForms';
+import useReadMenu from '../../hooks/useReadMenu';
+import { useAuth } from '../../contexts/AuthContext';
+
 interface Props {
   className?: string;
 }
 
-interface OrderDetail {
-  name: string;
-  items: { itemName: string; number: string; price: number }[];
-  total: number;
-}
-
-const orderDetails: OrderDetail[] = [
-  {
-    name: 'Tom',
-    items: [
-      { itemName: 'Chocolate Cake', number: 'x 1', price: 160 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-    ],
-    total: 190,
-  },
-  {
-    name: 'Tom',
-    items: [
-      { itemName: 'Chocolate Cake', number: 'x 1', price: 160 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-    ],
-    total: 190,
-  },
-  {
-    name: 'Tom',
-    items: [
-      { itemName: 'Chocolate Cake', number: 'x 1', price: 160 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-    ],
-    total: 190,
-  },
-  {
-    name: 'Tom',
-    items: [
-      { itemName: 'Chocolate Cake', number: 'x 1', price: 160 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-    ],
-    total: 190,
-  },
-
-];
-
 export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
   const [clickedStates, setClickedStates] = useState<{ [key: number]: boolean }>({});
-
-  const handleTransferClick = (index: number) => {
-    setClickedStates(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
-  };
+  const { orderDetails, loading, error, handleTransfer } = useOrderForms();
+  const { menuData, loading: menuLoading, error: menuError } = useReadMenu();
+  const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
+
+  const handleTransferClick = async (index: number, items: any[]) => {
+    try {
+      const participantFormId = items[0]?.participantFormId;
+      if (participantFormId) {
+        await handleTransfer(participantFormId);
+        setClickedStates(prev => ({
+          ...prev,
+          [index]: true
+        }));
+      }
+    } catch (err) {
+      console.error('Transfer click error:', err);
+    }
+  };
+
   const handleLogoClick = () => {
     navigate('/');
   };
+
+  if (!isLoggedIn) {
+    return (
+      <div className={`${resets.clapyResets} ${classes.container}`}>
+        <div>Please log in to view orders</div>
+        <button onClick={() => navigate('/login')}>Go to Login</button>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className={`${resets.clapyResets} ${classes.container}`}>
+        <div>Loading...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={`${resets.clapyResets} ${classes.container}`}>
+        <div>Error: {error}</div>
+        {error.includes('session expired') && (
+          <button onClick={() => navigate('/login')}>Login Again</button>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className={`${resets.clapyResets} ${classes.container}`}>
       <div className={classes.unsplashQJ0zGkrE1Zg}></div>
@@ -115,9 +103,9 @@ export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
             </div>
             <button
               className={classes.transferButton}
-              onClick={() => handleTransferClick(index)}
+              onClick={() => handleTransferClick(index, order.items)}
               style={{
-                backgroundImage: `url('/assets/transfer_${clickedStates[index] ? 'white' : 'green'}.png')`
+                backgroundImage: `url('/assets/transfer_${order.status === 1 || clickedStates[index] ? 'white' : 'green'}.png')`
               }}
             />
           </div>

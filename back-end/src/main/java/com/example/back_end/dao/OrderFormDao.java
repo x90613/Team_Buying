@@ -76,7 +76,7 @@ public class OrderFormDao {
   // Get HostForm details
   public Map<String, Object> getHostFormDetails(int hostFormId) {
 
-    String sql = "SELECT * " + "FROM host_form hf " + "WHERE hf.host_id = ?";
+    String sql = "SELECT * " + "FROM host_form hf " + "WHERE hf.id = ?";
 
     try {
       return jdbcTemplate.queryForMap(sql, hostFormId);
@@ -90,7 +90,7 @@ public class OrderFormDao {
   public String getOrderDetailsByParticipantFormId(int participantFormId) {
     String sql =
         "SELECT GROUP_CONCAT(i.product, ' (Quantity: ', i.number, ', Price: ', i.price, ')') AS"
-            + " orderDetails FROM item i WHERE i.formId = ?";
+            + " orderDetails FROM item i WHERE i.form_id = ?";
     try {
       return jdbcTemplate.queryForObject(sql, String.class, participantFormId);
     } catch (EmptyResultDataAccessException e) {

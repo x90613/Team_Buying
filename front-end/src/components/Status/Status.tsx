@@ -1,85 +1,95 @@
-import { memo,useEffect , useState } from 'react';
+import { memo, useState } from 'react';
 import type { FC } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 import resets from '../_resets.module.css';
-import { ArrowRightDropCircleIcon2 } from './ArrowRightDropCircleIcon2';
-import { ArrowRightDropCircleIcon } from './ArrowRightDropCircleIcon';
 import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account';
-import { Component1_Property1LinkVarian } from './Component1_Property1LinkVarian/Component1_Property1LinkVarian';
 import { Component5_Property1Create } from './Component5_Property1Create/Component5_Property1Create';
 import { Component7_Property1Done } from './Component7_Property1Done/Component7_Property1Done';
-import classes from './Status.module.css';
-import { VectorIcon2 } from './VectorIcon2';
-import { VectorIcon } from './VectorIcon';
 import { Component7_Property1Fail } from './Component7_Property1Fail/Component7_Property1Fail';
 import { Component7_Property1NotYet } from './Component7_Property1NotYet/Component7_Property1NotYet';
-import Review from '../Review/Review'
-import { useNavigate } from 'react-router-dom';
-
-// import Review from '../UserBotton/ReviewList/Review';
+import { VectorIcon2 } from './VectorIcon2';
+import Review from '../Review/Review';
+import { useStatusHook } from '../../hooks/useStatusHook';
+import classes from './Status.module.css';
 
 interface Props {
   className?: string;
 }
 
-interface OrderDetail {
-  name: string;
-  items: { itemName: string; number: string; price: number }[];
-  total: number;
-}
+export const StatusComponent: FC<Props> = memo(function Status(props = {}) {
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
+  const [hasNotified, setHasNotified] = useState(false);
+  const navigate = useNavigate();
+  const { host_form_id, user_id } = useParams<{ host_form_id: string; user_id: string }>();
+  const username = localStorage.getItem('username') || 'Order Details';
 
-interface OrderStatus {
-  status: 'done' | 'fail' | 'notYet';
-  updatedAt: string;
-}
+// In Status.tsx, update the handleNotifyClick function:
+const handleNotifyClick = async (e: React.MouseEvent) => {
+  try {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const userName = localStorage.getItem('username');
 
-const orderDetails: OrderDetail[] = [
-  {
-    name: 'Tom',
-    items: [
-      { itemName: 'Chocolate Cake', number: 'x 1', price: 160 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-      { itemName: 'Black Tea', number: 'x 1', price: 30 },
-       { itemName: 'Black Tea', number: 'x 1', price: 30 },
+    // Use teambuyingHostId from the hook
+    if (!statusData?.teambuyingHostId) {
+      throw new Error('No teambuyingHostId available');
+    }
 
+    const response = await fetch(`http://localhost:9090/api/notifications/${statusData.teambuyingHostId}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userId: parseInt(userId || '0'),
+        userName: userName
+      })
+    });
 
-    ],
-    total: 190,
+    if (!response.ok) {
+      throw new Error('Failed to send notification');
+    }
+
+    setHasNotified(true);
+  } catch (error) {
+    console.error('Error:', error);
   }
-];
-
-const host_id = "1"; //幫我用api拿到創建這個teambuying的user_id ->叫做host_id，然後傳到review裡面
-
-// 模擬 API 返回的 JSON 數據
-const mockApiResponse: OrderStatus = {
-  status: 'notYet',
-  updatedAt: '2024-01-20T10:00:00Z'
 };
 
-/* @figmaId 21:1462 */
-export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
-  const [isReviewOpen, setIsReviewOpen] = useState(false);
+   // Early return if parameters are missing
+  if (!host_form_id || !user_id) {
+    return <div>Missing required parameters</div>;
+  }
+  const {
+    statusData,
+    loading,
+    error,
+    total,
+    formattedDeadline,
+  } = useStatusHook(host_form_id, user_id);
+
   const handleReviewClick = () => {
     setIsReviewOpen(!isReviewOpen);
   };
 
-  // 使用 API 返回的狀態
-  const paymentStatus = mockApiResponse.status;
-  useEffect(() => {
-    // 你可以在這裡進行一些初始化操作，例如數據加載
-  }, []);
-  const navigate = useNavigate();
   const handleLogoClick = () => {
     navigate('/');
   };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!statusData) return <div>No data found</div>;
+
   const renderPaymentStatus = () => {
-    switch (paymentStatus) {
-      case 'done':
+    switch (statusData.paymentSatus) {
+      case 1:
         return <Component7_Property1Done className={classes.component7} />;
-      case 'fail':
+      case 2:
         return <Component7_Property1Fail className={classes.component7} />;
-      case 'notYet':
-        return <Component7_Property1NotYet className={classes.component7} />;
+      case 0:
       default:
         return <Component7_Property1NotYet className={classes.component7} />;
     }
@@ -95,76 +105,85 @@ export const Unnamed: FC<Props> = memo(function Unnamed(props = {}) {
       </div>
 
       <div className={classes.contentContainer}>
-        {/* <div className={classes.foodAndDrink}>Food and Drink</div> */}
-        {/* <div className={classes.seeMore}>See More</div> */}
-        {/* <div className={classes.arrowRightDropCircle}>
-          <ArrowRightDropCircleIcon className={classes.icon3} />
+        <div className={classes.teamBuyingInfo}>
+          <div className={classes.taoHuaSTeamBuying}>{statusData.teamBuyingName}</div>
+          <div className={classes._2024112220}>{formattedDeadline}</div>
+          <div className={classes.line2}></div>
         </div>
-        <div className={classes.foodAndDrink2}>Food and Drink</div>
-        <div className={classes.seeMore2}>See More</div>
-        <div className={classes.arrowRightDropCircle2}>
-          <ArrowRightDropCircleIcon2 className={classes.icon4} />
-        </div> */}
-        <div className={classes._666156156015666}>(666) 0156156-0015666</div>
-        <div className={classes.taoHuaSTeamBuying}>TaoHua ‘s TeamBuying</div>
-        <div className={classes._2024112220}>2024/11/2 22:00</div>
-        <div className={classes.line1}></div>
 
-        {orderDetails.map((order, index) => (
-          <div key={index} className={classes.orderDetails}>
-            <div className={classes.header}>
-              <Component1_Property1Account
-                className={classes.component6}
-                swap={{
-                  vector: <VectorIcon2 className={classes.icon2} />,
-                }}
-              />
-              <div className={classes.name}>{order.name}</div>
-            </div>
-            <div className={classes.itemList}>
-              {order.items.map((item, idx) => (
-                <div key={idx} className={classes.item}>
-                  <div className={classes.itemName}>{item.itemName}</div>
-                  <div className={classes.number}>{item.number}</div>
-                  <div className={classes.price}>${item.price}</div>
-                </div>
-              ))}
-              <div className={classes.line3}></div>
-              <div className={classes.item}>
-                <div className={classes.itemName}>Total</div>
-                <div className={classes.number}></div>
-                <div className={classes.price}>${order.total}</div>
+        <div className={classes.contactSection}>
+          <div className={classes.hosterContactInformation}>
+            Hoster Contact Information
+          </div>
+          <div className={classes.link}>{statusData.hostcontact}</div>
+        </div>
+
+        <div className={classes.orderDetails}>
+          <div className={classes.header}>
+            <Component1_Property1Account
+              className={classes.component6}
+              swap={{
+                vector: <VectorIcon2 className={classes.icon2} />,
+              }}
+            />
+            <div className={classes.orderTitle}>{username}</div>
+          </div>
+
+          <div className={classes.itemList}>
+            {statusData.order.map((item, idx) => (
+              <div key={idx} className={classes.item}>
+                <div className={classes.itemName}>{item.product}</div>
+                <div className={classes.number}>x {item.number}</div>
+                <div className={classes.price}>${item.price}</div>
               </div>
+            ))}
+            <div className={classes.line3}></div>
+            <div className={classes.item}>
+              <div className={classes.itemName}>Total</div>
+              <div className={classes.price}>${total}</div>
             </div>
           </div>
-        ))}
+        </div>
 
-        <div className={classes.line2}></div>
-        <div className={classes.transferInformation}>Transfer information</div>
-        <div className={classes.paymentStatus}>Payment Status</div>
-        <div className={classes.hosterContactInformation}>Hoster Contact Information</div>
-        <div className={classes.link}>link</div>
+        <div className={classes.line1}></div>
 
-        {renderPaymentStatus()}
+        <div className={classes.transferSection}>
+          <div className={classes.transferInformation}>
+            Transfer information
+          </div>
+          <div className={classes.transferInfoContent}>
+            {statusData.transferInformation}
+          </div>
+        </div>
+
+        <div className={classes.paymentSection}>
+          <div className={classes.paymentStatus}>Payment Status</div>
+          <div className={classes.paymentStatusContainer}>
+            {renderPaymentStatus()}
+          </div>
+        </div>
 
         <Component5_Property1Create
           className={classes.component10}
+          disabled={statusData.paymentSatus === 0 && hasNotified}
           text={{
-            create: <div className={classes.create}>Review</div>,
+            create: <div className={classes.create}>
+              {statusData.paymentSatus === 0 ? 'Notify' : 'Review'}
+            </div>,
           }}
-          onClick={handleReviewClick}
+          onClick={statusData.paymentSatus === 0 ? handleNotifyClick : handleReviewClick}
         />
+
         {isReviewOpen && (
-          <Review isOpen={isReviewOpen} onClose={handleReviewClick} hostId={host_id}/>
+          <Review
+            isOpen={isReviewOpen}
+            onClose={handleReviewClick}
+            hostId={user_id}
+          />
         )}
       </div>
-
-      <Component1_Property1LinkVarian
-        className={classes.menuList}
-        swap={{
-          vector: <VectorIcon className={classes.icon}/>,
-        }}
-      />
-      </div>
+    </div>
   );
 });
+
+export default StatusComponent;

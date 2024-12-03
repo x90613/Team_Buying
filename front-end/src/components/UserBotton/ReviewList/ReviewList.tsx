@@ -1,7 +1,8 @@
 
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import HostSection from './HostSection';
 import Review from './Review';
+import useUserHook from '../../../hooks/useUserHook';
 
 interface ReviewListProps {
 }
@@ -16,53 +17,36 @@ export const ReviewList: FC<ReviewListProps> = ({}) => {
   // -> review 2
   // ...
 
-  const hostData = [
-    {"name": "QQQ's TeamBuying", "datetime": "2024/12/13 22:00", "star": "1", "hostFormID": "0"},
-    {"name": "XXX's TeamBuying", "datetime": "2024/12/13 22:00", "star": "2", "hostFormID": "1"},
-    {"name": "SSS's TeamBuying", "datetime": "2024/12/13 22:00", "star": "3", "hostFormID": "2"},
-    {"name": "ZZZ's TeamBuying", "datetime": "2024/12/13 22:00", "star": "4", "hostFormID": "3"}
-  ]
+  const { userReviewListData, userReviewData, fetchReviews } = useUserHook();
 
   // get review of hostData based on hostFormID
-  const reviewData = [
-    {"review": "Faker1", "datetime": "2024/12/13 22:00", "star": "1", "content": "Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!23123","hostFormID": "123"},
-    {"review": "Faker23", "datetime": "2024/12/13 22:00", "star": "2", "content": "Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!23123","hostFormID": "123"},
-    {"review": "Faker456", "datetime": "2024/12/13 22:00", "star": "3", "content": "Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!23123","hostFormID": "123"},
-    {"review": "Faker78910", "datetime": "2024/12/13 22:00", "star": "4", "content": "Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!23123","hostFormID": "123"},
-    {"review": "Faker", "datetime": "2024/12/13 22:00", "star": "5", "content": "Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!23123","hostFormID": "123"},
-    {"review": "Faker", "datetime": "2024/12/13 22:00", "star": "4", "content": "Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!23123","hostFormID": "123"},
-    {"review": "Faker", "datetime": "2024/12/13 22:00", "star": "3", "content": "Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!23123","hostFormID": "123"},
-    {"review": "Faker", "datetime": "2024/12/13 22:00", "star": "2", "content": "Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!Nice!!23123","hostFormID": "123"},
-  ]
 
   const [reviewOfHost, setReviewOfHost] = useState<string | null>(null);
   const handleClick = (hostFormID: string) => {
-
     setReviewOfHost(hostFormID);
+    fetchReviews(hostFormID);
   };
-
-
 
   return (
     <>
       {reviewOfHost === null ? (
-        hostData.map((item, index) => (
+        userReviewListData && userReviewListData.map((item, index) => (
           <HostSection
           key = {index}
           name = {item.name}
           datetime = {item.datetime}
-          star = {item.star as "1" | "2" | "3" | "4" | "5"}
-          hostFormID = {item.hostFormID}
-          handleClick = {handleClick}
+          star = {item.star}
+          hostFormID = {item.hostFormId}
+          handleClick = {() => handleClick(item.hostFormId)}
           />
         ))
       ) : (
-          reviewData.map((review, index) => (
+        userReviewData?.map((review, index) => (
             <Review
             key={index}
-            review={review.review}
+            review={review.name}
             datetime={review.datetime}
-            star={review.star as "1" | "2" | "3" | "4" | "5"}
+            star={review.star}
             content={review.content}
             />
           ))

@@ -3,7 +3,9 @@ package com.example.back_end.controller;
 import com.example.back_end.dto.CreateHostFormDTO;
 import com.example.back_end.entity.HostForm;
 import com.example.back_end.service.HostFormService;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +29,10 @@ public class HostFormController {
       log.info("Creating new host form with title: {}", request.getTitle());
       HostForm created = hostFormService.createHostForm(request);
       log.info("Successfully created host form with id: {}", created.getId());
-      return ResponseEntity.ok(created);
+      Map<String, Object> response = new HashMap<>();
+      response.put("id", created.getId());
+
+      return ResponseEntity.ok(response);
     } catch (IllegalArgumentException e) {
       log.warn("Invalid request: {}", e.getMessage());
       return ResponseEntity.badRequest().body(e.getMessage());

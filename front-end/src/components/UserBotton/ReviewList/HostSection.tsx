@@ -11,18 +11,18 @@ import OneStar from '/assets/Star/OneStar.png';
 interface HostSectionProps {
   name: string;
   datetime: string;
-  star: '1' | '2' | '3' | '4' | '5';
+  star: 1 | 2 | 3 | 4 | 5;
   hostFormID: string;
   handleClick: (hostFormID: string) => void;
 }
 
 const HostSection: FC<HostSectionProps> = ({name, datetime, star,hostFormID, handleClick}) => {
   const starImage = {
-    '1': OneStar,
-    '2': TwoStars,
-    '3': ThreeStars,
-    '4': FourStars,
-    '5': FiveStars,
+    1 : OneStar,
+    2 : TwoStars,
+    3 : ThreeStars,
+    4 : FourStars,
+    5 : FiveStars,
   };
 
   return (

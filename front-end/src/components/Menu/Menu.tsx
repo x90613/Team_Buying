@@ -1,43 +1,46 @@
-import { memo, useState, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import type { FC } from 'react';
-
+import { useParams } from 'react-router-dom';
+import useReadMenu from '../../hooks/useReadMenu';  // 根據實際路徑調整
 import resets from '../_resets.module.css';
 import classes from './Menu.module.css';
-import { MenuLeftIcon } from './MenuLeftIcon';
-import { MenuRightIcon } from './MenuRightIcon';
-import { VectorIcon } from './VectorIcon';
+import { MenuLeftIcon } from './MenuLeftIcon.js';
+import { MenuRightIcon } from './MenuRightIcon.js';
 
 interface Props {
   className?: string;
 }
-/* @figmaId 2:2190 */
+
 export const Menu1: FC<Props> = memo(function Menu1(props = {}) {
-  const [currentComponent, setCurrentComponent] = useState(0);
-  const [currentImage, setCurrentImage] = useState(1);  // Add this line
+  const { host_form_id } = useParams();
+  const { menuData, loading, error } = useReadMenu();
 
-  useEffect(() => {
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  }, [currentComponent]);
-
-  const handleMenuRightClick = () => {
-    setCurrentComponent((prev) => (prev + 1) % 2);
-    setCurrentImage((prev) => prev === 1 ? 2 : 1);  // Add this line
-  };
-
-  const handleMenuLeftClick = () => {
-    setCurrentComponent((prev) => (prev - 1 + 2) % 2);
-    setCurrentImage((prev) => prev === 1 ? 2 : 1);  // Add this line
-  };
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className={`${resets.clapyResets} ${classes.root}`}>
-      <div className={classes.frame16}>
-      </div>
-      <div className={classes[`image${currentImage}`]}></div>
-      <div className={classes.menuRight} onClick={handleMenuRightClick}>
+      <div className={classes.frame16} />
+      {menuData?.img && (
+        <div
+          className={classes.menuImage}
+          style={{
+            backgroundImage: `url(${menuData.img})`,
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover'
+          }}
+        />
+      )}
+      <div className={classes.menuRight}>
         <MenuRightIcon className={classes.icon2} />
       </div>
-      <div className={classes.menuLeft} onClick={handleMenuLeftClick}>
+      <div className={classes.menuLeft}>
         <MenuLeftIcon className={classes.icon3} />
       </div>
     </div>

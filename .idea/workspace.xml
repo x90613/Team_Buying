@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="98af9c3d-9e4a-4050-b6f6-71d50c8e1186" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/com/example/back_end/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/com/example/back_end/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/com/example/back_end/dto/ReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/com/example/back_end/dto/ReviewDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/com/example/back_end/dto/ReviewListDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/com/example/back_end/dto/ReviewListDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/UserBotton/ReviewList/Review.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/UserBotton/ReviewList/Review.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/UserBotton/ReviewList/ReviewList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/UserBotton/ReviewList/ReviewList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/hooks/useUserHook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/hooks/useUserHook.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +22,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -32,8 +43,8 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.BackEndApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;Spring Boot.BackEndApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;front__api__harry&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/paulineee/Desktop/Team_Buying/back-end&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -42,6 +53,11 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
 }</component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
@@ -86,8 +102,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
       </set>
     </attachedChunks>
   </component>
@@ -101,6 +117,12 @@
       <updated>1732202037270</updated>
       <workItem from="1732202038662" duration="953000" />
       <workItem from="1732587078060" duration="16126000" />
+      <workItem from="1732693957075" duration="132000" />
+      <workItem from="1732706655337" duration="618000" />
+      <workItem from="1733118263231" duration="39000" />
+      <workItem from="1733201253181" duration="2699000" />
+      <workItem from="1732801226657" duration="2154000" />
+      <workItem from="1732872334500" duration="17519000" />
     </task>
     <servers />
   </component>

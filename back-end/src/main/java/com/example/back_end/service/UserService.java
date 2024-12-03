@@ -14,14 +14,19 @@ public class UserService {
 
   @Autowired private UserDao userDao;
 
-  public UserInfoDto getUserInfoById(int id) {
+  public UserInfoDto getUserInfoById(int userId) {
     // Retrieve user information based on the provided user ID
-    return userDao.getUserInfoByUserId(id);
+    return userDao.getUserInfoByUserId(userId);
   }
 
   public boolean updateUserInfo(int userId, UserInfoDto userInfo) {
     // Update user information for the specified user ID and return the operation result
-    return userDao.updateUserInfoByUserId(userId, userInfo);
+    if (userDao.getUserInfoByUserId(userId) == null) {
+      return false;
+    } else {
+      userDao.updateUserInfoByUserId(userId, userInfo);
+      return true;
+    }
   }
 
   public List<UserHistoryDto.HostHistory> getHostHistoryByUserId(int userId) {

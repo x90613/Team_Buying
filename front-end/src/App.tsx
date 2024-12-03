@@ -13,7 +13,7 @@ import Review from './components/Review/Review';
 import Activity from './components/Activity/Activity';
 import useTeamBuying from './hooks/useTeamBuying';
 import {App_orderitem} from './App_orderitem';
-import { Unnamed as Status } from './components/Status/Status';
+import { StatusComponent } from './components/Status/Status';
 import { useAuth } from './contexts/AuthContext';
 
 interface Props {
@@ -109,7 +109,7 @@ export const App: FC<Props> = memo(function App(props = {}) {
         />
         {/* 訂單頁面路由 */}
         <Route path="/order-item/:host_id/:host_form_id" element={<App_orderitem />} />
-        <Route path="/order-item/status/:host_form_id/:user_id" element={<Status />} />
+        <Route path="/order-item/status/:host_form_id/:user_id" element={<StatusComponent />} />
       </Routes>
     </Router>
   );

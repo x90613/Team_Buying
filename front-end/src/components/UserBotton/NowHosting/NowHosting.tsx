@@ -1,27 +1,25 @@
 
 import { FC, useRef, useState } from 'react';
 import TeamBuying from '../TeamBuying';
+import useUserHook from '../../../hooks/useUserHook';
 
 interface NowHostingProps {
 }
 
 export const NowHosting: FC<NowHostingProps> = ({}) => {
-  const data = [
-    {"name": "QQQ's TeamBuying", "datetime": "2024/12/13 22:00", "status": "notyet", "hostFormID": "123"},
-    {"name": "XXX's TeamBuying", "datetime": "2024/12/13 22:00", "status": "done", "hostFormID": "123"},
-    {"name": "SSS's TeamBuying", "datetime": "2024/12/13 22:00", "status": "fail", "hostFormID": "123"},
-    {"name": "ZZZ's TeamBuying", "datetime": "2024/12/13 22:00", "status": "done", "hostFormID": "123"}
-  ]
+  const { userNowHostingData } = useUserHook();
 
   return (
     <>
-      {data.map((item, index) => (
+      {userNowHostingData?.map((item, index) => (
         <TeamBuying
         key={index}
         name = {item.name}
         datetime = {item.datetime}
         status={item.status}
-        hostFormID = {item.hostFormID}
+        hostformId = {item.hostformId}
+        hostId = {item.hostId}
+        isHost = {true}
         />
       ))}
     </>

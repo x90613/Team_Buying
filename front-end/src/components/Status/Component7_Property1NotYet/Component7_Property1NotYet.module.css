@@ -2,6 +2,7 @@
   position: absolute;
   width: 86px;  /* 67% of 128px */
   height: 21px;  /* 67% of 32px */
+  /* left: calc(50% - 603px/2);  與 line1 左邊緣對齊 */
   flex-direction: column;
   align-items: flex-start;
   overflow: hidden;
