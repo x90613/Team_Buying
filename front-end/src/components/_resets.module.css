@@ -11,10 +11,14 @@
   overflow-wrap: anywhere;
 }
 
+
+
 :where(.clapyResets),
-:where(.clapyResets) :not(span, a, ul, ol, li, p) {
+:where(.clapyResets) :not(span, a, ul, ol, li, p, .overlay) {
   display: flex;
 }
+
+
 
 :where(.clapyResets) ul,
 :where(.clapyResets) ol {

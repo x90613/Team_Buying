@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react';
 
 import resets from '../../_resets.module.css';
 import classes from './Component1_Property1ArrowDownD.module.css';
-import { VectorIcon } from './VectorIcon.js';
+import { VectorIcon } from './VectorIcon';
 
 interface Props {
   className?: string;

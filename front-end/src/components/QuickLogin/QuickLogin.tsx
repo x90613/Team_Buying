@@ -46,9 +46,11 @@ const QuickLogin: FC<QuickLoginProps> = ({ isOpen, onClose}) => {
         <button className={styles.closeButton} onClick={onClose}>
             <img className={styles.closeButton} src={cross}/>
         </button>
+        <div className={styles.logoContainer}>
         <img
           className={styles.logo}
           src={logo}/>
+        </div>
         <div className={styles.inputContainer}>
           <input
             type="text"

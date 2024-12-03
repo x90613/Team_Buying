@@ -23,7 +23,15 @@
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
+    flex-direction: column !important; /* 垂直排列 */
+    align-items: center; /* 水平置中 */
     cursor: default;
+  }
+
+  .logoContainer{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
 
   .closeButton {

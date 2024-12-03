@@ -83,8 +83,8 @@ const Activity: FC<ActivityProps> = ({id, host_id,hoster_name, contactInformatio
       {isInfoOpen && (
         <div className={styles.modalOverlay} onClick={closeInfo}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <button className={styles.closeButton} onClick={closeInfo}>
-            <img className={styles.closeButton} src={cross}/>
+            <button className={styles.closeButton} onClick={closeInfo} >
+            <img className={styles.closeButton} src={cross} alt="Close"/>
               </button>
               <div className={styles.modalImageWrapper}>
                 <img src={image} alt={storeName} className={styles.modalImage} />

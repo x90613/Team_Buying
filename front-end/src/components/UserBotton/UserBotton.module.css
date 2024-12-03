@@ -1,4 +1,4 @@
-.overlay {
+.Useroverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -23,6 +23,7 @@
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
+    flex-direction: column;
     cursor: default;
   }
 
