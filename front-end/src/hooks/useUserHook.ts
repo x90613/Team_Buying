@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-//import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 
 interface UserInfo {
     username: string;
@@ -52,9 +52,7 @@ const useUserHook = () => {
   const [userReviewListData, setReviewListData] = useState<ReviewList[]>();
   const [userReviewData, setReviewData] = useState<Review[]>();
 
-  // By localStorage, get userId and token
-  const userId = localStorage.getItem('userId');
-  const token = localStorage.getItem('token');
+  const { userId, token, isLoggedIn } = useAuth();
 
   // 1. Read User Information -> GET /api/user/userinfo/{userId}
   const fetchUserInfo = async () => {
@@ -112,8 +110,8 @@ const useUserHook = () => {
       }
 
       const rawData = await response.json();
-      console.log("HistoryList.host: " + JSON.stringify(rawData.host, null, 2));
-      console.log("HistoryList.participant: " + JSON.stringify(rawData.participant, null, 2));
+      // console.log("HistoryList.host: " + JSON.stringify(rawData.host, null, 2));
+      // console.log("HistoryList.participant: " + JSON.stringify(rawData.participant, null, 2));
 
       setHistoryListData(rawData);
     } catch (err: any) {
@@ -137,7 +135,7 @@ const useUserHook = () => {
       }
 
       const rawData = await response.json();
-      console.log("Nowhosting: " + JSON.stringify(rawData, null, 2));
+      // console.log("Nowhosting: " + JSON.stringify(rawData, null, 2));
 
       setNowHostingData(rawData);
     } catch (err: any) {
@@ -161,7 +159,7 @@ const useUserHook = () => {
       }
 
       const rawData = await response.json();
-      console.log("NowBuying: " + JSON.stringify(rawData, null, 2));
+      // console.log("NowBuying: " + JSON.stringify(rawData, null, 2));
 
       setNowBuyingData(rawData);
     } catch (err: any) {
@@ -220,11 +218,13 @@ const useUserHook = () => {
 
   // init all data from API
   useEffect(() => {
-    fetchUserInfo();
-    fetchHistoryList();
-    fetchNowHosting();
-    fetchNowBuying();
-    fetchReviewList();
+    if(isLoggedIn) {
+      fetchUserInfo();
+      fetchHistoryList();
+      fetchNowHosting();
+      fetchNowBuying();
+      fetchReviewList();
+    }
   }, []);
 
   return { userInfoData, userHistoryListData, userNowHostingData, userNowBuyingData, userReviewListData, userReviewData, fetchReviews, updateUserInfo };
