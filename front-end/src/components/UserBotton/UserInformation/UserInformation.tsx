@@ -1,9 +1,6 @@
-
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import styles from './UserInformation.module.css';
-import cross from '/assets/Cross_item.png'
-// import logo from '/assets/logo.png';
-// import eyeIcon from '/assets/Eye.png';
+import useUserHook from '../../../hooks/useUserHook';
 
 interface UserInformationProps {
 }
@@ -12,16 +9,33 @@ export const UserInformation: FC<UserInformationProps> = ({}) => {
   // for cross-component update between input and modify botton
   const userNameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-  const phoneRef = useRef<HTMLInputElement>(null);
+  const phoneNumberRef = useRef<HTMLInputElement>(null);
+  const { userInfoData, updateUserInfo } = useUserHook();
 
-  // TODO: get user information from backend
+  useEffect(() => {
+    // load the values from hook to the screen
+    if (userInfoData) {
+      userNameRef.current!.value = userInfoData.username? userInfoData.username : '';
+      emailRef.current!.value = userInfoData.email? userInfoData.email : '';
+      phoneNumberRef.current!.value = userInfoData.phoneNumber? userInfoData.phoneNumber : '';
+    }
+  }, [userInfoData]);
+
+  const handleModify = async () => {
+    const formData = {
+      username: userNameRef.current!.value,
+      email: emailRef.current!.value,
+      phoneNumber: phoneNumberRef.current!.value,
+    };
+    await updateUserInfo(formData);
+  };
+
 
   return (
     <>
         <label className={styles.label}>UserName</label>
         <input
         type="text"
-        placeholder=""
         ref={userNameRef}
         required
         className={styles.inputField}
@@ -29,7 +43,6 @@ export const UserInformation: FC<UserInformationProps> = ({}) => {
         <label className={styles.label}>E-mail</label>
         <input
         type="text"
-        placeholder=""
         ref={emailRef}
         required
         className={styles.inputField}
@@ -37,12 +50,11 @@ export const UserInformation: FC<UserInformationProps> = ({}) => {
         <label className={styles.label}>Phone</label>
         <input
         type="text"
-        placeholder=""
-        ref={phoneRef}
+        ref={phoneNumberRef}
         required
         className={styles.inputField}
         />
-        <button type='submit' className={styles.modifyButton}>Modify</button>
+        <button type='submit' onClick={handleModify} className={styles.modifyButton}>Modify</button>
     </>
   );
 };

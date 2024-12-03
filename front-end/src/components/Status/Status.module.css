@@ -1,42 +1,52 @@
 .component2.component2 {
-  left: 335px;  /* 500 * 0.67 */
-  top: 438px;   /* 654 * 0.67 */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 438px;
 }
+
 .icon {
   width: 100%;
   height: 100%;
 }
+
 .component7.component7 {
   position: absolute;
-  left: 332px;   /* 495 * 0.67 */
-  top: 496px;    /* 740 * 0.67 */
-  width: 90px;   /* 135 * 0.67 */
-  height: 21px;  /* 32 * 0.67 */
+  left: calc(50% - 520px/2);  /* 與 line1 左邊緣對齊 */
+  transform: translateX(-50%);
+  top: 496px;
+  width: 90px;
+  height: 21px;
   display: flex;
   align-items: center;
 }
+
 .component6.component6 {
   position: relative;
-  width: 26px;   /* 39 * 0.67 */
-  height: 26px;  /* 39 * 0.67 */
+  width: 26px;
+  height: 26px;
   left: 0;
   top: 0;
 }
+
 .icon2 {
   width: 100%;
   height: 100%;
 }
+
 .component10.component10 {
+  position: absolute;
   left: 50%;
-  top: 536px;    /* 800 * 0.67 */
-  width: 233px;  /* 348 * 0.67 */
-  height: 32px;  /* 48 * 0.67 */
+  top: 536px;
+  width: 233px;
+  height: 32px;
   transform: translateX(-50%);
 }
+
 .create {
   color: #fff;
-  font-size: 16px;  /* 24 * 0.67 */
-  line-height: 15px;  /* 22 * 0.67 */
+  font-size: 16px;
+  line-height: 15px;
   font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   letter-spacing: -0.408px;
@@ -45,10 +55,12 @@
   white-space: nowrap;
   flex-direction: column;
 }
+
 .component14.component14 {
   right: 24px;
   bottom: 24px;
 }
+
 .root {
   position: relative;
   width: 100%;
@@ -59,17 +71,7 @@
   background-image: linear-gradient(180deg, #f8fcffff 0%, #e4ecedff 100%);
   overflow-x: hidden;
 }
-/* .unsplashQJ0zGkrE1Zg {
-  position: absolute;
-  left: -15px;
-  top: -19.928px;
-  width: 1935px;
-  height: 250px;
-  background-image:url('/assets/unsplashQJ0zGkrE1Zg.jpeg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
+
 .unsplashQJ0zGkrE1Zg {
   position: fixed;
   left: 0;
@@ -82,6 +84,7 @@
   background-size: cover;
   z-index: 1;
 }
+
 .frame29 {
   position: fixed;
   left: 0;
@@ -92,6 +95,7 @@
   backdrop-filter: blur(3.3px);
   z-index: 2;
 }
+
 .logo {
   position: fixed;
   left: 20px;
@@ -102,146 +106,65 @@
   overflow: hidden;
   z-index: 3;
 }
+
 .logo21 {
   position: absolute;
   left: calc(50% - 9.8125px);
   top: calc(50% - 16.5033px);
   width: 86.7466px;
   height: 47.5324px;
-  background-image:/* webpackIgnore: true */ url('/assets/logo21.png');
+  background-image: url('/assets/logo21.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   transform: translate(-50%, -50%);
 }
+
 .logo31 {
   position: absolute;
   left: calc(50% - 0px);
   top: calc(50% - -28.3402px);
   width: 107.6287px;
   height: 21.8585px;
-  background-image:/* webpackIgnore: true */ url('/assets/logo31.png');
+  background-image: url('/assets/logo31.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   transform: translate(-50%, -50%);
 }
-.foodAndDrink {
-  color: #1d4666;
-  font-size: 32px;
-  line-height: 22px;
-  font-weight: bold;
-  font-family: Arial, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  letter-spacing: -0.408px;
-  position: absolute;
-  left: 288px;
-  top: 1333px;
-  width: min-content;
-  height: min-content;
-  white-space: nowrap;
-  flex-direction: column;
-  text-align: center;
-}
-.seeMore {
-  color: #5f5f5f;
-  font-size: 24px;
-  line-height: 22px;
-  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  letter-spacing: -0.408px;
-  position: absolute;
-  left: 1465px;
-  top: 1336px;
-  width: 135px;
-  height: 22px;
-  text-align: end;
-  align-items: end;
-  flex-direction: column;
-  text-align: center;
-}
-.arrowRightDropCircle {
-  position: absolute;
-  left: 1608px;
-  top: 1335px;
-  width: 24px;
-  height: 24px;
-}
-.icon3 {
-  width: 100%;
-  height: 100%;
-}
-.foodAndDrink2 {
-  color: #1d4666;
-  font-size: 32px;
-  line-height: 22px;
-  font-weight: bold;
-  font-family: Arial, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  letter-spacing: -0.408px;
-  position: absolute;
-  left: 288px;
-  top: 2169px;
-  width: min-content;
-  height: min-content;
-  white-space: nowrap;
-  flex-direction: column;
-}
-.seeMore2 {
-  color: #5f5f5f;
-  font-size: 24px;
-  line-height: 22px;
-  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  letter-spacing: -0.408px;
-  position: absolute;
-  left: 1465px;
-  top: 2172px;
-  width: 135px;
-  height: 22px;
-  text-align: end;
-  align-items: end;
-  flex-direction: column;
-}
-.arrowRightDropCircle2 {
-  position: absolute;
-  left: 1608px;
-  top: 2171px;
-  width: 24px;
-  height: 24px;
-}
-.icon4 {
-  width: 100%;
-  height: 100%;
-}
+
 ._666156156015666 {
   color: #5f5f5f;
-  font-size: 19px;  /* 28 * 0.67 */
-  line-height: 21px;  /* 32 * 0.67 */
+  font-size: 19px;
+  line-height: 21px;
   position: absolute;
-  left: 687px;   /* 1026 * 0.67 */
-  top: 436px;    /* 650 * 0.67 */
+  left: calc(50% - 603px/2); /* 對齊到 line1 左邊 */
+  transform: none;
+  top: 436px;
   width: min-content;
   height: min-content;
   white-space: nowrap;
   flex-direction: column;
 }
+
 .taoHuaSTeamBuying {
   color: #3d3d3d;
-  font-size: 20px;  /* 30 * 0.67 */
-  line-height: 15px;  /* 22 * 0.67 */
+  font-size: 20px;
+  line-height: 15px;
   font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   letter-spacing: -0.408px;
   position: absolute;
-  left: 335px;   /* 500 * 0.67 */
-  top: 208px;    /* 310 * 0.67 */
+  left: 50%;
+  transform: translateX(-50%);
+  top: 208px;
   width: min-content;
   height: min-content;
   white-space: nowrap;
   flex-direction: column;
   text-align: center;
 }
+
 ._2024112220 {
   color: #3d3d3d;
   font-size: 16px;
@@ -250,7 +173,7 @@
     'Liberation Sans', sans-serif;
   letter-spacing: -0.408px;
   position: absolute;
-  left: 50%;
+  left: 60%;
   top: 208px;
   transform: translateX(-50%);
   width: min-content;
@@ -258,162 +181,202 @@
   white-space: nowrap;
   text-align: center;
 }
+
 .line1 {
   position: absolute;
-  left: 163px;   /* 244 * 0.67 */
-  top: 403px;    /* 601 * 0.67 */
-  width: 959px;  /* 1432 * 0.67 */
+  left: 50%;
+  transform: translateX(-50%);
+  top: 400px;
+  width: 603px; /* 與 line2 相同 */
   max-width: 100%;
   height: 0;
   max-height: 100%;
   border-bottom: solid 1px #5f5f5f;
 }
+
 .line2 {
   position: absolute;
-  left: 335px;   /* 500 * 0.67 */
-  top: 235px;    /* 350 * 0.67 */
-  width: 603px;  /* 900 * 0.67 */
+  left: 50%;
+  transform: translateX(-50%);
+  top: 235px;
+  width: 603px;
   max-width: 100%;
   height: 0;
   max-height: 100%;
   border-bottom: solid 1px #5f5f5f;
 }
-.transferInformation {
+
+/* 標題左對齊到 line2 */
+.taoHuaSTeamBuying {
   color: #3d3d3d;
-  font-size: 16px;  /* 24 * 0.67 */
-  line-height: 15px;  /* 22 * 0.67 */
-  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  position: absolute;
-  left: 687px;   /* 1026 * 0.67 */
-  top: 414px;    /* 618 * 0.67 */
-  width: min-content;
-  height: min-content;
-  white-space: nowrap;
-  flex-direction: column;
-}
-.paymentStatus {
-  color: #3d3d3d;
-  font-size: 16px;  /* 24 * 0.67 */
-  line-height: 15px;  /* 22 * 0.67 */
-  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  position: absolute;
-  left: 335px;   /* 500 * 0.67 */
-  top: 469px;    /* 700 * 0.67 */
-  width: min-content;
-  height: min-content;
-  white-space: nowrap;
-  flex-direction: column;
-}
-.hosterContactInformation {
-  color: #3d3d3d;
-  font-size: 16px;  /* 24 * 0.67 */
-  line-height: 15px;  /* 22 * 0.67 */
-  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  position: absolute;
-  left: 335px;   /* 500 * 0.67 */
-  top: 414px;    /* 618 * 0.67 */
-  width: min-content;
-  height: min-content;
-  white-space: nowrap;
-  flex-direction: column;
-}
-.link {
-  color: #0d99ff;
-  font-size: 19px;  /* 28 * 0.67 */
-  line-height: 21px;  /* 32 * 0.67 */
+  font-size: 20px;
+  line-height: 15px;
   font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   letter-spacing: -0.408px;
   position: absolute;
-  left: 354px;   /* 528 * 0.67 */
-  top: 436px;    /* 650 * 0.67 */
+  /* 計算左邊距：中心點位置 - line2寬度的一半 */
+  left: calc(50% - 603px/2);
+  transform: none; /* 移除transform */
+  top: 208px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+  text-align: left; /* 改為左對齊 */
+}
+
+.paymentStatus {
+  color: #3d3d3d;
+  font-size: 16px;
+  line-height: 15px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: calc(50% - 603px/2); /* 對齊到 line1 左邊 */
+  transform: none;
+  top: 469px;
   width: min-content;
   height: min-content;
   white-space: nowrap;
   flex-direction: column;
 }
+
+.transferInformation {
+  color: #3d3d3d;
+  font-size: 16px;
+  line-height: 15px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: calc(50% + 603px/2 - 150px);
+  transform: none;
+  top: 414px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+
+.hosterContactInformation {
+  color: #3d3d3d;
+  font-size: 16px;
+  line-height: 15px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: calc(50% - 603px/2); /* 對齊到 line1 左邊 */
+  transform: none;
+  top: 414px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+
+.transferInfoContent {
+  color: #5f5f5f;
+  font-size: 19px;
+  line-height: 21px;
+  position: absolute;
+  left: calc(50% + 603px/2 - 150px); /* 與 transferInformation 相同的左邊距 */
+  top: 436px; /* transferInformation 的 top (414px) + 合適的間距 */
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+
+
+.link {
+  color: #0d99ff;
+  font-size: 19px;
+  line-height: 21px;
+  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.408px;
+  position: absolute;
+  left: calc(50% - 603px/2); /* 對齊到 line1 左邊 */
+  transform: none;
+  top: 436px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+
 .line3 {
   width: 100%;
   border-bottom: solid 1px #5f5f5f;
   margin: 10px 0;
 }
-.total {
-  color: #5f5f5f;
-  font-size: 28px;
-  line-height: 22px;
-  font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    'Liberation Sans', sans-serif;
-  letter-spacing: -0.408px;
-  position: absolute;
-  left: calc(50% - 444.4701px);
-  top: calc(50% - 2.5px);
-  width: 153.0574px;
-  height: min-content;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
-}
+
 .orderDetails {
   position: absolute;
-  left: 260px;   /* 500 * 0.67 */
-  top: 235px;    /* 350 * 0.67 */
+  left: calc(45% - 500px/2); /* 對齊到 line1 左邊緣 */
+  transform: none; /* 移除 transform，因為我們已經用 calc 精確定位了 */
+  top: 240px;
   width: calc(100% - 488px);
   padding: 20px;
-  /* background-color: #fff; */
   border-radius: 8px;
-  margin-top: 10px;  /* reduced from 20px */
+  margin-top: 10px;
 }
+
 .header {
   display: flex;
   align-items: center;
-  gap: 15px;        /* Increase gap slightly */
-  margin-bottom: 10px;  /* reduced from 20px */
+  gap: 15px;
+  margin-bottom: 10px;
 }
+
 .name {
   color: #5f5f5f;
-  font-size: 24px;  /* 36 * 0.67 */
-  line-height: 15px;  /* 22 * 0.67 */
+  font-size: 24px;
+  line-height: 15px;
   font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   letter-spacing: -0.408px;
-  margin-bottom: 5px;  /* added to reduce space */
+  margin-bottom: 5px;
 }
+
 .itemList {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 600px;
-  margin: 0;  /* removed auto margins */
-  padding-left: 101px;  /* 150 * 0.67 */
+  margin: 0;
+  padding-left: 50px;
 }
+
 .item {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 8px;  /* reduced from 10px */
+  margin-bottom: 8px;
 }
+
 .itemName, .number, .price {
   color: #5f5f5f;
-  font-size: 19px;  /* 28 * 0.67 */
-  line-height: 15px;  /* 22 * 0.67 */
+  font-size: 19px;
+  line-height: 15px;
   font-family: ABeeZee, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
   letter-spacing: -0.408px;
 }
+
 .contentContainer {
   width: 90%;
   max-width: 800px;
-  margin-top: 147px;  /* 220 * 0.67 */
+  margin-top: 147px;
   z-index: 4;
   display: flex;
   flex-direction: column;
-  gap: 16px;  /* 24 * 0.67 */
+  gap: 16px;
 }
+
 .menuList {
   position: fixed;
-  right: 16px;  /* 24 * 0.67 */
-  bottom: 16px;  /* 24 * 0.67 */
+  right: 16px;
+  bottom: 16px;
   z-index: 5;
 }

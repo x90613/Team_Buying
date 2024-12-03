@@ -28,6 +28,7 @@ public class UserHistoryDto {
     private String datetime;
     private String status;
     private String hostformId;
+    private String hostId;
 
     public String getName() {
       return name;
@@ -60,6 +61,14 @@ public class UserHistoryDto {
     public void setHostformId(String hostformId) {
       this.hostformId = hostformId;
     }
+
+    public String getHostId() {
+      return hostId;
+    }
+
+    public void setHostId(String hostId) {
+      this.hostId = hostId;
+    }
   }
 
   public static class ParticipantHistory {
@@ -67,6 +76,7 @@ public class UserHistoryDto {
     private String datetime;
     private String paymentStatus;
     private String hostformId;
+    private String hostId;
 
     public String getName() {
       return name;
@@ -98,6 +108,14 @@ public class UserHistoryDto {
 
     public void setHostformId(String hostformId) {
       this.hostformId = hostformId;
+    }
+
+    public String getHostId() {
+      return hostId;
+    }
+
+    public void setHostId(String hostId) {
+      this.hostId = hostId;
     }
   }
 }

@@ -10,17 +10,17 @@ import OneStar from '/assets/Star/OneStar.png';
 interface ReviewProps {
   review: string;
   datetime: string;
-  star: '1' | '2' | '3' | '4' | '5';
+  star: 1 | 2 | 3 | 4 | 5;
   content: string;
 }
 
 const Review: FC<ReviewProps> = ({review, datetime, star, content}) => {
   const starImage = {
-    '1': OneStar,
-    '2': TwoStars,
-    '3': ThreeStars,
-    '4': FourStars,
-    '5': FiveStars,
+    1 : OneStar,
+    2 : TwoStars,
+    3 : ThreeStars,
+    4 : FourStars,
+    5 : FiveStars,
   };
 
   return (

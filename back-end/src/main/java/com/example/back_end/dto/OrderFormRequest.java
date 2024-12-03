@@ -5,6 +5,7 @@ import java.util.List;
 public class OrderFormRequest {
   private Integer hostformId; // Foreign Key, references HostForm table
   private Integer participantId; // Foreign Key, references User table
+  private String userName;
   private Boolean anonymous; // Whether the participant is anonymous
   private List<String> order; // List of products
   private List<String> quantity; // List of quantities
@@ -33,6 +34,14 @@ public class OrderFormRequest {
 
   public void setAnonymous(Boolean anonymous) {
     this.anonymous = anonymous;
+  }
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
 
   public List<String> getOrder() {

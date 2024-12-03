@@ -129,10 +129,10 @@ const HostForm: FC<HostFormProps> = ({ isOpen, onClose}) => {
       image: formData.image ? await toBase64(formData.image) : '', // 將圖片轉為 base64
     };
 
-    await createHostForm(preparedData);
-
+    const host_form_id = await createHostForm(preparedData);
+    const userId = localStorage.getItem('userId');
     onClose();
-    navigate('/order-item');
+    navigate(`/order-item/${userId}/${host_form_id}`);
   };
   if (!isOpen) return null;
   return (

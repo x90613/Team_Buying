@@ -29,3 +29,9 @@
   overflow: hidden;
   transform: translate(-50%, -50%);
 }
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}

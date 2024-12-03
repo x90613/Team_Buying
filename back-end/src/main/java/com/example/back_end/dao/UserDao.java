@@ -28,10 +28,6 @@ public class UserDao {
     List<UserInfoDto> list =
         namedParameterJdbcTemplate.query(sql, map, new BeanPropertyRowMapper<>(UserInfoDto.class));
 
-    //        System.out.println(list.get(0).getUsername());
-    //        System.out.println(list.get(0).getPhoneNumber());
-    //        System.out.println(list.get(0).getEmail());
-
     if (list.size() > 0) {
       return list.get(0);
     }
@@ -53,9 +49,13 @@ public class UserDao {
   }
 
   public List<UserHistoryDto.HostHistory> getHostHistoryByUserId(int userId) {
+    if (userId <= 0) {
+      throw new IllegalArgumentException("Invalid userId");
+    }
+
     String sql =
-        "SELECT title AS name, dead_time AS datetime, status, id AS hostformId FROM host_form WHERE"
-            + " host_id = :userId AND status = :status";
+        "SELECT title AS name, dead_time AS datetime, status, id AS hostformId, host_id FROM"
+            + " host_form WHERE host_id = :userId AND status = :status";
 
     Map<String, Object> params = new HashMap<>();
     params.put("userId", userId);
@@ -69,7 +69,8 @@ public class UserDao {
           history.setName(rs.getString("name")); // 對應 SELECT 中的別名 `name`
           history.setDatetime(rs.getString("datetime")); // 對應 `dead_time`
           history.setStatus(rs.getString("status")); // 對應 `status`
-          history.setHostformId(rs.getString("hostformId")); // 對應 `id` 的別名
+          history.setHostformId(rs.getString("hostformId"));
+          history.setHostId(rs.getString("host_id")); // 對應 `id` 的別名
           return history;
         });
   }
@@ -79,7 +80,7 @@ public class UserDao {
     // SQL 1: 查詢 participant_form 表，獲取 payment_status 和 host_form_id
     String sql1 =
         "SELECT payment_status, host_form_id FROM participant_form WHERE participant_id = :userId"
-            + " AND payment_status = :status";
+            + " AND payment_status IN (:status)";
 
     Map<String, Object> params1 = new HashMap<>();
     params1.put("userId", userId);
@@ -99,7 +100,8 @@ public class UserDao {
 
       // SQL 2: 根據 host_form_id 查詢 host_form 表的 title 和 dead_time
       String sql2 =
-          "SELECT title AS name, dead_time AS datetime FROM host_form WHERE id = :hostFormId";
+          "SELECT title AS name, dead_time AS datetime, host_id FROM host_form WHERE id ="
+              + " :hostFormId";
 
       Map<String, Object> params2 = new HashMap<>();
       params2.put("hostFormId", hostFormId);
@@ -114,6 +116,7 @@ public class UserDao {
                 history.setDatetime(rs.getString("datetime"));
                 history.setPaymentStatus(paymentStatus.toString()); // 使用第一個查詢結果的 payment_status
                 history.setHostformId(hostFormId.toString()); // 設置 host_form_id
+                history.setHostId(rs.getString("host_id"));
                 return history;
               });
 
@@ -126,7 +129,7 @@ public class UserDao {
 
   public List<UserHistoryDto.HostHistory> getNowHostingByUserId(int userId) {
     String sql =
-        "SELECT title AS name, dead_time AS datetime, id AS hostformId "
+        "SELECT title AS name, dead_time AS datetime, id AS hostformId, host_id "
             + "FROM host_form WHERE host_id = :userId AND status = :status";
 
     Map<String, Object> params = new HashMap<>();
@@ -142,6 +145,7 @@ public class UserDao {
           history.setDatetime(rs.getString("datetime")); // 對應 `dead_time`
           history.setStatus("0"); // 對應 `status`
           history.setHostformId(rs.getString("hostformId")); // 對應 `id` 的別名
+          history.setHostId(rs.getString("host_id"));
           return history;
         });
   }
@@ -170,7 +174,8 @@ public class UserDao {
 
       // SQL 2: 根據 host_form_id 查詢 host_form 表的 title 和 dead_time
       String sql2 =
-          "SELECT title AS name, dead_time AS datetime FROM host_form WHERE id = :hostFormId";
+          "SELECT title AS name, dead_time AS datetime, host_id FROM host_form WHERE id ="
+              + " :hostFormId";
 
       Map<String, Object> params2 = new HashMap<>();
       params2.put("hostFormId", hostFormId);
@@ -185,6 +190,7 @@ public class UserDao {
                 history.setDatetime(rs.getString("datetime"));
                 history.setPaymentStatus(paymentStatus.toString()); // 使用第一個查詢結果的 payment_status
                 history.setHostformId(hostFormId.toString()); // 設置 host_form_id
+                history.setHostId(rs.getString("host_id"));
                 return history;
               });
 
@@ -199,7 +205,7 @@ public class UserDao {
     String sql =
         "SELECT tb.title AS name, "
             + "ROUND(AVG(uf.score), 0) AS star, "
-            + "tb.dead_time AS date, "
+            + "tb.dead_time AS datetime, "
             + "tb.id AS hostFormId "
             + "FROM host_form tb "
             + "JOIN user_feed_back uf ON tb.id = uf.host_form_id "
@@ -217,11 +223,10 @@ public class UserDao {
   }
 
   public List<ReviewDto> getReviewByHostFormId(int hostFormId) {
-    System.out.println("test before");
     String sql =
         "SELECT us.username AS name, "
             + "uf.score AS star, "
-            + "uf.datetime AS date, "
+            + "uf.datetime AS datetime, "
             + "uf.content AS content "
             + "FROM user_feed_back uf "
             + "JOIN user us ON uf.user_id = us.id "
@@ -232,7 +237,7 @@ public class UserDao {
 
     List<ReviewDto> list =
         namedParameterJdbcTemplate.query(sql, map, new BeanPropertyRowMapper<>(ReviewDto.class));
-    System.out.println("test after");
+
     return list;
   }
 }

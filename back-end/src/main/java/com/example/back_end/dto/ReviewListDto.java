@@ -2,7 +2,7 @@ package com.example.back_end.dto;
 
 public class ReviewListDto {
   private String name;
-  private String date;
+  private String datetime;
   private int star;
   private int hostFormId;
 
@@ -15,12 +15,12 @@ public class ReviewListDto {
     this.name = name;
   }
 
-  public String getDate() {
-    return date;
+  public String getDatetime() {
+    return datetime;
   }
 
-  public void setDate(String date) {
-    this.date = date;
+  public void setDatetime(String datetime) {
+    this.datetime = datetime;
   }
 
   public int getStar() {
