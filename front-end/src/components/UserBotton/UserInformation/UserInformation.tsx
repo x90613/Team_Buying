@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import styles from './UserInformation.module.css';
 import useUserHook from '../../../hooks/useUserHook';
+import { useAuth } from '../../../contexts/AuthContext';
 
 interface UserInformationProps {
 }
@@ -11,6 +12,7 @@ export const UserInformation: FC<UserInformationProps> = ({}) => {
   const emailRef = useRef<HTMLInputElement>(null);
   const phoneNumberRef = useRef<HTMLInputElement>(null);
   const { userInfoData, updateUserInfo } = useUserHook();
+  const { logout } = useAuth();
 
   useEffect(() => {
     // load the values from hook to the screen
@@ -28,6 +30,10 @@ export const UserInformation: FC<UserInformationProps> = ({}) => {
       phoneNumber: phoneNumberRef.current!.value,
     };
     await updateUserInfo(formData);
+  };
+
+  const handleLogout = async () => {
+
   };
 
 
@@ -55,6 +61,7 @@ export const UserInformation: FC<UserInformationProps> = ({}) => {
         className={styles.inputField}
         />
         <button type='submit' onClick={handleModify} className={styles.modifyButton}>Modify</button>
+        <button type='submit' onClick={() => logout()} className={styles.modifyButton}>Logout</button>
     </>
   );
 };
