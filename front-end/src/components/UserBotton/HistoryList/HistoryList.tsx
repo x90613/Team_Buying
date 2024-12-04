@@ -12,40 +12,41 @@ export const HistoryList: FC<HistoryListProps> = ({}) => {
 
   return (
     <>
-      <label className={styles.label}>Host</label>
+
       {
-        (userHistoryListData?.host?.length || 0)> 0 ? (
-          userHistoryListData?.host.map((item, index) => (
-            <TeamBuying
-              key={index}
-              name={item.name}
-              datetime={item.datetime}
-              status={item.status}
-              hostformId={item.hostformId}
-              hostId={item.hostId}
-              isHost={true}
-            />
-          ))
-        ) : (
-          <label className={styles.label}> - NULL</label>
+        (userHistoryListData?.host?.length || 0)> 0 && (
+          <>
+            <label className={styles.label}>Host</label>
+            {userHistoryListData?.host.map((item, index) => (
+              <TeamBuying
+                key={index}
+                name={item.name}
+                datetime={item.datetime}
+                status={item.status}
+                hostformId={item.hostformId}
+                hostId={item.hostId}
+                isHost={true}
+              />
+            ))}
+          </>
         )
       }
-      <label className={styles.label}>Particpant</label>
       {
-        (userHistoryListData?.participant?.length || 0) > 0 ? (
-          userHistoryListData?.participant.map((item, index) => (
-            <TeamBuying
-              key={index}
-              name={item.name}
-              datetime={item.datetime}
-              status={item.paymentStatus}
-              hostformId={item.hostformId}
-              hostId={item.hostId}
-              isHost={false}
-            />
-          ))
-        ) : (
-          <label className={styles.label}> - NULL</label>
+        (userHistoryListData?.participant?.length || 0) > 0 && (
+          <>
+            <label className={styles.label}>Particpant</label>
+            {userHistoryListData?.participant.map((item, index) => (
+              <TeamBuying
+                key={index}
+                name={item.name}
+                datetime={item.datetime}
+                status={item.paymentStatus}
+                hostformId={item.hostformId}
+                hostId={item.hostId}
+                isHost={false}
+              />
+            ))}
+          </>
         )
       }
     </>
