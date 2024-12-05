@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import type { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import resets from '../_resets.module.css';
 import { Component1_Property1Account } from './Component1_Property1Account/Component1_Property1Account.js';
@@ -20,6 +20,9 @@ export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
   const { menuData, loading: menuLoading, error: menuError } = useReadMenu();
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const { host_id } = useParams();
+  const userId = localStorage.getItem('userId'); // 改為 'userId' 以保持一致性
+  const showTransferButton = host_id === userId;
 
   const handleTransferClick = async (index: number, items: any[]) => {
     try {
@@ -100,13 +103,16 @@ export const OrderItem: FC<Props> = memo(function OrderItem(props = {}) {
               <div className={classes.number}></div>
               <div className={classes.price}>{order.total}</div>
             </div>
-            <button
-              className={classes.transferButton}
-              onClick={() => handleTransferClick(index, order.items)}
-              style={{
-                backgroundImage: `url('/assets/transfer_${order.status === 1 || clickedStates[index] ? 'white' : 'green'}.png')`
-              }}
-            />
+            {showTransferButton && (
+              <button
+                className={classes.transferButton}
+                onClick={() => handleTransferClick(index, order.items)}
+                disabled={order.status === 1 || clickedStates[index]}
+                style={{
+                  backgroundImage: `url('/assets/transfer_${order.status === 1 || clickedStates[index] ? 'white' : 'green'}.png')`
+                }}
+              />
+            )}
           </div>
         </div>
       ))}

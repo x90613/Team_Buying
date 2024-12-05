@@ -10,7 +10,7 @@ import { StatusComponent as Status } from './components/Status/Status';
 import { MenuList } from './components/MenuList/MenuList';
 import { AuthProvider } from './contexts/AuthContext';
 
-//http://127.0.0.1:5173/order-item/1/5
+
 interface Props {
   className?: string;
 }

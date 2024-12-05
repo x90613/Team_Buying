@@ -14,14 +14,18 @@ import { VectorIcon3 } from './VectorIcon3';
 import { VectorIcon4 } from './VectorIcon4';
 
 interface Props {
+  host_id?: string;
+  host_form_id?: string;
+  onConfirm: () => void;
   className?: string;
-  hide?: {
-    frame21?: boolean;
-  };
-  onConfirm?: () => void;
 }
 
-export const ParticipantForm: FC<Props> = memo(function ParticipantForm(props = {}) {
+export const ParticipantForm: FC<Props> = memo(function ParticipantForm({ 
+  host_id,
+  host_form_id,
+  onConfirm,
+  ...props 
+}) {
   const navigate = useNavigate();
   const { hostformId, userId } = useUrlParams();
 
@@ -36,7 +40,7 @@ export const ParticipantForm: FC<Props> = memo(function ParticipantForm(props = 
       navigate(`/order-item/status/${hostformId}/${userId}`);
 
       // Call the original onConfirm if provided
-      props.onConfirm?.();
+      onConfirm();
     } catch (error) {
       console.error('Error navigating to status:', error);
     }
