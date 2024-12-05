@@ -19,7 +19,7 @@ interface TeamBuyingProps {
 
 const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostformId, hostId, isHost}) => {
   const navigate = useNavigate();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, userId } = useAuth();
 
   const statusIcon = (status: string) => {
     if (status === "2") {
@@ -41,7 +41,7 @@ const TeamBuying: FC<TeamBuyingProps> = ({ name, datetime, status, hostformId, h
     if(isHost){
       navigate(`/order-item/${hostId}/${hostformId}`);
     } else {
-      navigate(`/order-item/status/${hostId}/${hostformId}`);
+      navigate(`/order-item/status/${hostformId}/${userId}`);
     }
   };
 
