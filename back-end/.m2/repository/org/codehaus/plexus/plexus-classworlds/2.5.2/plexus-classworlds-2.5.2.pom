@@ -76,7 +76,7 @@
             <goals>deploy</goals>
             <arguments>-Pplexus-release</arguments>
           </configuration>
-        </plugin>        
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>

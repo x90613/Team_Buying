@@ -127,7 +127,7 @@
     <timestamp>${maven.build.timestamp}</timestamp>
     <qdox.javaparser.stack>500</qdox.javaparser.stack>
   </properties>
-  
+
   <build>
     <pluginManagement>
       <plugins>
@@ -202,7 +202,7 @@
                 <requireMavenVersion>
                   <version>3.0</version>
                 </requireMavenVersion>
-              </rules>    
+              </rules>
             </configuration>
           </execution>
           <execution>
@@ -472,8 +472,8 @@
         <qdox.byaccj.executable>${basedir}/bootstrap/yacc.exe</qdox.byaccj.executable>
       </properties>
     </profile>
-    <!-- <profile> <id>release-site</id> <activation> <file> <exists>release.properties</exists> 
-      </file> </activation> <build> <filters> <filter>release.properties</filter> 
+    <!-- <profile> <id>release-site</id> <activation> <file> <exists>release.properties</exists>
+      </file> </activation> <build> <filters> <filter>release.properties</filter>
       </filters> </build> </profile> -->
   </profiles>
 

@@ -10,8 +10,8 @@
     <name>REST Assured: BOM</name>
     <packaging>pom</packaging>
     <description>Centralized dependencyManagement for the Rest Assured Project</description>
-    
-        <url>https://rest-assured.io/</url>    
+
+        <url>https://rest-assured.io/</url>
         <licenses>
             <license>
                 <name>Apache 2.0</name>
@@ -19,15 +19,15 @@
                 <distribution>repo</distribution>
             </license>
         </licenses>
-    
-    
+
+
         <scm>
             <connection>scm:git:git://github.com/rest-assured/rest-assured.git</connection>
             <developerConnection>scm:git:ssh://git@github.com/rest-assured/rest-assured.git</developerConnection>
             <url>http://github.com/rest-assured/rest-assured/tree/master</url>
             <tag>HEAD</tag>
         </scm>
-    
+
             <developers>
             <developer>
                 <id>johan.haleby</id>
@@ -106,12 +106,12 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
         <build>
             <pluginManagement>
                 <plugins>
                 </plugins>
             </pluginManagement>
         </build>
-    
+
 </project>

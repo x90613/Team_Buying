@@ -179,7 +179,7 @@
       </dependencies>
 
     -->
-    <!-- 
+    <!--
     Warning: site-plugin 3.9.0 causes the following error:
     An API incompatibility was encountered while executing
      org.apache.maven.plugins:maven-site-plugin:3.9.0:site:
@@ -188,7 +188,7 @@
     <commons.site-plugin.version>3.9.1</commons.site-plugin.version>
     <commons.source-plugin.version>3.2.1</commons.source-plugin.version>
     <commons.spotbugs.version>4.0.4</commons.spotbugs.version>
-    <commons.spotbugs.impl.version>4.0.6</commons.spotbugs.impl.version>    
+    <commons.spotbugs.impl.version>4.0.6</commons.spotbugs.impl.version>
     <commons.surefire-report.version>2.22.2</commons.surefire-report.version>
     <commons.surefire.version>2.22.2</commons.surefire.version>
     <commons.wagon-ssh.version>3.4.0</commons.wagon-ssh.version>

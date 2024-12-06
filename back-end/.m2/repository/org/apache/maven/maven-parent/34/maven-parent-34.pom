@@ -324,7 +324,7 @@ under the License.
       <id>dantran</id>
       <name>Dan Tran</name>
       <email>dantran@apache.org</email>
-      <timezone>-8</timezone>      
+      <timezone>-8</timezone>
       <roles>
         <role>Committer</role>
       </roles>
@@ -405,7 +405,7 @@ under the License.
         <role>Committer</role>
       </roles>
       <timezone>Europe/Zurich</timezone>
-    </developer>     
+    </developer>
     <developer>
       <id>jjensen</id>
       <name>Jeff Jensen</name>
@@ -894,7 +894,7 @@ under the License.
   <properties>
     <javaVersion>7</javaVersion>
     <maven.compiler.source>1.${javaVersion}</maven.compiler.source>
-    <maven.compiler.target>1.${javaVersion}</maven.compiler.target>    
+    <maven.compiler.target>1.${javaVersion}</maven.compiler.target>
     <sonar.host.url>https://builds.apache.org/analysis/</sonar.host.url>
     <maven.site.cache>${user.home}/maven-sites</maven.site.cache>
     <maven.site.path>../..</maven.site.path><!-- to be overridden -->
@@ -1055,7 +1055,7 @@ under the License.
             <locale>en</locale>
           </configuration>
         </plugin>
-        <!-- 
+        <!--
           The Maven TLP's sub-projects are likely to fork Maven for tests
           ensure such forked tests do not get picked up by CI
         -->

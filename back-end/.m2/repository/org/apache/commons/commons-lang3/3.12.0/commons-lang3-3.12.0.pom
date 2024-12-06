@@ -641,7 +641,7 @@
     <commons.rc.version>RC1</commons.rc.version>
     <commons.release.isDistModule>true</commons.release.isDistModule>
     <commons.distSvnStagingUrl>scm:svn:https://dist.apache.org/repos/dist/dev/commons/lang</commons.distSvnStagingUrl>
-    <commons.releaseManagerName>Gary Gregory</commons.releaseManagerName>    
+    <commons.releaseManagerName>Gary Gregory</commons.releaseManagerName>
     <commons.releaseManagerKey>86fdc7e2a11262cb</commons.releaseManagerKey>
   </properties>
 
@@ -776,7 +776,7 @@
             <artifactId>spotbugs</artifactId>
             <version>${spotbugs.impl.version}</version>
          </dependency>
-        </dependencies>        
+        </dependencies>
         <configuration>
           <excludeFilterFile>${basedir}/spotbugs-exclude-filter.xml</excludeFilterFile>
         </configuration>
@@ -957,10 +957,10 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <configuration>
               <excludes>
-                <exclude>org/apache/commons/lang3/time/Java15BugFastDateParserTest.java</exclude>               
+                <exclude>org/apache/commons/lang3/time/Java15BugFastDateParserTest.java</exclude>
               </excludes>
             </configuration>
-          </plugin>        
+          </plugin>
         </plugins>
       </build>
     </profile>

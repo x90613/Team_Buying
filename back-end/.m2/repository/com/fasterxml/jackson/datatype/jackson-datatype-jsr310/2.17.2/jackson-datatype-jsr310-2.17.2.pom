@@ -26,7 +26,7 @@
   </developers>
 
   <properties>
-    <!-- Java8 takes Javadoc-Nazi attitude, insert some sanity here --> 
+    <!-- Java8 takes Javadoc-Nazi attitude, insert some sanity here -->
     <additionalparam>-Xdoclint:none</additionalparam>
 
     <!-- Generate PackageVersion.java into this directory. -->

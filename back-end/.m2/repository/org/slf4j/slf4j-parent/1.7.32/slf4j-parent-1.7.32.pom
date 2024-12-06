@@ -30,7 +30,7 @@
   <scm>
     <url>https://github.com/qos-ch/slf4j</url>
     <connection>git@github.com:qos-ch/slf4j.git</connection>
-  </scm>  
+  </scm>
 
   <properties>
     <required.jdk.version>1.5</required.jdk.version>
@@ -65,7 +65,7 @@
     <module>slf4j-nop</module>
     <module>slf4j-jdk14</module>
     <module>slf4j-log4j12</module>
-    <module>slf4j-jcl</module> 
+    <module>slf4j-jcl</module>
     <module>slf4j-android</module>
     <module>slf4j-ext</module>
     <module>jcl-over-slf4j</module>
@@ -265,7 +265,7 @@
               <configuration>
                 <linksource>true</linksource>
                 <doclint>none</doclint>
-                                
+
                 <!--<aggregate>true</aggregate>-->
                 <excludePackageNames>org.slf4j.migrator:org.slf4j.migrator.*</excludePackageNames>
                 <links>

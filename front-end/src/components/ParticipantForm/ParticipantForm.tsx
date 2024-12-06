@@ -20,11 +20,11 @@ interface Props {
   className?: string;
 }
 
-export const ParticipantForm: FC<Props> = memo(function ParticipantForm({ 
+export const ParticipantForm: FC<Props> = memo(function ParticipantForm({
   host_id,
   host_form_id,
   onConfirm,
-  ...props 
+  ...props
 }) {
   const navigate = useNavigate();
   const { hostformId, userId } = useUrlParams();

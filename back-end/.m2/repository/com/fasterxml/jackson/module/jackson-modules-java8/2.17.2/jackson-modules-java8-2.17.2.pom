@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion> 
+  <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.fasterxml.jackson</groupId>
     <artifactId>jackson-base</artifactId>
@@ -23,7 +23,7 @@
   <scm>
     <connection>scm:git:git@github.com:FasterXML/jackson-modules-java8.git</connection>
     <developerConnection>scm:git:git@github.com:FasterXML/jackson-modules-java8.git</developerConnection>
-    <url>http://github.com/FasterXML/jackson-modules-java8</url>    
+    <url>http://github.com/FasterXML/jackson-modules-java8</url>
     <tag>jackson-modules-java8-2.17.2</tag>
   </scm>
   <issueManagement>

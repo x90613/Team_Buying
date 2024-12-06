@@ -308,7 +308,7 @@ limitations under the License.
   <properties>
     <javaVersion>6</javaVersion>
     <maven.compiler.source>1.${javaVersion}</maven.compiler.source>
-    <maven.compiler.target>1.${javaVersion}</maven.compiler.target>    
+    <maven.compiler.target>1.${javaVersion}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <plexusDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/plexus-snapshots</plexusDistMgmtSnapshotsUrl>
   </properties>

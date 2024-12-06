@@ -40,7 +40,7 @@
     <javadoc.skip>false</javadoc.skip>
     <bnd-multi-release>true</bnd-multi-release>
     <bnd-extra-module-options>java.sql;static=true,
-      
+
       java.management;static=true</bnd-extra-module-options>
     <bnd-module-name>org.apache.logging.log4j</bnd-module-name>
   </properties>

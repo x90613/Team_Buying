@@ -24,17 +24,17 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
 	<ciManagement>
 	  <system>Hudson</system>
 	  <url>https://grid.sonatype.org/ci/view/Spice/</url>
 	</ciManagement>
-	
+
   <issueManagement>
     <system>JIRA</system>
     <url>https://issues.sonatype.org/browse/SPICE</url>
   </issueManagement>
-  
+
   <properties>
     <!--
       2008.12.07 Oleg: reverted to 6.1.12 as http transport only works with that version | Please always sync with
@@ -138,7 +138,7 @@
       </plugins>
     </pluginManagement>
   </build>
-  
+
 	<reporting>
 	  <plugins>
       <plugin>
@@ -210,5 +210,5 @@
       </plugin>
 	  </plugins>
 	</reporting>
-	
+
 </project>

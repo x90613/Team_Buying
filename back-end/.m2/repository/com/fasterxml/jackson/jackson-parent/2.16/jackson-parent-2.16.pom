@@ -53,7 +53,7 @@
     <javac.target.version>1.8</javac.target.version>
     <maven.compiler.source>${javac.src.version}</maven.compiler.source>
     <maven.compiler.target>${javac.target.version}</maven.compiler.target>
-    
+
     <javac.debuglevel>lines,source,vars</javac.debuglevel>
 
     <!--

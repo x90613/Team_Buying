@@ -1722,14 +1722,14 @@
     <commons.jacoco.haltOnFailure>false</commons.jacoco.haltOnFailure>
 
     <!-- The Commons component id is used on the distribution server, for example:
-         - Use dbcp instead of dbcp2. 
+         - Use dbcp instead of dbcp2.
          - Use collections instead of collections4.
-         - Use lang instead of lang3. 
+         - Use lang instead of lang3.
          - Use pool instead of pool2.
-         - and so on... 
+         - and so on...
     -->
     <commons.componentid>${project.artifactId}</commons.componentid>
-    
+
     <!-- The package id is substring of the package name from o.a.commons.(.*)., for example:
          - Use dbcp2 instead of dbcp.
          - Use collections4 instead of collections.
@@ -1738,7 +1738,7 @@
          - and so on...
     -->
     <commons.packageId>${project.artifactId}</commons.packageId>
-    
+
     <!-- Configuration properties for the OSGi maven-bundle-plugin -->
     <commons.osgi.symbolicName>org.apache.commons.${commons.packageId}</commons.osgi.symbolicName>
     <commons.osgi.export>org.apache.commons.*;version=${project.version};-noimport:=true</commons.osgi.export>
@@ -1801,7 +1801,7 @@
     <commons.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/commons/content/proper/${commons.componentid}</commons.scmPubUrl>
     <commons.scmPubCheckoutDirectory>${commons.site.cache}/${commons.site.path}</commons.scmPubCheckoutDirectory>
     <commons.scmPubServer>commons.site</commons.scmPubServer>
-    
+
     <!-- allow japicmp's breakBuildOnBinaryIncompatibleModifications
       to be overridden, plugin's default is false -->
     <commons.japicmp.breakBuildOnBinaryIncompatibleModifications>true</commons.japicmp.breakBuildOnBinaryIncompatibleModifications>
@@ -1815,7 +1815,7 @@
     <!-- Commons Release plugin: release manager -->
     <commons.releaseManagerName>${user.name}</commons.releaseManagerName>
     <commons.releaseManagerKey>DEADBEEF</commons.releaseManagerKey>
-    
+
     <sonar.host.url>https://analysis.apache.org/</sonar.host.url>
 
   </properties>

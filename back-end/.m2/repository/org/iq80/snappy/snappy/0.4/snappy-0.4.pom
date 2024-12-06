@@ -309,9 +309,9 @@
                     </configuration>
                 </plugin>
 
-                <!-- 
-                  Do a license check by running       : mvn license:check  
-                  Update the license check by running : mvn license:format  
+                <!--
+                  Do a license check by running       : mvn license:check
+                  Update the license check by running : mvn license:format
                 -->
                 <plugin>
                     <groupId>com.mycila.maven-license-plugin</groupId>

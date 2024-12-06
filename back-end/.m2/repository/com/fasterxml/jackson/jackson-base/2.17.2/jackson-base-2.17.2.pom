@@ -71,7 +71,7 @@ of Jackson: application code should only rely on `jackson-bom`
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      
+
     </dependencies>
 
   </dependencyManagement>
@@ -184,7 +184,7 @@ of Jackson: application code should only rely on `jackson-bom`
               </configuration>
             </execution>
           </executions>
-          <!-- 22-Feb-2021, tatu: For Jackson 2.13+, put `module-info.class` 
+          <!-- 22-Feb-2021, tatu: For Jackson 2.13+, put `module-info.class`
               under "META-INF/versions/11" (instead of root, /); helps pre-Java9
               libraries, frameworks, as well as avoids warnings by tooling
             -->
@@ -269,7 +269,7 @@ of Jackson: application code should only rely on `jackson-bom`
           </archive>
         </configuration>
       </plugin>
-      
+
     </plugins>
   </pluginManagement>
 

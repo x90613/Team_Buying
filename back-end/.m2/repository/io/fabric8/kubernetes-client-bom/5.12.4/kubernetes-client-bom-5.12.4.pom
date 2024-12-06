@@ -10,8 +10,8 @@
     <name>Fabric8 :: Kubernetes :: Bom</name>
     <packaging>pom</packaging>
     <description>Generated Bom</description>
-    
-        <url>http://fabric8.io/</url>    
+
+        <url>http://fabric8.io/</url>
         <licenses>
             <license>
                 <name>Apache License, Version 2.0</name>
@@ -19,15 +19,15 @@
                 <distribution>repo</distribution>
             </license>
         </licenses>
-    
-    
+
+
         <scm>
             <connection>scm:git:git@github.com:fabric8io/kubernetes-client.git</connection>
             <developerConnection>scm:git:git@github.com:fabric8io/kubernetes-client.git</developerConnection>
             <url>http://github.com/fabric8io/kubernetes-client/</url>
             <tag>5.12.4</tag>
         </scm>
-    
+
             <developers>
             <developer>
                 <id>geeks</id>
@@ -625,12 +625,12 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
         <build>
             <pluginManagement>
                 <plugins>
                 </plugins>
             </pluginManagement>
         </build>
-    
+
 </project>

@@ -12,7 +12,7 @@
         <url>http://svn.sonatype.org/forge/tags/forge-parent-5</url>
         <developerConnection>scm:svn:https://svn.sonatype.org/forge/tags/forge-parent-5</developerConnection>
     </scm>
- 
+
 
     <properties>
       <forgeReleaseId>forge-releases</forgeReleaseId>
@@ -30,9 +30,9 @@
             <url>${forgeSnapshotUrl}</url>
         </snapshotRepository>
     </distributionManagement>
-    
-    
-    
+
+
+
     <build>
     <!--set the default plugin revs-->
         <pluginManagement>
@@ -110,7 +110,7 @@
         </pluginManagement>
 
     </build>
-    
+
   <reporting>
 		<plugins>
 			<plugin>
@@ -133,19 +133,19 @@
             <plugin>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>2.1.1</version>
-			</plugin>            
+			</plugin>
             <plugin>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>2.4</version>
                 <configuration>
-                  <targetJdk>1.5</targetJdk> 
+                  <targetJdk>1.5</targetJdk>
                 </configuration>
 			</plugin>
 		</plugins>
-        
+
 	</reporting>
- 
-  
+
+
   <profiles>
     <profile>
       <id>release</id>
@@ -221,5 +221,5 @@
       </build>
     </profile>
   </profiles>
-  
+
 </project>

@@ -93,7 +93,7 @@ under the License.
     <arguments />
     <!-- Specify the default compiler source/target as 1.4 for backwards compatibility -->
     <maven.compiler.source>1.4</maven.compiler.source>
-    <maven.compiler.target>1.4</maven.compiler.target>    
+    <maven.compiler.target>1.4</maven.compiler.target>
   </properties>
 
   <repositories>
@@ -293,8 +293,8 @@ under the License.
       <id>apache-release</id>
       <build>
         <plugins>
-          <!-- Create a source-release artifact that contains the fully buildable 
-               project directory source structure. This is the artifact which is 
+          <!-- Create a source-release artifact that contains the fully buildable
+               project directory source structure. This is the artifact which is
                the official subject of any release vote. -->
           <plugin>
             <artifactId>maven-assembly-plugin</artifactId>
@@ -405,7 +405,6 @@ under the License.
           </plugin>
         </plugins>
       </build>
-    </profile>    
+    </profile>
   </profiles>
 </project>
-

@@ -200,7 +200,7 @@
       </dependencies>
 
     -->
-    <!-- 
+    <!--
     Warning: maven-site-plugin 4.0.0-M3 requires an update to commons-skin site.vm for new variable names.
     -->
     <commons.site-plugin.version>3.12.1</commons.site-plugin.version>
@@ -520,7 +520,7 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>${commons.javadoc.version}</version>
-          <configuration>            
+          <configuration>
             <!-- Keep only errors and warnings -->
             <quiet>true</quiet>
             <source>${maven.compiler.source}</source>
@@ -870,14 +870,14 @@
             <excludes>
               <!-- The latest javancss 33.54 in Maven Central fails on Java 8 sources and maybe even older Java versions -->
               <exclude>**/*.java</exclude>
-          </excludes>          
+          </excludes>
           </configuration>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>exec-maven-plugin</artifactId>
           <version>3.1.1</version>
-        </plugin>  
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -1864,7 +1864,7 @@
 		<jdk>[17,)</jdk>
 	  </activation>
       <properties>
-		<!-- 
+		<!--
 		Wait until org.apache.felix:maven-bundle-plugin supports bndlib 7
         <commons.biz.aQute.bndlib.version>7.0.0</commons.biz.aQute.bndlib.version>
         -->

@@ -49,10 +49,10 @@
       <url>${project.scm.developerConnection}</url>
     </site>
   </distributionManagement>
-  
+
   <properties>
     <javaVersion>7</javaVersion>
-  </properties> 
+  </properties>
 
   <build>
     <pluginManagement>
@@ -75,7 +75,7 @@
             <goals>deploy</goals>
             <arguments>-Pplexus-release</arguments>
           </configuration>
-        </plugin>        
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>

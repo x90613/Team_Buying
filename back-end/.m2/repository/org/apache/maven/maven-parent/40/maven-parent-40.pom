@@ -1106,7 +1106,7 @@ under the License.
             <locale>en</locale>
           </configuration>
         </plugin>
-        <!-- 
+        <!--
           The Maven TLP's sub-projects are likely to fork Maven for tests
           ensure such forked tests do not get picked up by CI
         -->

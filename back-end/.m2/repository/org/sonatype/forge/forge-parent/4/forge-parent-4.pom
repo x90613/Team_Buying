@@ -12,7 +12,7 @@
         <url>http://svn.sonatype.org/forge/tags/forge-parent-4</url>
         <developerConnection>scm:svn:https://svn.sonatype.org/forge/tags/forge-parent-4</developerConnection>
     </scm>
- 
+
 
     <properties>
       <forgeReleaseId>forge-releases</forgeReleaseId>
@@ -30,9 +30,9 @@
             <url>${forgeSnapshotUrl}</url>
         </snapshotRepository>
     </distributionManagement>
-    
-    
-    
+
+
+
     <build>
     <!--set the default plugin revs-->
         <pluginManagement>
@@ -72,7 +72,7 @@
                 <plugin>
                     <artifactId>maven-help-plugin</artifactId>
                     <version>2.0.2</version>
-                </plugin>                
+                </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>2.2</version>
@@ -114,7 +114,7 @@
         </pluginManagement>
 
     </build>
-    
+
   <reporting>
 		<plugins>
 			<plugin>
@@ -138,14 +138,14 @@
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>2.3</version>
                 <configuration>
-                  <targetJdk>1.5</targetJdk> 
+                  <targetJdk>1.5</targetJdk>
                 </configuration>
 			</plugin>
 		</plugins>
-        
+
 	</reporting>
- 
-  
+
+
   <profiles>
     <profile>
       <id>release</id>
@@ -221,5 +221,5 @@
       </build>
     </profile>
   </profiles>
-  
+
 </project>

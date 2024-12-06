@@ -26,7 +26,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
   <scm>
     <connection>scm:git:git@github.com:FasterXML/jackson-databind.git</connection>
     <developerConnection>scm:git:git@github.com:FasterXML/jackson-databind.git</developerConnection>
@@ -55,7 +55,7 @@
 
     <!-- Can not use default, since group id != Java package name here -->
     <osgi.export>com.fasterxml.jackson.databind.*;version=${project.version}</osgi.export>
-    <!-- fix for databind#2299: using jackson-databind in an OSGi environment under Android --> 
+    <!-- fix for databind#2299: using jackson-databind in an OSGi environment under Android -->
     <osgi.import>
         org.w3c.dom.bootstrap;resolution:=optional,
         *

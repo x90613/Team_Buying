@@ -164,7 +164,7 @@ file comparators, endian transformation classes, and much more.
       <email>ggregory at apache.org</email>
       <url>https://www.garygregory.com</url>
       <organization>The Apache Software Foundation</organization>
-      <organizationUrl>https://www.apache.org/</organizationUrl>      
+      <organizationUrl>https://www.apache.org/</organizationUrl>
       <roles>
         <role>PMC Member</role>
       </roles>
@@ -248,7 +248,7 @@ file comparators, endian transformation classes, and much more.
       </dependency>
     </dependencies>
   </dependencyManagement>
-  
+
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -333,11 +333,11 @@ file comparators, endian transformation classes, and much more.
     <commons.japicmp.version>0.15.3</commons.japicmp.version>
     <spotbugs.plugin.version>4.2.3</spotbugs.plugin.version>
     <spotbugs.impl.version>4.3.0</spotbugs.impl.version>
-    <jmh.version>1.32</jmh.version>    
+    <jmh.version>1.32</jmh.version>
     <japicmp.skip>false</japicmp.skip>
     <jacoco.skip>${env.JACOCO_SKIP}</jacoco.skip>
     <commons.release.isDistModule>true</commons.release.isDistModule>
-    <commons.releaseManagerName>Gary Gregory</commons.releaseManagerName>    
+    <commons.releaseManagerName>Gary Gregory</commons.releaseManagerName>
     <commons.releaseManagerKey>86fdc7e2a11262cb</commons.releaseManagerKey>
   </properties>
 
@@ -373,7 +373,7 @@ file comparators, endian transformation classes, and much more.
               <version>8.44</version>
             </dependency>
           </dependencies>
-        </plugin>      
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -392,7 +392,7 @@ file comparators, endian transformation classes, and much more.
                 <requireMavenVersion>
                   <version>3.0.5</version>
                 </requireMavenVersion>
-              </rules>    
+              </rules>
             </configuration>
           </execution>
         </executions>
@@ -500,7 +500,7 @@ file comparators, endian transformation classes, and much more.
       <plugin>
         <groupId>com.github.siom79.japicmp</groupId>
         <artifactId>japicmp-maven-plugin</artifactId>
-      </plugin>    
+      </plugin>
     </plugins>
   </reporting>
   <profiles>

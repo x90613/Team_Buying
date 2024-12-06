@@ -127,9 +127,9 @@ limitations under the License.
 							</execution>
 						</executions>
 					</plugin>
-					<!-- Release Plugin (Update version in POM before/after release, create 
-						tag, deploy) to try: mvn release:prepare -DdryRun=true && mvn release:clean 
-						to perform: mvn release:prepare release:perform Read http://nexus.sonatype.org/oss-repository-hosting.html#3 
+					<!-- Release Plugin (Update version in POM before/after release, create
+						tag, deploy) to try: mvn release:prepare -DdryRun=true && mvn release:clean
+						to perform: mvn release:prepare release:perform Read http://nexus.sonatype.org/oss-repository-hosting.html#3
 						for instructions on releasing to this project's Sonatype repository -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>

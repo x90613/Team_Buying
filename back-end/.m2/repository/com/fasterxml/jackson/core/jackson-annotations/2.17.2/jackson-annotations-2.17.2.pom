@@ -5,7 +5,7 @@
   <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
   <!-- that they should prefer consuming it instead. -->
   <!-- do_not_remove: published-with-gradle-metadata -->
-  <modelVersion>4.0.0</modelVersion> 
+  <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.fasterxml.jackson</groupId>
     <!-- this is one of few Jackson modules that depends on parent and NOT jackson-bom -->
@@ -73,13 +73,13 @@
       <snapshots><enabled>true</enabled></snapshots>
     </repository>
   </repositories>
-  
+
   <build>
     <plugins>
       <!-- First: no replacer plugin (no Packaversion.java.in) for this package -->
 
       <plugin>
-        <!-- 08-Mar-2019, tatu: Would get these settings from `jackson-bom` except we 
+        <!-- 08-Mar-2019, tatu: Would get these settings from `jackson-bom` except we
               do not extend it so...
           -->
         <groupId>org.moditect</groupId>

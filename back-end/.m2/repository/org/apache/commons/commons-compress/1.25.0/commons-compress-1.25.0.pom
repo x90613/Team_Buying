@@ -194,13 +194,13 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
       <artifactId>commons-io</artifactId>
       <version>2.15.0</version>
       <scope>test</scope>
-    </dependency>    
+    </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.13.0</version>
       <scope>test</scope>
-    </dependency>    
+    </dependency>
 
     <dependency>
       <groupId>org.osgi</groupId>
@@ -252,7 +252,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
       <email>ggregory at apache.org</email>
       <url>https://www.garygregory.com</url>
       <organization>The Apache Software Foundation</organization>
-      <organizationUrl>https://www.apache.org/</organizationUrl>      
+      <organizationUrl>https://www.apache.org/</organizationUrl>
       <roles>
         <role>PMC Member</role>
       </roles>
@@ -330,7 +330,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>${commons.javadoc.version}</version>
-          <configuration> 
+          <configuration>
             <source>${maven.compiler.source}</source>
             <quiet>true</quiet>
             <encoding>${commons.encoding}</encoding>
@@ -357,7 +357,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <head>This class is thread-safe</head>
               </tag>
             </tags>
-          </configuration> 
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.rat</groupId>
@@ -510,7 +510,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration> 
+        <configuration>
           <source>${maven.compiler.source}</source>
           <quiet>true</quiet>
           <encoding>${commons.encoding}</encoding>
@@ -537,7 +537,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
               <head>This class is thread-safe</head>
             </tag>
           </tags>
-        </configuration> 
+        </configuration>
       </plugin>
       <plugin>
         <groupId>com.github.spotbugs</groupId>
