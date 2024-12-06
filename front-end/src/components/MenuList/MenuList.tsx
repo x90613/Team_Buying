@@ -24,13 +24,16 @@ interface Props {
 /* @figmaId 29:516 */
 export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
   const navigate = useNavigate();  // Add this
-  const { host_id, host_form_id } = useParams();
+  const { host_id, host_form_id } = useParams<{ host_id: string; host_form_id: string }>();
   const { token, username, userId, isLoggedIn } = useAuth();
   const [showComponents, setShowComponents] = useState(false);
   const [showMenu1Modal, setShowMenu1Modal] = useState(false);
   const [showOrderModal, setShowOrderModal] = useState(false);
   const [showStatusModal, setShowStatusModal] = useState(false);
   const [showHostFormModal, setShowHostFormModal] = useState(false);  // Add this
+
+  const userID = localStorage.getItem('userID');
+  const showHostBackend = host_id === userId;
 
   const [isUserOpen, setIsUserOpen] = useState(false);
   const handleUserClick = () => {
@@ -52,13 +55,11 @@ export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
     setShowOrderModal(true);
   };
 
-  const handleOrderConfirm = (host_form_id:any, user_id:any) => {
+  const handleOrderConfirm = () => {
     setShowOrderModal(false);
-    setTimeout(() => {
-      navigate(`/order-item/status/${host_form_id}/${user_id}`);  // Add this
-    }, 0);
-    // navigate('/order-item/status'); // 直接導航到狀態頁面
-
+    if (host_form_id && userId) {
+      navigate(`/order-item/status/${host_form_id}/${userId}`);
+    }
   };
 
   return (
@@ -96,13 +97,15 @@ export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
               }}
               onClick={handleOrderClick}  // Add this
             />
-            <Component5_Property1Create
-              className={classes.component7}
-              text={{
-                create: <div className={classes.create3}>Host backend system</div>,
-              }}
-              onClick={() => setShowHostFormModal(true)}  // Add this
-            />
+            {showHostBackend && (
+              <Component5_Property1Create
+                className={classes.component7}
+                text={{
+                  create: <div className={classes.create3}>Host backend system</div>,
+                }}
+                onClick={() => setShowHostFormModal(true)}  // Add this
+              />
+            )}
           </>
         )}
         <div className={classes.unnamed2} onClick={handleMenuClick}>
@@ -124,7 +127,11 @@ export const MenuList: FC<Props> = memo(function MenuList(props = {}) {
       {showOrderModal && (
         <div className={classes.modalOverlay} onClick={() => setShowOrderModal(false)}>
           <div className={classes.modalContent} onClick={e => e.stopPropagation()}>
-            <ParticipantForm onConfirm={() => handleOrderConfirm(host_form_id ,userId)} />
+            <ParticipantForm
+              host_id={host_id}
+              host_form_id={host_form_id}
+              onConfirm={handleOrderConfirm}
+            />
           </div>
         </div>
       )}

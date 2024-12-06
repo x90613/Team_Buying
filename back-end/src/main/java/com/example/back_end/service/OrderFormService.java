@@ -96,7 +96,7 @@ public class OrderFormService {
       response.put("teambuyingHostId", hostForm.getOrDefault("host_id", "N/A"));
       response.put("teamBuyngDeadline", hostForm.getOrDefault("dead_time", "N/A"));
       response.put("order", items);
-      response.put("hostcontact", hostForm.getOrDefault("contact_information", "N/A"));
+      response.put("hostcontact", hostForm.getOrDefault("host_contact_information", "N/A"));
       response.put("transferInformation", hostForm.getOrDefault("transfer_information", "N/A"));
       response.put("paymentSatus", participantForm.getOrDefault("payment_status", 0));
 

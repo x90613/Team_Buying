@@ -15,6 +15,7 @@ import useTeamBuying from './hooks/useTeamBuying';
 import {App_orderitem} from './App_orderitem';
 import { StatusComponent } from './components/Status/Status';
 import { useAuth } from './contexts/AuthContext';
+import { useNotification } from './hooks/useNotification'; // Add this import
 
 interface Props {
   className?: string;
@@ -25,6 +26,10 @@ export const App: FC<Props> = memo(function App(props = {}) {
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const { token, username, userId, isLoggedIn } = useAuth();
+
+  useNotification(userId, (notification) => {
+    alert(`${notification.userName} has made a payment!`);
+  });
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
