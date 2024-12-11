@@ -1,9 +1,58 @@
-# Team_Buying
-## Project Introduction
-Group ordering meals or drinks is a common scenario in everyday life, especially for teams or groups of friends. However, organizing orders and tracking payments can be heavy, especially for the organizer. Our project aims to simplify this process by developing an online team buying system, which allows the host to create and share order links for participants, streamline ordering, and track payments efficiently.
-In this system, the host can quickly log in to the platform without registering an account, create a new order (such as "Lunch Bento" or "Drink Order"), and generate a shareable link for participants. The link allows participants to choose their desired meals or drinks, making it easy for the host to gather all the orders in one place. Once the ordering process is complete, the host can access a final order list for easy reference when placing the phone or online order.
-Furthermore, the system includes features to assist with payment collection. The host can display their bank transfer details or a QR code for participants to make payments. After payment, the host can track the payment status through a list showing which participants have completed their payments, manually marking them as paid.
-The scope of this project includes user authentication, order creation, link generation and sharing, payment tracking, and notification functionalities, ensuring a seamless and efficient group ordering experience for both the host and participants.
+# Team Buying Project  
+## Introduction  
+<img width="660" alt="Screenshot 2024-12-11 at 12 10 33 PM" src="https://github.com/user-attachments/assets/d2a8d68d-3fd4-4153-b9ac-3fded1f5574a">
+
+Group ordering meals or drinks can be convenient, but organizing orders and tracking payments is often a hassle. This project provides a streamlined solution with an online team buying system, making the process simple and efficient for both organizers and participants.  
+
+### Key Features  
+
+1. **Quick Access Without Registration**  
+   - No need for account creation. Organizers can log in quickly to start.  
+
+2. **Order Creation and Sharing**  
+   - Hosts can create new orders (e.g., "Lunch Bento," "Drink Order").  
+   - Generate a shareable link for participants to choose their items.  
+
+3. **Centralized Order Collection**  
+   - Participants' choices are collected in one place for easy management.  
+   - Final order summary provided for the host to place the order.  
+
+4. **Payment Assistance**  
+   - Hosts can display bank transfer details or a QR code for payments.  
+   - Track payment statuses and manually mark participants as "paid."  
+
+5. **Seamless and Efficient Workflow**  
+   - Simple steps for both hosts and participants.  
+   - Ensures a smooth experience from ordering to payment collection.  
+
+This system is designed to take the stress out of group orders, letting everyone focus on enjoying their meals or drinks instead of worrying about logistics!
+
+### Main Page 
+  <img width="496" alt="Screenshot 2024-12-11 at 12 12 25 PM" src="https://github.com/user-attachments/assets/50a61053-1401-4a65-8b68-c41abc6a009c">
+
+
+# Start Database
+
+### Ports
+- MySQL port: **3306**
+- Spring Boot port: **9090**
+
+### Start up your SQL Database
+
+```bash
+# Start up the SQL database container in detached mode
+docker compose up -d
+
+# Stop and remove all containers
+docker-compose down
+
+# List all containers and their statuses
+docker ps -a
+
+# Restart a stopped container
+docker start <container_name_or_id>
+```
+
 
 # How to Use Pre-commit in This Project
 
@@ -69,25 +118,3 @@ Pre-commit is a tool used in this project to ensure consistent code quality by a
   ```bash
   git add .
   git commit -m "Apply pre-commit fixes"
-
-# Start Database
-
-### Ports
-- MySQL port: **3306**
-- Spring Boot port: **9090**
-
-### Start up your SQL Database
-
-```bash
-# Start up the SQL database container in detached mode
-docker compose up -d
-
-# Stop and remove all containers
-docker-compose down
-
-# List all containers and their statuses
-docker ps -a
-
-# Restart a stopped container
-docker start <container_name_or_id>
-```
