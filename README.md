@@ -1,33 +1,33 @@
-# Team Buying Project  
-## Introduction  
+# Team Buying Project
+## Introduction
 <img width="660" alt="Screenshot 2024-12-11 at 12 10 33 PM" src="https://github.com/user-attachments/assets/d2a8d68d-3fd4-4153-b9ac-3fded1f5574a">
 
-Group ordering meals or drinks can be convenient, but organizing orders and tracking payments is often a hassle. This project provides a streamlined solution with an online team buying system, making the process simple and efficient for both organizers and participants.  
+Group ordering meals or drinks can be convenient, but organizing orders and tracking payments is often a hassle. This project provides a streamlined solution with an online team buying system, making the process simple and efficient for both organizers and participants.
 
-### Key Features  
+### Key Features
 
-1. **Quick Access Without Registration**  
-   - No need for account creation. Organizers can log in quickly to start.  
+1. **Quick Access Without Registration**
+   - No need for account creation. Organizers can log in quickly to start.
 
-2. **Order Creation and Sharing**  
-   - Hosts can create new orders (e.g., "Lunch Bento," "Drink Order").  
-   - Generate a shareable link for participants to choose their items.  
+2. **Order Creation and Sharing**
+   - Hosts can create new orders (e.g., "Lunch Bento," "Drink Order").
+   - Generate a shareable link for participants to choose their items.
 
-3. **Centralized Order Collection**  
-   - Participants' choices are collected in one place for easy management.  
-   - Final order summary provided for the host to place the order.  
+3. **Centralized Order Collection**
+   - Participants' choices are collected in one place for easy management.
+   - Final order summary provided for the host to place the order.
 
-4. **Payment Assistance**  
-   - Hosts can display bank transfer details or a QR code for payments.  
-   - Track payment statuses and manually mark participants as "paid."  
+4. **Payment Assistance**
+   - Hosts can display bank transfer details or a QR code for payments.
+   - Track payment statuses and manually mark participants as "paid."
 
-5. **Seamless and Efficient Workflow**  
-   - Simple steps for both hosts and participants.  
-   - Ensures a smooth experience from ordering to payment collection.  
+5. **Seamless and Efficient Workflow**
+   - Simple steps for both hosts and participants.
+   - Ensures a smooth experience from ordering to payment collection.
 
 This system is designed to take the stress out of group orders, letting everyone focus on enjoying their meals or drinks instead of worrying about logistics!
 
-### Main Page 
+### Main Page
   <img width="496" alt="Screenshot 2024-12-11 at 12 12 25 PM" src="https://github.com/user-attachments/assets/50a61053-1401-4a65-8b68-c41abc6a009c">
 
 
